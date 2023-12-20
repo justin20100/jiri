@@ -11,7 +11,8 @@ use Livewire\Volt\Component;
 
 new #[Layout('layouts.guest')] class extends Component
 {
-    public string $name = '';
+    public string $firstname = '';
+    public string $lastname = '';
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
@@ -22,7 +23,8 @@ new #[Layout('layouts.guest')] class extends Component
     public function register(): void
     {
         $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -39,11 +41,18 @@ new #[Layout('layouts.guest')] class extends Component
 
 <div>
     <form wire:submit="register">
+        <!-- Firstname -->
+        <div>
+            <x-input-label for="firstname" :value="__('Prénom')" />
+            <x-text-input wire:model="firstname" id="firstname" class="block mt-1 w-full" type="text" name="firstname" required autofocus autocomplete="firstname" />
+            <x-input-error :messages="$errors->get('firstname')" class="mt-2" />
+        </div>
+
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input wire:model="name" id="name" class="block mt-1 w-full" type="text" name="name" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input-label for="lastname" :value="__('Nom')" />
+            <x-text-input wire:model="lastname" id="lastname" class="block mt-1 w-full" type="text" name="lastname" required autofocus autocomplete="lastname" />
+            <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
