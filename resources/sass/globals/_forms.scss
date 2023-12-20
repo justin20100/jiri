@@ -1,0 +1,20 @@
+form {
+    > input[type="text"], input[type="email"], input[type="password"], input[type="search"], input[type="tel"], input[type="url"], textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 0;
+        border: 1px solid $gray-300;
+        box-shadow: none;
+        display: block;
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 0.5rem 0.75rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        width: 100%;
+        &:focus {
+            border-color: $primary;
+            outline: 0;
+        }
+    }
+}

@@ -1,0 +1,57 @@
+// LOGIN PAGE
+
+.loginPage {
+
+    .login {
+
+        > .wrapper {
+            position: relative;
+            z-index: 3;
+            max-width: 1450px;
+            margin: 0 auto;
+
+            @include w1450-down {
+                margin: 0;
+            }
+        }
+
+        &__contentContainer {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+
+            &__left {
+                position: relative;
+                width: 100%;
+
+                &__logo {
+                    max-width: 50px;
+                    width: 100%;
+                }
+
+                &__bgImage {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    object-fit: cover;
+                    object-position: left;
+                    width: 100%;
+                    pointer-events: none;
+                }
+            }
+
+            &__right {
+                width: 100%;
+
+                &__formContainer {
+
+                    &__form {
+                        // voir forms.scss
+                    }
+                }
+            }
+        }
+    }
+}
