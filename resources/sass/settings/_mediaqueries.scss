@@ -1,0 +1,30 @@
+/*********************************************
+  BREAKPOINTS
+**********************************************/
+@mixin w320-down {
+    @media (max-width: 320px) { @content;}
+}
+@mixin w425-down {
+    @media (max-width: 425px) { @content;}
+}
+@mixin w600-down {
+    @media (max-width: 600px) { @content;}
+}
+@mixin w750-down {
+    @media (max-width: 750px) { @content;}
+}
+@mixin w900-down{
+    @media (max-width: 900px) { @content;}
+}
+@mixin w1050-down {
+    @media (max-width: 1050px) { @content;}
+}
+@mixin w1200-down {
+    @media (max-width: 1200px) { @content;}
+}
+@mixin w1450-down {
+    @media (max-width: 1450px) { @content;}
+}
+@mixin w1800-down {
+    @media (max-width: 1800px) { @content;}
+}

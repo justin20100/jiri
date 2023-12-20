@@ -1,12 +1,16 @@
+// WELCOME PAGE
+
 .welcomePage {
     > .header {
         margin-top: 40px;
 
         > .wrapper {
             position: relative;
+            display: flex;
             z-index: 3;
-            max-width: 1800px;
+            max-width: 1000px;
             margin: 0 50px;
+
         }
 
         &__contentContainer {
@@ -29,6 +33,10 @@
                 }
 
                 &__links {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
 
                     &__button {
                         // voir buttons.scss
