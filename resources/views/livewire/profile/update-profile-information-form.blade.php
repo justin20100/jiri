@@ -6,19 +6,27 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 use Livewire\Volt\Component;
+use Livewire\WithFileUploads;
 
 new class extends Component
 {
-    public string $name = '';
+    use WithFileUploads;
+
+    public string $firstname = '';
+    public string $lastname = '';
     public string $email = '';
+    public $avatar = '';
+    public $uploadFile;
 
     /**
      * Mount the component.
      */
     public function mount(): void
     {
-        $this->name = Auth::user()->name;
+        $this->firstname = Auth::user()->firstname;
+        $this->lastname = Auth::user()->lastname;
         $this->email = Auth::user()->email;
+        $this->avatar = Auth::user()->avatar;
     }
 
     /**
@@ -29,14 +37,23 @@ new class extends Component
         $user = Auth::user();
 
         $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
+            'uploadFile' => 'image|max:1500|nullable',
         ]);
 
         $user->fill($validated);
 
         if ($user->isDirty('email')) {
             $user->email_verified_at = null;
+        }
+
+        if ($this->uploadFile) {
+            $this->uploadFile->store("images/avatars/");
+            $validated['avatar'] = $this->uploadFile->hashName();
+        } else {
+            $validated['avatar'] = 'default.jpg';
         }
 
         $user->save();
@@ -77,12 +94,31 @@ new class extends Component
     </header>
 
     <form wire:submit="updateProfileInformation" class="mt-6 space-y-6">
+
+        <!-- Firstname -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input wire:model="name" id="name" name="name" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            <x-input-label for="firstname" :value="__('Prenom')" />
+            <x-text-input wire:model="firstname" id="firstname" name="firstname" type="text" class="mt-1 block w-full" required autofocus autocomplete="firstname" />
+            <x-input-error class="mt-2" :messages="$errors->get('firstname')" />
         </div>
 
+        <!-- Lastname -->
+        <div>
+            <x-input-label for="lastname" :value="__('Nom')" />
+            <x-text-input wire:model="lastname" id="lastname" name="lastname" type="text" class="mt-1 block w-full" required autofocus autocomplete="lastname" />
+            <x-input-error class="mt-2" :messages="$errors->get('lastname')" />
+        </div>
+
+        <!-- Avatar -->
+        @if ($uploadFile)
+            <img src="{{ $uploadFile->temporaryUrl() }}">
+        @else
+            <img src="{{URL::to('/storage/avatars')."/".$avatar}}">
+        @endif
+        <input type="file" wire:model="uploadFile">
+        @error('uploadFile') <span class="error">{{ $message }}</span> @enderror
+
+        <!-- email -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input wire:model="email" id="email" name="email" type="email" class="mt-1 block w-full" required autocomplete="username" />
