@@ -1,0 +1,28 @@
+// font Family
+@font-face {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./fonts/Manrope-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Exo';
+    font-style: medium;
+    font-weight: 500;
+    src: url('./fonts/Exo-Medium.ttf') format('truetype');
+}
+
+$titleFont: 'Exo', sans-serif;
+$textFont: 'Manrope', sans-serif;
+
+// font Sizes
+$xx-smallSize: 0.625rem;
+$x-smallSize: 0.75rem;
+$smallSize: 0.875rem;
+$normalSize: 1rem;
+$mediumSize: 1.125rem;
+$largeSize: 1.25rem;
+$x-largeSize: 1.5rem;
+$xx-largeSize: 2rem;
+

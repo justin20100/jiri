@@ -1,0 +1,40 @@
+.welcomePage {
+    > .header {
+        margin-top: 40px;
+
+        > .wrapper {
+            position: relative;
+            z-index: 3;
+            max-width: 1800px;
+            margin: 0 50px;
+        }
+
+        &__contentContainer {
+
+            &__content {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                &__logo {
+                    padding: 20px;
+
+                    &__link {
+
+                        &__img {
+
+                        }
+                    }
+                }
+
+                &__links {
+
+                    &__button {
+                        // voir buttons.scss
+                    }
+                }
+            }
+        }
+    }
+}

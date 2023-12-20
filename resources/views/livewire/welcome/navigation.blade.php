@@ -1,11 +1,17 @@
-<div class="sm:fixed sm:top-0 sm:right-0 p-6 text-end z-10">
+<div class="header__contentContainer__content__links">
     @auth
-        <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" wire:navigate>Dashboard</a>
+        <div class="button header__contentContainer__content__links__button">
+            <a href="{{ url('/dashboard') }}" wire:navigate>Dashboard</a>
+        </div>
     @else
-        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" wire:navigate>Log in</a>
+        <div class="button header__contentContainer__content__links__button">
+            <a href="{{ route('login') }}" wire:navigate>Log in</a>
+        </div>
 
         @if (Route::has('register'))
-            <a href="{{ route('register') }}" class="ms-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500" wire:navigate>Register</a>
+            <div class="button header__contentContainer__content__links__button">
+                <a href="{{ route('register') }}" wire:navigate>Register</a>
+            </div>
         @endif
     @endauth
 </div>

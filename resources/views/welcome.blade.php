@@ -8,16 +8,31 @@
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
 
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
-    <body class="antialiased">
-        <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-            @if (Route::has('login'))
-                <livewire:welcome.navigation />
-            @endif
+    <body>
+        <div class="mainContainer">
+            <main class="welcomePage">
+                <header class="header">
+                    <div class="wrapper">
+                        <div class="header__contentContainer">
+                            <div class="header__contentContainer__content">
+                                <div class="header__contentContainer__content__logo">
+                                    <a href="" class="header__contentContainer__content__logo__link">
+                                        <img src="{{asset('/images/logo-jiri.svg')}}" alt="Jiri logo" class="header__contentContainer__content__logo__link__img">
+                                    </a>
+                                </div>
+                                @if (Route::has('login'))
+                                    <livewire:welcome.navigation/>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </main>
         </div>
     </body>
 </html>
