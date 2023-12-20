@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// ----------- SETTINGS
+@import "settings/fonts";
+@import "settings/colors";
+
+// ----------- GLOBALS
+@import "globals/buttons";
+
+// ----------- PARTIALS
+
+// ----------- PAGES
+@import "pages/welcome";
+
+
