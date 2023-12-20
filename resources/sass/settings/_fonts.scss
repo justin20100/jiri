@@ -3,14 +3,14 @@
     font-family: 'Manrope';
     font-style: normal;
     font-weight: 400;
-    src: url('./fonts/Manrope-Regular.ttf') format('truetype');
+    src: url('../fonts/Manrope-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Exo';
     font-style: medium;
     font-weight: 500;
-    src: url('./fonts/Exo-Medium.ttf') format('truetype');
+    src: url('../fonts/Exo-Medium.ttf') format('truetype');
 }
 
 $titleFont: 'Exo', sans-serif;

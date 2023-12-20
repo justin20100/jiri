@@ -1,19 +1,23 @@
 // WELCOME PAGE
 
 .welcomePage {
-    > .header {
+
+    .header {
         margin-top: 40px;
 
         > .wrapper {
             position: relative;
-            display: flex;
             z-index: 3;
-            max-width: 1000px;
-            margin: 0 50px;
+            max-width: 1450px;
+            margin: 0 auto;
 
+            @include w1450-down {
+                margin: 0 50px;
+            }
         }
 
         &__contentContainer {
+            width: 100%;
 
             &__content {
                 display: flex;
@@ -22,12 +26,14 @@
                 align-items: center;
 
                 &__logo {
-                    padding: 20px;
+                    width: 100%;
 
                     &__link {
+                        display: block;
 
                         &__img {
-
+                            width: 100%;
+                            max-width: 50px;
                         }
                     }
                 }
@@ -37,9 +43,10 @@
                     flex-direction: row;
                     justify-content: space-between;
                     align-items: center;
+                    gap: 10px;
 
                     &__button {
-                        // voir buttons.scss
+                        // voir _buttons.scss
                     }
                 }
             }

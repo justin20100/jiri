@@ -1,0 +1,32 @@
+.button {
+    display: inline-block;
+    width: max-content;
+    cursor: pointer;
+    padding: 12px 20px;
+    background-color: $main1;
+    border-radius: 10px;
+    border: solid 1px $main1;
+    transition: background-color 0.4s ease-in-out, border 0.4s ease-in-out, color 0.3s ease-in-out;
+    font-family: $titleFont;
+    color: $white;
+
+    &:hover {
+        background-color: $white;
+        color: $main1;
+    }
+
+    // main 5 BG and main1 font
+    &--light {
+        background-color: $main5;
+        border: solid 1px $main5;
+        color: $main1;
+
+        &:hover {
+            border: solid 1px $main1;
+        }
+
+        > a {
+            color: $main1;
+        }
+    }
+}

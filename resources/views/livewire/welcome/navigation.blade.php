@@ -1,17 +1,11 @@
 <div class="header__contentContainer__content__links">
     @auth
-        <div class="button header__contentContainer__content__links__button">
-            <a href="{{ url('/dashboard') }}" wire:navigate>Dashboard</a>
-        </div>
+        <a href="{{ url('/dashboard') }}" wire:navigate>Dashboard</a>
     @else
-        <div class="button header__contentContainer__content__links__button">
-            <a href="{{ route('login') }}" wire:navigate>Log in</a>
-        </div>
+        <a class="button button--light" href="{{ route('login') }}" wire:navigate>Connexion</a>
 
         @if (Route::has('register'))
-            <div class="button header__contentContainer__content__links__button">
-                <a href="{{ route('register') }}" wire:navigate>Register</a>
-            </div>
+            <a class="button" href="{{ route('register') }}" wire:navigate>Créer un compte</a>
         @endif
     @endauth
 </div>
