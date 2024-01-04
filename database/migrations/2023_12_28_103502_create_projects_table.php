@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('weighting');
             $table->string('github')->nullable();
-            $table->string('website')->nullable();
+            $table->string('link')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

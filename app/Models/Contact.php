@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class contact extends Model
+class Contact extends Model
 {
     use HasFactory;
 
@@ -39,12 +39,12 @@ class contact extends Model
             ->withPivot(['urls', 'tasks', 'points']);
     }
 
-    public function contactJiris(): HasMany
+    public function contactsJiris(): HasMany
     {
         return $this->hasMany(ContactJiri::class);
     }
 
-    public function contactDuties(): HasMany
+    public function contactsDuties(): HasMany
     {
         return $this->hasMany(ContactDuty::class);
     }
