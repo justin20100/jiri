@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contact-duty', function (Blueprint $table) {
+        Schema::create('contact_duty', function (Blueprint $table) {
             $table->id();
             $table->json('urls')->nullable();
             $table->json('tasks')->nullable();
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contact-duty');
+        Schema::dropIfExists('contact_duty');
     }
 };
