@@ -19,14 +19,10 @@ return new class extends Migration
         });
         Schema::table('contact-jiri', function (Blueprint $table) {
             $table->foreignId('contact_id')->constrained();
-        });
-        Schema::table('contact-jiri', function (Blueprint $table) {
             $table->foreignId('jiri_id')->constrained();
         });
         Schema::table('jiri-project', function (Blueprint $table) {
             $table->foreignId('jiri_id')->constrained();
-        });
-        Schema::table('jiri-project', function (Blueprint $table) {
             $table->foreignId('project_id')->constrained();
         });
         Schema::table('projects', function (Blueprint $table) {
