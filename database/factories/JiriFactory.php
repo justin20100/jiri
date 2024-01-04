@@ -12,7 +12,9 @@ class JiriFactory extends Factory
     public function definition(): array
     {
         return [
-
+            'name' => $this->faker->name(),
+            'start' => $this->faker->dateTime(),
+            'end' => $this->faker->dateTime(),
         ];
     }
 }
