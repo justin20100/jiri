@@ -1,4 +1,4 @@
-// font Family
+// font Family imports
 @font-face {
     font-family: 'Manrope';
     font-style: normal;
@@ -13,10 +13,11 @@
     src: url('../fonts/Exo-Medium.ttf') format('truetype');
 }
 
+// font families variables
 $titleFont: 'Exo', sans-serif;
 $textFont: 'Manrope', sans-serif;
 
-// font Sizes
+// font Sizes variables
 $xx-smallSize: 0.625rem;
 $x-smallSize: 0.75rem;
 $smallSize: 0.875rem;
@@ -25,4 +26,3 @@ $mediumSize: 1.125rem;
 $largeSize: 1.25rem;
 $x-largeSize: 1.5rem;
 $xx-largeSize: 2rem;
-

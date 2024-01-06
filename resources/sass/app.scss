@@ -7,11 +7,11 @@
 
 // ----------- GLOBALS
 @import "globals/buttons";
+@import "globals/forms";
 
 // ----------- PARTIALS
 
 // ----------- PAGES
 @import "pages/welcome";
 @import "pages/login";
-
-
+@import "pages/register";
