@@ -3,7 +3,8 @@ FORMS
 *********************************************/
 
 form {
-    > input[type="text"], input[type="email"], input[type="password"], input[type="search"], input[type="tel"], input[type="url"], textarea {
+    // INPUTS ------------------------------
+    input[type="text"], input[type="email"], input[type="password"], input[type="search"], input[type="tel"], input[type="url"], textarea {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
@@ -16,15 +17,25 @@ form {
         line-height: 1.5;
         padding: 15px 20px;
         transition: border-color 0.15s $ease, box-shadow 0.4s $ease;
-        width: 94%;
+        width: 100%;
+        box-sizing: border-box;
 
         &:focus {
             box-shadow: 0 0 5px 1px $main1;
             outline: 0;
             border: 2px solid $main3;
         }
+        &::placeholder {
+            color: $grey;
+        }
     }
 
+    // SELECT ------------------------------
+    select {
+        outline: none;
+    }
+
+    // LABEL ------------------------------
     label {
         font-family: $titleFont;
         color: $label;
@@ -34,11 +45,8 @@ form {
         opacity: 1;
     }
 
-    select {
-        outline: none;
-    }
-
-    .form__email, .form__password {
+    // FORMS PARTS ------------------------------
+    .form__email, .form__password, .form__firstname, .form__lastname {
         margin-bottom: 20px;
 
         > label {
@@ -54,7 +62,7 @@ form {
             color: $main3;
             text-decoration: underline;
             transition: color 0.15s $ease;
-            margin-top: 5px;
+            margin-top: 10px;
 
             &:hover {
                 color: $main1;
@@ -62,8 +70,27 @@ form {
         }
     }
 
+    .form__columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px;
+    }
+
+    // BUTTONS ------------------------------
     .form__buttonContainer {
         text-align: right;
+    }
+
+    // ERROR --------------------------------
+    .formErrorList {
+        &__item {
+            color: $red;
+            font-weight: lighter;
+            margin-top: 10px;
+            margin-left: 10px;
+            font-family: $textFont;
+            font-size: $smallSize;
+        }
     }
 
     //input[type="text"], input[type="email"], input[type="file"], select {

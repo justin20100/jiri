@@ -44,7 +44,7 @@ new #[Layout('layouts.guest')] class extends Component
                     <x-auth-session-status class="mb-4" :status="session('status')" />
                     <div class="login__contentContainer__right__formContainer">
                         <h1 class="login__contentContainer__right__formContainer__title">Connectez-vous</h1>
-                        <form wire:submit="login" class="login__contentContainer__right__form">
+                        <form wire:submit="login" class="login__contentContainer__right__form form">
                             <!-- Email Address -->
                             <div class="form__email">
                                 <x-input-label for="email" :value="__('Email')" />
@@ -62,7 +62,7 @@ new #[Layout('layouts.guest')] class extends Component
 
                                 @if (Route::has('password.request'))
                                     <a href="{{ route('password.request') }}" wire:navigate class="form__password__forgot">
-                                        {{ __('Mot de passe oublié?') }}
+                                        {{ __('Mot de passe oublié ?') }}
                                     </a>
                                 @endif
                             </div>
@@ -77,11 +77,14 @@ new #[Layout('layouts.guest')] class extends Component
 
                             <div class="form__buttonContainer">
                                 <x-primary-button>
-                                    {{ __('Log in') }}
+                                    {{ __('Se connecter') }}
                                 </x-primary-button>
                             </div>
                         </form>
                     </div>
+                    <a class="login__contentContainer__right__register" href="{{route('register')}}" wire:navigate>
+                        Pas encore de compte ? Inscrivez-vous !
+                    </a>
                 </div>
             </div>
         </div>
