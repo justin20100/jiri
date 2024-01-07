@@ -12,14 +12,16 @@ form {
         box-shadow: none;
         display: block;
         font-size: 1rem;
+        font-family: $textFont;
         line-height: 1.5;
         padding: 15px 20px;
-        transition: border-color 0.15s $ease, box-shadow 0.15s $ease;
+        transition: border-color 0.15s $ease, box-shadow 0.4s $ease;
         width: 94%;
 
         &:focus {
-            border-color: $main5;
+            box-shadow: 0 0 5px 1px $main1;
             outline: 0;
+            border: 2px solid $main3;
         }
     }
 
@@ -58,6 +60,10 @@ form {
                 color: $main1;
             }
         }
+    }
+
+    .form__buttonContainer {
+        text-align: right;
     }
 
     //input[type="text"], input[type="email"], input[type="file"], select {

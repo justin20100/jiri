@@ -8,6 +8,7 @@
     border: solid 1px $main1;
     transition: background-color 0.4s ease-in-out, border 0.4s ease-in-out, color 0.3s ease-in-out;
     font-family: $titleFont;
+    font-size: $normalSize;
     color: $white;
 
     &:hover {

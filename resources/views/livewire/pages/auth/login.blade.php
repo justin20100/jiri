@@ -54,7 +54,7 @@ new #[Layout('layouts.guest')] class extends Component
 
                             <!-- Password -->
                             <div class="form__password">
-                                <x-input-label for="password" :value="__('Password')" />
+                                <x-input-label for="password" :value="__('Mot de passe')" />
 
                                 <x-text-input wire:model="form.password" id="password" type="password" name="password" required autocomplete="current-password" />
 
@@ -62,21 +62,20 @@ new #[Layout('layouts.guest')] class extends Component
 
                                 @if (Route::has('password.request'))
                                     <a href="{{ route('password.request') }}" wire:navigate class="form__password__forgot">
-                                        {{ __('Forgot your password?') }}
+                                        {{ __('Mot de passe oublié?') }}
                                     </a>
                                 @endif
                             </div>
 
                             <!-- Remember Me -->
-                            <div class="form__rememberMe">
-                                <label for="remember">
-                                    <input wire:model="form.remember" id="remember" type="checkbox" name="remember">
-                                    <span>{{ __('Remember me') }}</span>
-                                </label>
-                            </div>
+{{--                            <div class="form__rememberMe">--}}
+{{--                                <label for="remember">--}}
+{{--                                    <input wire:model="form.remember" id="remember" type="checkbox" name="remember">--}}
+{{--                                    <span>{{ __('Remember me') }}</span>--}}
+{{--                                </label>--}}
+{{--                            </div>--}}
 
                             <div class="form__buttonContainer">
-
                                 <x-primary-button>
                                     {{ __('Log in') }}
                                 </x-primary-button>
