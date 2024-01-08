@@ -68,11 +68,23 @@ new #[Layout('layouts.guest')] class extends Component {
                             <!-- Avatar -->
 
                             <div class="form__avatar">
-                                @if ($uploadFile)
-                                    Photo Preview:
-                                    <img src="{{ $uploadFile->temporaryUrl() }}">
-                                @endif
-                                <input type="file" wire:model="uploadFile">
+                                <div class="form__avatar__preview">
+                                    @if ($uploadFile)
+                                        <img src="{{ $uploadFile->temporaryUrl() }}" class="form__avatar__preview__img" alt="avatar">
+                                    @else
+                                        <img src="{{asset("images/defaultavatar.jpg")}}" class="form__avatar__preview__img" alt="avatar">
+                                    @endif
+                                </div>
+
+                                <label class="form__avatar__label" for="form__avatar__label__iconWrapper__input">
+                                    <div class="form__avatar__label__iconWrapper">
+                                        <input type="file" wire:model="uploadFile" id="form__avatar__label__iconWrapper__input"/>
+                                        <svg class="form__avatar__label__iconWrapper__icon">
+                                            <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
+                                        </svg>
+                                    </div>
+                                </label>
+
                                 @error('uploadFile') <span class="error">{{ $message }}</span> @enderror
                             </div>
 
@@ -130,7 +142,7 @@ new #[Layout('layouts.guest')] class extends Component {
 
                             <div class="form__buttonContainer">
                                 <x-primary-button >
-                                    {{ __("M'inscrire") }}
+                                    {{ __("Inscription") }}
                                 </x-primary-button>
                             </div>
                         </form>
