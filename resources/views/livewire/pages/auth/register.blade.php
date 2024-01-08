@@ -93,7 +93,7 @@ new #[Layout('layouts.guest')] class extends Component {
                                 <div class="form__firstname">
                                     <x-input-label for="firstname" :value="__('Prénom')"/>
                                     <x-text-input wire:model="firstname" id="firstname" type="text" name="firstname" placeholder="{{__('ex: Louis')}}"
-                                                  required autofocus autocomplete="firstname"/>
+                                                  required autocomplete="firstname"/>
                                     <x-input-error :messages="$errors->get('firstname')"/>
                                 </div>
 
@@ -101,7 +101,7 @@ new #[Layout('layouts.guest')] class extends Component {
                                 <div class="form__lastname">
                                     <x-input-label for="lastname" :value="__('Nom')"/>
                                     <x-text-input wire:model="lastname" id="lastname" type="text" name="lastname" placeholder="{{__('ex: Dupont')}}"
-                                                  required autofocus autocomplete="lastname"/>
+                                                  required autocomplete="lastname"/>
                                     <x-input-error :messages="$errors->get('lastname')"/>
                                 </div>
                             </div>
