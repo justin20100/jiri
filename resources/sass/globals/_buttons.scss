@@ -30,4 +30,19 @@
             color: $main1;
         }
     }
+
+    // white BG and main5 font
+    &--white {
+        background-color: $white;
+        border: solid 1px $white;
+        color: $main1;
+
+        &:hover {
+            border: solid 1px $main1;
+        }
+
+        > a {
+            color: $main1;
+        }
+    }
 }

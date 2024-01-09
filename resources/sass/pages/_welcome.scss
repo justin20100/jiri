@@ -4,11 +4,12 @@
 
     .header {
         margin-top: 40px;
+        margin-bottom: 100px;
 
         > .wrapper {
             position: relative;
             z-index: 3;
-            max-width: 1450px;
+            max-width: 1400px;
             margin: 0 auto;
 
             @include w1450-down {
@@ -48,6 +49,241 @@
                     &__button {
                         // voir _buttons.scss
                     }
+                }
+            }
+        }
+    }
+
+    .banner {
+        margin-bottom: 100px;
+
+        > .wrapper {
+            position: relative;
+            z-index: 3;
+            max-width: 1400px;
+            margin: 0 auto;
+
+            @include w1450-down {
+                margin: 0 50px;
+            }
+        }
+
+        &__contentContainer {
+            position: relative;
+
+            &__content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 30px;
+
+                &__title {
+                    font-family: $titleFont;
+                    font-size: $xxxxx-largeSize;
+                    color: $black;
+                    line-height: 1.2;
+                    font-weight: bold;
+                    text-align: center;
+                    max-width: 80%;
+                    margin-bottom: 20px;
+                }
+
+                &__text {
+                    font-family: $textFont;
+                    font-size: $mediumSize;
+                    color: $lightBlack;
+                    text-align: center;
+                    line-height: 1.4;
+                    max-width: 70%;
+                    margin-bottom: 20px;
+                }
+
+                &__buttonContainer {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 20px;
+
+                    &__button {
+                        // voir buttons.scss
+                    }
+                }
+            }
+
+            &__screen {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                &__img {
+                    width: 80%;
+                    -webkit-box-shadow: 0 7px 35px 3px rgba($black, 0.4);
+                    -moz-box-shadow: 0 7px 35px 3px rgba($black, 0.4);
+                    box-shadow: 0 7px 35px 3px rgba($black, 0.4);
+                    border-radius: 10px;
+                    pointer-events: none;
+                }
+            }
+
+            &__illu {
+                position: absolute;
+                z-index: -3;
+                pointer-events: none;
+
+                &--first {
+                    bottom: 420px;
+                    left: -150px;
+                }
+
+                &--second {
+                    bottom: 50px;
+                    right: -250px;
+                }
+            }
+        }
+    }
+
+    .features {
+        background-color: $lightGrey;
+
+        > .wrapper {
+            position: relative;
+            z-index: 3;
+            max-width: 1400px;
+            margin: 0 auto;
+
+            @include w1450-down {
+                margin: 0 50px;
+            }
+        }
+
+        &__contentContainer {
+            padding: 80px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &__title {
+                font-family: $titleFont;
+                font-size: $x-largeSize;
+                color: $main1;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+
+            &__list {
+                max-width: 900px;
+                display: grid;
+                align-items: stretch;
+                justify-items: stretch;
+                grid-template-columns: repeat(2, 1fr);
+                width: 100%;
+                gap: 20px;
+
+                &__item {
+                    background-color: $white;
+                    border-radius: 10px;
+                    padding: 30px;
+
+                    &__top {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        gap: 20px;
+                        margin-bottom: 20px;
+
+                        &__iconContainer {
+                            width: 50px;
+                            aspect-ratio: 1/1;
+                            padding: 12px;
+                            border-radius: 10px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            &--1 {
+                                background-color: rgb($main1, 0.3);
+                            }
+
+                            &--2 {
+                                background-color: rgba($green, 0.3);
+                            }
+
+                            &--3 {
+                                background-color: rgba($orange, 0.3);
+                            }
+
+                            &--4 {
+                                background-color: rgba($pink, 0.3);
+                            }
+
+                            &__icon {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+
+                        &__title {
+                            font-family: $titleFont;
+                            font-size: $mediumSize;
+                            font-weight: 500;
+                            line-height: 1.4;
+                            color: $black;
+                            text-align: left;
+                        }
+                    }
+
+                    &__text {
+                        font-family: $textFont;
+                        font-size: $normalSize;
+                        line-height: 1.4;
+                        color: $lightBlack;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer {
+        background-color: $main6;
+        padding-top: 50px;
+        padding-bottom: 10px;
+
+        > .wrapper {
+            position: relative;
+            z-index: 3;
+            max-width: 1400px;
+            margin: 0 auto;
+
+            @include w1450-down {
+                margin: 0 50px;
+            }
+        }
+
+        &__contentContainer {
+
+            &__links {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                margin-bottom: 30px;
+            }
+
+            &__legal {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &__link{
+                    font-family: $textFont;
+                    font-size: $smallSize;
+                    color: $main1;
+                    text-decoration: underline;
+                    cursor: pointer;
                 }
             }
         }
