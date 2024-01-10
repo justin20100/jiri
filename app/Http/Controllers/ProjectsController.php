@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class ProjectsController extends Controller
@@ -13,7 +14,7 @@ class ProjectsController extends Controller
     {
         $user = auth()->user();
 
-        $projects = $user->projects()->get();
+        $projects = Project::orderBy('created_at', 'desc')->where('user_id', $user->id);
 
         return view('projects.index', compact('projects'));
     }

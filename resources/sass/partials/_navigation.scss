@@ -1,0 +1,46 @@
+.navigation {
+
+
+    .wrapper {
+        background-color: $white;
+    }
+
+    &__contentContainer {
+
+        &__top {
+
+            &__logoContainer {
+
+                &__link {
+                    display: inline-block;
+
+                    > svg {
+                        fill: $main1;
+                        width: 50px;
+                    }
+                }
+            }
+
+            &__links {
+                display: flex;
+                flex-direction: column;
+                gap: 50px;
+
+                &__item {
+                    font-family: $textFont;
+                    font-size: $mediumSize;
+
+
+                    &--active {
+                        color: $main1;
+                    }
+                }
+            }
+
+        }
+
+        &__bottom {
+
+        }
+    }
+}

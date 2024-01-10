@@ -9,7 +9,12 @@
 @import "globals/buttons";
 @import "globals/forms";
 
+// ----------- LAYOUTS
+@import "layouts/app";
+@import "layouts/guest";
+
 // ----------- PARTIALS
+@import "partials/navigation";
 
 // ----------- PAGES
 @import "pages/welcome";

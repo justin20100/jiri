@@ -1,0 +1,9 @@
+.appBody {
+    width: 100%;
+    background-color: $lightGrey;
+
+    &__contentContainer {
+        display: flex;
+        flex-direction: column;
+    }
+}
