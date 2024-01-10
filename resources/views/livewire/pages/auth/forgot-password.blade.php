@@ -36,26 +36,46 @@ new #[Layout('layouts.guest')] class extends Component
     }
 }; ?>
 
-<div>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+
+<main class="resetPasswordPage">
+    <div class="resetPassword">
+        <div class="wrapper">
+            <div class="resetPassword__contentContainer">
+                <div class="resetPassword__contentContainer__left">
+                    <a href="/" wire:navigate class="resetPassword__contentContainer__left__logo">
+                        <x-application-logo />
+                    </a>
+                    <div class="resetPassword__contentContainer__left__blueFilter"></div>
+                    <img src="{{asset("images/auth-bg.jpg")}}" alt="" class="resetPassword__contentContainer__left__bgImage">
+                </div>
+                <div class="resetPassword__contentContainer__right">
+                    <!-- Session Status -->
+                    <x-auth-session-status class="mb-4" :status="session('status')" />
+
+                    <div class="resetPassword__contentContainer__right__formContainer">
+
+                        <h1 class="resetPassword__contentContainer__right__formContainer__title">Réinitialisation du mot de passe</h1>
+                        <form wire:submit="sendPasswordResetLink">
+                            <!-- Email Address -->
+                            <div class="form__email">
+                                <x-input-label for="email" :value="__('Email')" />
+                                <x-text-input wire:model="email" id="email" class="" placeholder="ex: dupontlouis@gmail.com" type="email" name="email" required autofocus />
+                                <x-input-error :messages="$errors->get('email')" class="" />
+                            </div>
+
+                            <div class="form__buttonContainer">
+                                <x-primary-button>
+                                    {{ __('Recevoir un email de réinitialisation') }}
+                                </x-primary-button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <a class="resetPassword__contentContainer__right__login" href="{{route('login')}}" wire:navigate>
+                        Vous avez déja un compte ? Connectez-vous !
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
-
-    <form wire:submit="sendPasswordResetLink">
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</div>
+</main>
