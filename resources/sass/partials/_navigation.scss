@@ -2,17 +2,24 @@
 
 
     .wrapper {
-        background-color: $white;
+        min-width: 260px;
     }
 
     &__contentContainer {
+        margin: 20px 0 20px 20px;
+        padding: 20px;
+        background-color: $white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
         &__top {
 
             &__logoContainer {
+                margin-bottom: 40px;
 
                 &__link {
                     display: inline-block;
+                    padding: 20px;
 
                     > svg {
                         fill: $main1;
@@ -24,23 +31,97 @@
             &__links {
                 display: flex;
                 flex-direction: column;
-                gap: 50px;
+                gap: 15px;
+                height: 82vh;
 
                 &__item {
-                    font-family: $textFont;
-                    font-size: $mediumSize;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    flex-direction: row;
+                    gap: 20px;
+                    padding: 12px 0 12px 20px;
+                    background-color: $white;
+                    border-radius: 10px;
+                    position: relative;
 
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        border-top-left-radius: 5px;
+                        border-bottom-left-radius: 5px;
+                        right: -20px;
+                        width: 0;
+                        height: 0;
+                        background-color: $main1;
+                    }
+
+                    &__iconContainer {
+                        width: 20px;
+
+                        > svg {
+                            fill: $grey;
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+
+                    > span {
+                        font-family: $textFont;
+                        font-size: $mediumSize;
+                        color: $grey;
+                    }
 
                     &--active {
-                        color: $main1;
+                        background-color: $main1;
+
+                        @keyframes focusNavDecoration {
+                            from {
+                                width: 0;
+                                height: 0;
+                            }
+                            to {
+                                width: 6px;
+                                height: 70%;
+                            }
+                        }
+
+                        &::after {
+                            animation-name: focusNavDecoration;
+                            animation-duration: 0.2s;
+                            animation-timing-function: $ease;
+                            width: 6px;
+                            height: 70%;
+                        }
+
+                        > span {
+                            color: $white;
+                        }
+
+                        .navigation__contentContainer__top__links__item__iconContainer > svg {
+                            fill: $white;
+                        }
                     }
                 }
             }
-
         }
 
         &__bottom {
 
+            &__buttonContainer {
+
+                &__button {
+                    text-decoration: none;
+                    background: none;
+                    border: none;
+                    font-family: $textFont;
+                    font-size: $normalSize;
+                    color: $main1;
+                }
+            }
         }
     }
 }
