@@ -1,3 +1,7 @@
+/*********************************************
+    APPBODY LAYOUT
+*********************************************/
+
 .appBody {
     width: 100%;
     background-color: $lightGrey;
@@ -5,5 +9,10 @@
     &__contentContainer {
         display: flex;
         flex-direction: row;
+
+        &__main {
+            margin: 20px 20px 20px 20px;
+            width: 100%;
+        }
     }
 }

@@ -1,0 +1,72 @@
+/*********************************************
+    APPBAR
+*********************************************/
+
+.appBar {
+    &__contentContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+
+        &__searchContainer {
+            position: relative;
+
+            &__iconContainer {
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+
+                > svg {
+                    fill: $main1;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+
+            &__input{
+                border: none;
+                outline: none;
+                padding: 15px 20px;
+                border-radius: 10px;
+                font-family: $textFont;
+                font-size: $normalSize;
+                color: $lightBlack;
+                background-color: $white;
+                width: 300px;
+                transition: box-shadow .4s $ease;
+                box-shadow: 2px 3px 4px -2px rgba($black, 0.25);
+
+                &:focus {
+                    transition: box-shadow .4s $ease;
+                    box-shadow: 0 0 5px 1px $main1;
+                }
+            }
+        }
+
+        &__profileContainer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+
+            &__nameContainer {
+                &__name {
+                    color: $lightBlack;
+                    font-family: $textFont;
+                }
+            }
+
+            &__imgContainer {
+
+                &__img {
+                    width: 100%;
+                    max-width: 50px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
