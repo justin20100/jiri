@@ -1,8 +1,11 @@
+/*********************************************
+    NAVIGATION COMPONENT
+*********************************************/
+
 .navigation {
 
-
     .wrapper {
-        min-width: 260px;
+        min-width: 300px;
     }
 
     &__contentContainer {
@@ -29,6 +32,7 @@
             }
 
             &__links {
+                padding-left: 30px;
                 display: flex;
                 flex-direction: column;
                 gap: 15px;
@@ -45,6 +49,10 @@
                     border-radius: 10px;
                     position: relative;
 
+                    &:hover {
+                        transition: box-shadow 0.4s $ease;
+                        box-shadow: 0 0 5px 1px $main1;
+                    }
 
                     &::after {
                         content: "";
@@ -64,8 +72,8 @@
 
                         > svg {
                             fill: $grey;
-                            width: 20px;
-                            height: 20px;
+                            width: 22px;
+                            height: 22px;
                         }
                     }
 
