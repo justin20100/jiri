@@ -14,7 +14,7 @@ class ProjectsController extends Controller
     {
         $user = auth()->user();
 
-        $projects = Project::orderBy('created_at', 'desc')->where('user_id', $user->id);
+        $projects = $user->projects()->get();
 
         return view('projects.index', compact('projects'));
     }

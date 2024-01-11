@@ -11,7 +11,11 @@ class JirisController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+
+        $jiris = $user->jiris()->get();
+
+        return view('jiris.index', compact('jiris'));
     }
 
     /**

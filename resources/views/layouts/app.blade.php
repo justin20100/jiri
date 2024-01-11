@@ -47,7 +47,6 @@
                         </x-dropdown-link>
                     </div>
                 </div>
-
                 {{ $slot }}
             </main>
         </div>
