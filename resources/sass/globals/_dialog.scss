@@ -1,0 +1,53 @@
+/*********************************************
+    LOGIN GLOBAL
+*********************************************/
+
+.dialog {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($black, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__contentContainer {
+        background-color: $lightGrey;
+        border-radius: 10px;
+        padding: 60px;
+        position: relative;
+        min-width: 600px;
+
+        &__closeContainer {
+            background: none;
+            border: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            outline: none;
+
+            &__svg {
+                stroke: $main1;
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        &__formContainer {
+
+            &__form {
+
+                &__title {
+                    margin-bottom: 50px;
+                    font-family: $titleFont;
+                    color: $lightBlack;
+                    font-size: $xx-largeSize;
+                }
+            }
+        }
+    }
+}

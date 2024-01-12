@@ -10,11 +10,8 @@
             position: relative;
             z-index: 3;
             //max-width: 1400px;
-            margin: 0 auto;
-
-                margin: 0 50px;
-            @include w1450-down {
-            }
+            //margin: 0 auto;
+            margin: 0 50px;
         }
 
         &__contentContainer {
@@ -31,10 +28,10 @@
 
                     &__link {
                         display: block;
+                        max-width: 60px;
 
                         &__img {
                             width: 100%;
-                            max-width: 50px;
                         }
                     }
                 }

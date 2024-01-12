@@ -109,7 +109,7 @@
                                         <h3 class="features__contentContainer__list__item__top__title">Invitation automatique des membres du jury</h3>
                                     </div>
                                     <p class="features__contentContainer__list__item__text">
-                                        Chaque membre du jury recois un mail pour se connecter a l’interface automatiquement
+                                        Chaque membre du jury reçoit un mail pour se connecter a l’interface automatiquement
                                     </p>
                                 </div>
                             </div>
