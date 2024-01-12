@@ -1,4 +1,5 @@
 <div>
+    <button wire:click="openDialog" class="button">{{__('Ajouter un projet')}}</button>
     @if($isOpen)
         <div class="dialog">
             <div class="dialog__contentContainer">
@@ -14,13 +15,13 @@
                         <div class="form__title">
                             <x-input-label for="title" :value="__('Titre')" />
                             <x-text-input wire:model="form.title" id="title" type="text" name="title" required autocomplete="title"  placeholder="{{__('Titre du projet')}}"/>
-                            <x-input-error :messages="$errors->get('title')"/>
+                            <x-input-error :messages="$errors->get('form.title')"/>
                         </div>
 
                         <div class="form__description">
                             <x-input-label for="description" :value="__('Description')" />
                             <textarea wire:model="form.description" id="description" type="text" name="description" required autocomplete="description" rows="3" placeholder="{{__('Description du projet')}}"></textarea>
-                            <x-input-error :messages="$errors->get('description')"/>
+                            <x-input-error :messages="$errors->get('form.description')"/>
                         </div>
 
                         <div class="form__buttonContainer">
@@ -30,7 +31,5 @@
                 </div>
             </div>
         </div>
-        @else
-        <button wire:click="openDialog" class="button">{{__('Ajouter un projet')}}</button>
     @endif
 </div>

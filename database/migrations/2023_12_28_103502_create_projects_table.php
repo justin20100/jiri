@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('weighting');
+            $table->string('title');
+            $table->integer('weighting')->nullable();
             $table->string('github')->nullable();
             $table->string('link')->nullable();
             $table->text('description')->nullable();

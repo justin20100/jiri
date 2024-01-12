@@ -27,8 +27,8 @@ class ProjectCreateDialog extends Component
     public function create(): void
     {
         $this->form->create();
-
-        $this->reset('show');
+        $this->reset('isOpen');
+        $this->dispatch('refreshProjectList');
     }
 
     public function render()

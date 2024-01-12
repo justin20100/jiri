@@ -12,10 +12,7 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'weighting',
-        'github',
-        'link',
+        'title',
         'description'
     ];
 
