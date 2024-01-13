@@ -1,0 +1,22 @@
+.iconsBox {
+    display: none;
+
+    &--active {
+        display: block;
+    }
+
+    &__contentContainer {
+
+        &__list {
+
+            &__item {
+
+
+            }
+        }
+
+        &__closeButton {
+
+        }
+    }
+}

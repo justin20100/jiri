@@ -58,31 +58,23 @@
                         </td>
                         <td class="table__body__line__cell">
                             {{--  icon avec trois petits points pour afficher le mini dialog --}}
-                            <div class="table__body__line__cell__icon">
-                                <svg class="table__body__line__cell__icon__svg">
-                                    <use xlink:href="{{asset("images/sprite.svg#more")}}"></use>
-                                </svg>
+{{--                            <div class="table__body__line__cell__icon">--}}
+{{--                                <svg class="table__body__line__cell__icon__svg">--}}
+{{--                                    <use xlink:href="{{asset("images/sprite.svg#more")}}"></use>--}}
+{{--                                </svg>--}}
+{{--                            </div>--}}
+                            <div class="table__body__line__cell__actions">
+                                <a href="{{route('projects.edit', $project->id)}}" class="table__body__line__cell__actions__edit">
+                                    <svg class="table__body__line__cell__actions__edit__svg">
+                                        <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
+                                    </svg>
+                                </a>
+                                <button wire:click="deleteProject({{$project->id}})" wire:click.prevent="deleteSelected" onclick="confirm('Suprimer ce projet ?')|| event.stopImmediatePropagation()" class="table__body__line__cell__actions__delete">
+                                    <svg class="table__body__line__cell__actions__delete__svg">
+                                        <use xlink:href="{{asset("images/sprite.svg#trash1")}}"></use>
+                                    </svg>
+                                </button>
                             </div>
-
-                            {{-- Creer un composant livewire pour faire aparaitre un mini dialog avec une icone de supression et une icone de modification --}}
-
-                            {{--                                <div class="table__body__line__row__dialog">--}}
-                            {{--                                    <a href="{{route('projects.edit', $project->id)}}" class="table__body__line__row__dialog__edit">--}}
-                            {{--                                        <svg class="table__body__line__row__dialog__edit__svg">--}}
-                            {{--                                            <use xlink:href="{{asset("images/sprite.svg#edit")}}"></use>--}}
-                            {{--                                        </svg>--}}
-                            {{--                                    </a>--}}
-                            {{--                                    <form action="{{route('projects.destroy', $project->id)}}" method="POST" class="table__body__line__row__dialog__delete">--}}
-                            {{--                                        @csrf--}}
-                            {{--                                        @method('DELETE')--}}
-                            {{--                                        <button type="submit" class="table__body__line__row__dialog__delete__button">--}}
-                            {{--                                            <svg class="table__body__line__row__dialog__delete__button__svg">--}}
-                            {{--                                                <use xlink:href="{{asset("images/sprite.svg#delete")}}"></use>--}}
-                            {{--                                            </svg>--}}
-                            {{--                                        </button>--}}
-                            {{--                                    </form>--}}
-                            {{--                                </div>--}}
-
                         </td>
                     </tr>
                 @endforeach
