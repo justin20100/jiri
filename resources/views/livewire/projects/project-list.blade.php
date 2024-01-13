@@ -5,7 +5,7 @@
             <div class="projects__contentContainer__header__buttonsContainer">
                 <div class="projects__contentContainer__header__buttonsContainer__deleteContainer">
 
-                    <div class="iconsBox @if(!$this->actionsDisabled) iconsBox--active @endif">
+                    <div class="iconsBox @if(!$this->actionsDisabled) iconsBox--active @else iconsBox--inactive @endif">
                         <div class="iconsBox__contentContainer">
                             <div class="iconsBox__contentContainer__list">
                                 <div class="iconsBox__contentContainer__list__item">
