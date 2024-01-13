@@ -184,19 +184,8 @@ form {
     //    }
     //}
 
-    // ckeckboxgdpr
-    //input[type="checkbox"] {
-    //    width: auto;
-    //
-    //    & + label {
-    //        font-size: $smallSize;
-    //        font-weight: lighter;
-    //        color: $main1;
-    //        text-transform: none;
-    //        padding-left: 20px;
-    //    }
-    //}
 
+    //textarea
     textarea {
         width: 100%;
         max-width: 100%;
@@ -206,6 +195,12 @@ form {
         font-family: $textFont;
         font-weight: normal;
     }
+}
+
+// checkbox
+input[type="checkbox"] {
+    accent-color: $main1;
+    border-radius: 10px;
 }
 
 

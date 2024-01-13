@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\projects;
+namespace App\Livewire\Projects;
 
 use App\Livewire\Forms\ProjectForm;
 use Livewire\Component;
