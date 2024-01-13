@@ -18,10 +18,21 @@ class ProjectList extends Component
         $this->projects = Auth::user()->projects()->get();
     }
 
+    public function render()
+    {
+        $this->actionsDisabled = count($this->selectedProjects) < 1;
+        return view('livewire.projects.project-list');
+    }
+
     // Refresh the projects list by getting all the user his projects
     public function refreshProjectList(): void
     {
         $this->projects = Auth::user()->projects()->get();
+    }
+
+    public function cancelSelected(): void
+    {
+        $this->selectedProjects = [];
     }
 
     // Delete all the selected Projects
@@ -37,11 +48,5 @@ class ProjectList extends Component
     {
         Project::destroy($projectId);
         $this->refreshProjectList();
-    }
-
-    public function render()
-    {
-        $this->actionsDisabled = count($this->selectedProjects) < 1;
-        return view('livewire.projects.project-list');
     }
 }

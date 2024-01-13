@@ -4,13 +4,28 @@
             <h1 class="projects__contentContainer__header__title">{{__("Projets")}}</h1>
             <div class="projects__contentContainer__header__buttonsContainer">
                 <div class="projects__contentContainer__header__buttonsContainer__deleteContainer">
-                    <button wire:click.prevent="deleteSelected" onclick="confirm('suprimer ces projets ?')|| event.stopImmediatePropagation()"
-                            class="projects__contentContainer__header__buttonsContainer__deleteContainer__button  button">
-                        {{--                            <svg class="projects__contentContainer__header__buttonsContainer__deleteContainer__button__svg">--}}
-                        {{--                                <use xlink:href="{{asset("images/sprite.svg#delete")}}"></use>--}}
-                        {{--                            </svg>--}}
-                        <span class="projects__contentContainer__header__buttonsContainer__deleteContainer__button__text">{{__("Supprimer")}}</span>
-                    </button>
+
+                    <div class="iconsBox @if(!$this->actionsDisabled) iconsBox--active @endif">
+                        <div class="iconsBox__contentContainer">
+                            <div class="iconsBox__contentContainer__list">
+                                <div class="iconsBox__contentContainer__list__item">
+                                    <button wire:click.prevent="deleteSelected" onclick="confirm('suprimer ces projets ?')|| event.stopImmediatePropagation()"
+                                            class="iconsBox__contentContainer__list__item__button" title="{{__('Supprimer les éléments sélectionnés')}}">
+                                        <svg class="iconsBox__contentContainer__list__item__button__svg">
+                                            <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="iconsBox__contentContainer__closeButton">
+                                <button wire:click.prevent="cancelSelected" class="iconsBox__contentContainer__closeButton__button" title="{{__('Annuler la sélection')}}">
+                                    <svg class="iconsBox__contentContainer__closeButton__button__svg">
+                                        <use xlink:href="{{asset("images/sprite.svg#close")}}"></use>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="projects__contentContainer__header__buttonsContainer__filterContainer">
                     <div class="projects__contentContainer__header__buttonsContainer__filterContainer__filter">
@@ -48,7 +63,7 @@
                 @foreach($this->projects as $project)
                     <tr class="table__body__line">
                         <td class="table__body__line__cell">
-                            <input type="checkbox" wire:model="selectedProjects" value="{{$project->id}}" class="table__body__line__cell__checkbox">
+                            <input type="checkbox" wire:model.change="selectedProjects" value="{{$project->id}}" class="table__body__line__cell__checkbox">
                         </td>
                         <td class="table__body__line__cell">
                             {{$project->title}}
@@ -71,7 +86,7 @@
                                 </a>
                                 <button wire:click="deleteProject({{$project->id}})" wire:click.prevent="deleteSelected" onclick="confirm('Suprimer ce projet ?')|| event.stopImmediatePropagation()" class="table__body__line__cell__actions__delete">
                                     <svg class="table__body__line__cell__actions__delete__svg">
-                                        <use xlink:href="{{asset("images/sprite.svg#trash1")}}"></use>
+                                        <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
                                     </svg>
                                 </button>
                             </div>

@@ -1,22 +1,68 @@
 .iconsBox {
     display: none;
+    position: fixed;
+    right: 50%;
+    bottom: 50px;
+    transform: translateX(50%);
 
     &--active {
         display: block;
     }
 
     &__contentContainer {
+        background-color: $main5;
+        box-shadow: 2px 3px 4px -2px rgba($black,0.25);
+        padding: 15px 15px 15px 30px;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
 
         &__list {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
 
             &__item {
 
 
+                &__button {
+                    cursor: pointer;
+                    background: none;
+                    border: none;
+
+                    &__svg {
+                        width: 25px;
+                        height: 25px;
+                        fill: $main2;
+                    }
+                }
             }
         }
 
         &__closeButton {
+            border-left: solid 2px $main2;
+            padding-left: 10px;
 
+            &__button {
+                cursor: pointer;
+                background: none;
+                border: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 35px;
+
+                &__svg {
+                    width: 16px;
+                    height: 16px;
+                    stroke: $main2;
+                }
+            }
         }
     }
 }
