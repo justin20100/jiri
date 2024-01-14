@@ -31,7 +31,7 @@
         }
     }
 
-    // white BG and main5 font
+    // red BG and white font
     &--white {
         background-color: $white;
         border: solid 1px $white;
@@ -43,6 +43,21 @@
 
         > a {
             color: $main1;
+        }
+    }
+
+    &--red {
+        background-color: $red;
+        border: solid 1px $red;
+        color: $white;
+
+        &:hover {
+            background-color: $white;
+            color: $red;
+        }
+
+        > a {
+            color: $white;
         }
     }
 }

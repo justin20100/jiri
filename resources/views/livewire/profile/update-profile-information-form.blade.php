@@ -82,60 +82,75 @@ new class extends Component
     }
 }; ?>
 
-<section>
-    <header>
-        <h2 class="text-lg font-medium text-gray-900">
-            {{ __('Profile Information') }}
+<section class="profileInfos">
+    <header class="profileInfos__header">
+        <h2 class="profileInfos__header__title">
+            {{ __('Informations de profil') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
-            {{ __("Update your account's profile information and email address.") }}
+        <p class="profileInfos__header__text">
+            {{ __("Vous pouvez changer vos information ci dessous") }}
         </p>
     </header>
 
-    <form wire:submit="updateProfileInformation" class="mt-6 space-y-6">
-
-        <!-- Firstname -->
-        <div>
-            <x-input-label for="firstname" :value="__('Prenom')" />
-            <x-text-input wire:model="firstname" id="firstname" name="firstname" type="text" class="mt-1 block w-full" required autofocus autocomplete="firstname" />
-            <x-input-error class="mt-2" :messages="$errors->get('firstname')" />
-        </div>
-
-        <!-- Lastname -->
-        <div>
-            <x-input-label for="lastname" :value="__('Nom')" />
-            <x-text-input wire:model="lastname" id="lastname" name="lastname" type="text" class="mt-1 block w-full" required autofocus autocomplete="lastname" />
-            <x-input-error class="mt-2" :messages="$errors->get('lastname')" />
-        </div>
+    <form wire:submit="updateProfileInformation" class="profileInfos__form form">
 
         <!-- Avatar -->
-        @if ($uploadFile)
-            <img src="{{ $uploadFile->temporaryUrl() }}">
-        @else
-            <img src="{{URL::to('/storage/avatars')."/".$avatar}}">
-        @endif
-        <input type="file" wire:model="uploadFile">
-        @error('uploadFile') <span class="error">{{ $message }}</span> @enderror
+        <div class="form__avatar">
+            <div class="form__avatar__preview">
+                @if ($uploadFile)
+                    <img src="{{ $uploadFile->temporaryUrl() }}">
+                @else
+                    <img src="{{URL::to('/storage/avatars')."/".$avatar}}">
+                @endif
+            </div>
+
+            <label class="form__avatar__label" for="form__avatar__label__iconWrapper__input">
+                <div class="form__avatar__label__iconWrapper">
+                    <input type="file" wire:model="uploadFile" id="form__avatar__label__iconWrapper__input"/>
+                    <svg class="form__avatar__label__iconWrapper__icon">
+                        <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
+                    </svg>
+                </div>
+            </label>
+
+            @error('uploadFile') <span class="error">{{ $message }}</span> @enderror
+        </div>
+
+        <div class="form__columns">
+            <!-- Firstname -->
+            <div class="form__firstname">
+                <x-input-label for="firstname" :value="__('Prenom')" />
+                <x-text-input wire:model="firstname" id="firstname" name="firstname" type="text" class="" required autofocus autocomplete="firstname" />
+                <x-input-error class="" :messages="$errors->get('firstname')" />
+            </div>
+
+            <!-- Lastname -->
+            <div class="form__lastname">
+                <x-input-label for="lastname" :value="__('Nom')" />
+                <x-text-input wire:model="lastname" id="lastname" name="lastname" type="text" class="" required autofocus autocomplete="lastname" />
+                <x-input-error class="" :messages="$errors->get('lastname')" />
+            </div>
+        </div>
 
         <!-- email -->
-        <div>
+        <div class="form__email">
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" name="email" type="email" class="mt-1 block w-full" required autocomplete="username" />
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
+            <x-text-input wire:model="email" id="email" name="email" type="email" class="" required autocomplete="username" />
+            <x-input-error class="" :messages="$errors->get('email')" />
 
             @if (auth()->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! auth()->user()->hasVerifiedEmail())
                 <div>
-                    <p class="text-sm mt-2 text-gray-800">
+                    <p class="">
                         {{ __('Your email address is unverified.') }}
 
-                        <button wire:click.prevent="sendVerification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <button wire:click.prevent="sendVerification" class="">
                             {{ __('Click here to re-send the verification email.') }}
                         </button>
                     </p>
 
                     @if (session('status') === 'verification-link-sent')
-                        <p class="mt-2 font-medium text-sm text-green-600">
+                        <p class="">
                             {{ __('A new verification link has been sent to your email address.') }}
                         </p>
                     @endif
@@ -143,11 +158,11 @@ new class extends Component
             @endif
         </div>
 
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Save') }}</x-primary-button>
+        <div class="form__buttonContainer">
+            <x-primary-button>{{ __('Enregister') }}</x-primary-button>
 
-            <x-action-message class="me-3" on="profile-updated">
-                {{ __('Saved.') }}
+            <x-action-message class="" on="profile-updated">
+                {{ __('Iformations modifiées') }}
             </x-action-message>
         </div>
     </form>

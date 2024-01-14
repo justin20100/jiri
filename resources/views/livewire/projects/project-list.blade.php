@@ -59,7 +59,7 @@
                 </tr>
                 </thead>
                 <tbody class="table__body">
-                @foreach($this->projects as $project)
+                @forelse($this->projects as $project)
                     <tr class="table__body__line">
                         <td class="table__body__line__cell">
                             <input type="checkbox" wire:model.change="selectedProjects" value="{{$project->id}}" class="table__body__line__cell__checkbox">
@@ -91,7 +91,13 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr class="table__body__line">
+                        <td class="table__body__line__cell" colspan="4">
+                            {{__("Aucun projet")}}
+                        </td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </div>

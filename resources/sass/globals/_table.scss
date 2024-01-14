@@ -25,7 +25,7 @@
                 font-weight: 100;
 
                 &--select {
-                    width: 100px;
+                    width: 80px;
                 }
 
                 &--avatar {
@@ -81,10 +81,8 @@
                 color: $lightBlack;
 
                 &--select {
-                    max-width: 5px;
+                    width: 10px;
                 }
-
-
 
                 &--firstname {
                     max-width: 25px;
@@ -148,8 +146,8 @@
                     height: 100%;
 
                     &__img {
-                        height: 45px;
-                        width: 45px;
+                        height: 40px;
+                        width: 40px;
                         border-radius: 50%;
                     }
                 }

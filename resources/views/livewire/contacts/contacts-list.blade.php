@@ -65,7 +65,7 @@
                 </tr>
                 </thead>
                 <tbody class="table__body">
-                @foreach($this->contacts as $contact)
+                @forelse($this->contacts as $contact)
                     <tr class="table__body__line">
                         <td class="table__body__line__cell">
                             <input type="checkbox" wire:model.change="selectedContacts" value="{{$contact->id}}" class="table__body__line__cell__checkbox">
@@ -105,7 +105,15 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                @empty
+                    <tr class="table__body__line">
+                        <td class="table__body__line__cell" colspan="6">
+                            <div class="table__body__line__cell__empty">
+                                {{__("Aucun contact")}}
+                            </div>
+                        </td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </div>

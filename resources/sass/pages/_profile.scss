@@ -1,0 +1,122 @@
+/*********************************************
+    PROFILE PAGE
+*********************************************/
+
+.profile {
+
+    &__contentContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:"form1 form2" "form3 form3";
+        gap: 20px;
+
+        &__title {
+            display: none;
+        }
+
+        &__infos {
+            grid-area: form1;
+            background: $white;
+            padding: 50px;
+            border-radius: 10px;
+
+            &__formContainer {
+
+                .profileInfos {
+
+                    &__header {
+                        margin-bottom: 50px;
+
+                        &__title {
+                            font-family: $titleFont;
+                            font-size: $xx-largeSize;
+                            color: $lightBlack;
+                            font-weight: bold;
+                            margin-bottom: 10px;
+                        }
+
+                        &__text {
+                            font-family: $textFont;
+                            font-size: $normalSize;
+                            color: $lightBlack;
+                        }
+                    }
+
+                    &__form {
+                        // voir form.scss
+                    }
+                }
+            }
+        }
+
+        &__password {
+            grid-area: form2;
+            background: $white;
+            padding: 50px;
+            border-radius: 10px;
+
+            &__formContainer {
+
+                .profilePassword {
+
+                    &__header {
+                        margin-bottom: 50px;
+
+                        &__title {
+                            font-family: $titleFont;
+                            font-size: $xx-largeSize;
+                            color: $lightBlack;
+                            font-weight: bold;
+                            margin-bottom: 10px;
+                        }
+
+                        &__text {
+                            font-family: $textFont;
+                            font-size: $normalSize;
+                            color: $lightBlack;
+                        }
+                    }
+
+                    &__form {
+                        // voir form.scss
+                    }
+                }
+            }
+        }
+
+        &__delete {
+            grid-area: form3;
+            background: $white;
+            padding: 50px;
+            border-radius: 10px;
+
+            &__formContainer {
+
+                .profileDelete {
+
+                    &__header {
+                        margin-bottom: 30px;
+
+                        &__title {
+                            font-family: $titleFont;
+                            font-size: $xx-largeSize;
+                            color: $lightBlack;
+                            font-weight: bold;
+                            margin-bottom: 10px;
+                        }
+
+                        &__text {
+                            font-family: $textFont;
+                            font-size: $normalSize;
+                            color: $lightBlack;
+                        }
+                    }
+
+                    &__form {
+                        // voir form.scss
+                    }
+                }
+            }
+        }
+    }
+}
