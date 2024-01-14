@@ -16,7 +16,7 @@ class ProjectsController extends Controller
 
         $projects = $user->projects()->get();
 
-        return view('projects.index', compact('projects'));
+        return view('projects.index', compact('user','projects'));
     }
 
     /**

@@ -4,12 +4,11 @@
             <h1 class="projects__contentContainer__header__title">{{__("Projets")}}</h1>
             <div class="projects__contentContainer__header__buttonsContainer">
                 <div class="projects__contentContainer__header__buttonsContainer__deleteContainer">
-
                     <div class="iconsBox @if(!$this->actionsDisabled) iconsBox--active @else iconsBox--inactive @endif">
                         <div class="iconsBox__contentContainer">
                             <div class="iconsBox__contentContainer__list">
                                 <div class="iconsBox__contentContainer__list__item">
-                                    <button wire:click.prevent="deleteSelected" onclick="confirm('suprimer ces projets ?')|| event.stopImmediatePropagation()"
+                                    <button wire:click.prevent="deleteSelected"  wire:confirm="suprimer ces projets ?"
                                             class="iconsBox__contentContainer__list__item__button" title="{{__('Supprimer les éléments sélectionnés')}}">
                                         <svg class="iconsBox__contentContainer__list__item__button__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
@@ -27,15 +26,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="projects__contentContainer__header__buttonsContainer__filterContainer">
-                    <div class="projects__contentContainer__header__buttonsContainer__filterContainer__filter">
-                        <x-input-label for="sort" :value="__('Trier par')"/>
-                        <select id="sort" name="sort" required autocomplete="sort" class="select">
-                            <option value="">{{__('Date de création')}}</option>
-                            <option value="">{{__('Titre')}}</option>
-                        </select>
-                    </div>
-                </div>
+{{--                <div class="projects__contentContainer__header__buttonsContainer__filterContainer">--}}
+{{--                    <div class="projects__contentContainer__header__buttonsContainer__filterContainer__filter">--}}
+{{--                        <x-input-label for="sort" :value="__('Trier par')"/>--}}
+{{--                        <select id="sort" name="sort" required autocomplete="sort" class="select">--}}
+{{--                            <option value="">{{__('Date de création')}}</option>--}}
+{{--                            <option value="">{{__('Titre')}}</option>--}}
+{{--                        </select>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div class="projects__contentContainer__header__buttonsContainer__buttonContainer">
                     <livewire:projects.project-create-dialog/>
                 </div>
