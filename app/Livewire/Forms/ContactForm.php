@@ -13,11 +13,11 @@ class ContactForm extends Form
     use WithFileUploads;
 
     #[Validate('required|min:2|max:50')]
-    public $firstname = '';
-    public $lastname = '';
+    public string $firstname = '';
+    public string $lastname = '';
 
     #[Validate('required|email|min:3|max:50')]
-    public $email = '';
+    public string $email = '';
 
     #[Validate('image|max:1500|nullable')]
     public $avatar;
@@ -71,7 +71,7 @@ class ContactForm extends Form
 
         if ($file->isValid()) {
             $filename = md5($file->getClientOriginalName() . time()) . '.' . $file->getClientOriginalExtension();
-            $file->storeAs('avatars', $filename);
+            $file->storeAs('public/avatars', $filename);
             return $filename;
         } else {
             return null;

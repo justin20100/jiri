@@ -18,25 +18,30 @@
                 text-align: left;
                 padding-top: 10px;
                 padding-bottom: 10px;
+                vertical-align: middle;
 
                 color: $grey;
                 font-family: $textFont;
                 font-weight: 100;
 
                 &--select {
-                    max-width: 5px;
+                    width: 100px;
+                }
+
+                &--avatar {
+                    width: 100px;
                 }
 
                 &--firstname {
-                    max-width: 25px;
+                    width: 200px;
                 }
 
                 &--lastname {
-                    max-width: 25px;
+                    width: 200px;
                 }
 
                 &--email {
-                    max-width: 150px;
+                    width: 300px;
                 }
 
                 &--more {
@@ -69,6 +74,7 @@
                 padding-top: 15px;
                 padding-bottom: 15px;
                 padding-right: 20px;
+                vertical-align: middle;
 
                 font-family: $textFont;
                 font-size: $normalSize;
@@ -77,6 +83,8 @@
                 &--select {
                     max-width: 5px;
                 }
+
+
 
                 &--firstname {
                     max-width: 25px;
@@ -132,6 +140,17 @@
                             height: 20px;
                             fill: $main2;
                         }
+                    }
+                }
+
+                &__avatar {
+                    gap: 10px;
+                    height: 100%;
+
+                    &__img {
+                        height: 45px;
+                        width: 45px;
+                        border-radius: 50%;
                     }
                 }
 

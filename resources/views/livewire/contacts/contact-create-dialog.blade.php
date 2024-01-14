@@ -31,7 +31,7 @@
                                 </div>
                             </label>
 
-                            @error('form.avatar') <span class="error">{{ $message }}</span> @enderror
+                            <x-input-error :messages="$errors->get('form.avatar')"/>
                         </div>
 
                         <!-- Firstname -->

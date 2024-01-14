@@ -47,6 +47,9 @@
                     <th class="table__head__line__cell table__head__line__cell--select">
                         {{-- select  --}}
                     </th>
+                    <th class="table__head__line__cell table__head__line__cell--avatar">
+                        {{__("Avatar")}}
+                    </th>
                     <th class="table__head__line__cell table__head__line__cell--firstname">
                         {{__("Prénom")}}
                     </th>
@@ -66,6 +69,11 @@
                     <tr class="table__body__line">
                         <td class="table__body__line__cell">
                             <input type="checkbox" wire:model.change="selectedContacts" value="{{$contact->id}}" class="table__body__line__cell__checkbox">
+                        </td>
+                        <td class="table__body__line__cell">
+                            <div class="table__body__line__cell__avatar">
+                                <img src="{{URL::to('/storage/avatars')."/".$contact->avatar}}" alt="avatar" class="table__body__line__cell__avatar__img">
+                            </div>
                         </td>
                         <td class="table__body__line__cell">
                             {{$contact->firstname}}
