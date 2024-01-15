@@ -67,7 +67,10 @@
                         <th class="table__head__line__cell table__head__line__cell--date">
                             {{__("Fin du Jiri")}}
                         </th>
-                        <th class="table__head__line__cell table__head__line__cell--date">
+                        <th class="table__head__line__cell table__head__line__cell--statut">
+                            {{__("Statut")}}
+                        </th>
+                        <th class="table__head__line__cell table__head__line__cell--actions">
                             {{-- actions--}}
                         </th>
                     </tr>
@@ -86,6 +89,18 @@
                             </td>
                             <td class="table__body__line__cell">
                                 {{ \Carbon\Carbon::parse($jiri->end)->format('d/m/Y H:i') }}
+                            </td>
+                            <td class="table__body__line__cell">
+                                <p class="table__body__line__cell__status
+                                @if($jiri->status =="verrouillé" )
+                                    table__body__line__cell__status--orange
+                                @elseif($jiri->status =="disponnible" )
+                                    table__body__line__cell__status--green
+                                @elseif($jiri->status =="cloturé" )
+                                    table__body__line__cell__status--blue
+                                @endif">
+                                    {{ $jiri->status }}
+                                </p>
                             </td>
                             <td class="table__body__line__cell">
                                 {{--  icon avec trois petits points pour afficher le mini dialog --}}

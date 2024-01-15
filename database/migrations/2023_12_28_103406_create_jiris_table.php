@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('start')->default(null)->nullable();
             $table->string('end')->default(null)->nullable();
+            $table->string('status')->default('verrouillé');
             $table->timestamps();
         });
     }

@@ -85,7 +85,7 @@
                 vertical-align: middle;
 
                 font-family: $textFont;
-                font-size: $normalSize;
+                font-size: $smallSize;
                 color: $lightBlack;
 
                 &--select {
@@ -167,6 +167,25 @@
                         height: 40px;
                         width: 40px;
                         border-radius: 50%;
+                    }
+                }
+
+                &__status {
+                    padding: 8px 10px;
+                    border-radius: 10px;
+                    color: $white;
+                    width: fit-content;
+
+                    &--orange{
+                        background-color: $orange;
+                    }
+
+                    &--green{
+                        background-color: $green;
+                    }
+
+                    &--blue{
+                        background-color: $blue;
                     }
                 }
 

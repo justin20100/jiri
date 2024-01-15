@@ -45,7 +45,7 @@ new class extends Component
         </h2>
 
         <p class="profilePassword__header__text">
-            {{ __("Assurez vous d'utiliser un bon mot de passe") }}
+            {{ __("Assurez vous d'utiliser un long et bon mot de passe !") }}
         </p>
     </header>
 
