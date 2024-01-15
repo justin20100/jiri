@@ -5,9 +5,11 @@ namespace App\Livewire\Contacts;
 use App\Models\Contact;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ContactsList extends Component
 {
+    use WithPagination;
     public $contacts;
     protected $listeners = ['refreshContactList' => 'refreshContactList'];
     public array $selectedContacts = [];

@@ -1,0 +1,49 @@
+/*********************************************
+    APPBARSIMPLE
+*********************************************/
+
+.appBarSimple {
+    margin-bottom: 40px;
+
+    &__contentContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        &__logoContainer {
+
+            &__link {
+
+                > svg {
+                    width: 100%;
+                    max-width: 50px;
+                    fill: $main1;
+                }
+            }
+        }
+
+        &__profileContainer {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+
+            &__nameContainer {
+                &__name {
+                    color: $lightBlack;
+                    font-family: $textFont;
+                }
+            }
+
+            &__imgContainer {
+
+                &__img {
+                    width: 100%;
+                    max-width: 50px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}

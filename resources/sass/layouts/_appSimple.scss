@@ -1,0 +1,29 @@
+/*********************************************
+    APPSIMPLE LAYOUT
+*********************************************/
+
+.appSimple {
+    width: 100%;
+    background-color: $lightGrey;
+
+    > .wrapper {
+        position: relative;
+        z-index: 3;
+        max-width: 1800px;
+        margin: 0 auto;
+
+        @include w1800-down {
+            margin: 0 50px;
+        }
+    }
+
+    &__contentContainer {
+        display: flex;
+        flex-direction: row;
+
+        &__main {
+            margin: 20px 20px 20px 20px;
+            width: 100%;
+        }
+    }
+}

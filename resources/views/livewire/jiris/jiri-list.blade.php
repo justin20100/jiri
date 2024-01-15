@@ -37,7 +37,7 @@
                 {{--                    </div>--}}
                 {{--                </div>--}}
                 <div class="jiris__contentContainer__header__buttonsContainer__buttonContainer">
-                    <livewire:jiris.jiri-create-dialog/>
+                    <a href="{{ route('jiris.create') }}" class="button">Ajouter un Jiri</a>
                 </div>
             </div>
         </div>

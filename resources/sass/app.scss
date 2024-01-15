@@ -13,11 +13,13 @@
 
 // ----------- LAYOUTS
 @import "layouts/app";
+@import "layouts/appSimple";
 @import "layouts/guest";
 
 // ----------- PARTIALS
 @import "partials/navigation";
 @import "partials/appBar";
+@import "partials/appBarSimple";
 @import "partials/iconsBox";
 
 // ----------- PAGES
