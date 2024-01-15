@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contact_jiri', function (Blueprint $table) {
+        Schema::create('contact_duties', function (Blueprint $table) {
             $table->id();
-            $table->string('role')->nullable();
-            $table->string('token')->nullable();
+            $table->json('urls')->nullable();
+            $table->json('tasks')->nullable();
+            $table->integer('points')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contact_jiri');
+        Schema::dropIfExists('contact_duties');
     }
 };

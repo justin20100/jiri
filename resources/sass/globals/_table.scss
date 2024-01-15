@@ -128,6 +128,11 @@
 
                     &__edit {
                         cursor: pointer;
+                        transition: transform .3s $ease;
+
+                        &:hover {
+                            transform: scale(1.1);
+                        }
 
                         &__svg {
                             width: 18px;
@@ -140,6 +145,11 @@
                         cursor: pointer;
                         background: none;
                         border: none;
+                        transition: transform .3s $ease;
+
+                        &:hover {
+                            transform: scale(1.1);
+                        }
 
                         &__svg {
                             width: 20px;

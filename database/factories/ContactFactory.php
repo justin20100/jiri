@@ -13,6 +13,7 @@ class ContactFactory extends Factory
     public function definition(): array
     {
         return [
+            'avatar' => 'defaultavatar.jpg',
             'lastname' => $this->faker->lastName(),
             'firstname' => $this->faker->firstName(),
             'email' => $this->faker->unique()->safeEmail(),

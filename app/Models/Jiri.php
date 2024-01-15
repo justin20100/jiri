@@ -28,6 +28,12 @@ class Jiri extends Model
         return $this->hasMany(ContactDuty::class);
     }
 
+    public function jiriProjects(): HasMany
+    {
+        return $this->hasMany(jiriProject::class);
+    }
+
+
     public function projects(): BelongsToMany
     {
         return $this->belongsToMany(Project::class, 'jiri_project', 'jiri_id', 'project_id');
@@ -40,6 +46,6 @@ class Jiri extends Model
 
     public function contacts(): BelongsToMany
     {
-        return $this->belongsToMany(Contact::class, 'contact_jiri', 'jiri_id', 'contact_id');
+        return $this->belongsToMany(Contact::class, 'contact_jiris', 'jiri_id', 'contact_id');
     }
 }

@@ -43,11 +43,15 @@
 
             &__item {
 
-
                 &__button {
                     cursor: pointer;
                     background: none;
                     border: none;
+                    transition: transform .3s $ease;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
 
                     &__svg {
                         width: 25px;
@@ -70,11 +74,16 @@
                 justify-content: center;
                 align-items: center;
                 min-height: 35px;
+                transition: transform .3s $ease;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
 
                 &__svg {
-                    width: 16px;
-                    height: 16px;
-                    stroke: $main2;
+                    width: 18px;
+                    height: 18px;
+                    fill: $main2;
                 }
             }
         }

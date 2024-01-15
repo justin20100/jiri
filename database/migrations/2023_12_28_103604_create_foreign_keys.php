@@ -17,23 +17,22 @@ return new class extends Migration
         Schema::table('contacts', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
         });
-        Schema::table('contact_jiri', function (Blueprint $table) {
+        Schema::table('contact_jiris', function (Blueprint $table) {
             $table->foreignId('contact_id')->constrained();
             $table->foreignId('jiri_id')->constrained();
         });
-        Schema::table('jiri_project', function (Blueprint $table) {
+        Schema::table('jiri_projects', function (Blueprint $table) {
             $table->foreignId('jiri_id')->constrained();
             $table->foreignId('project_id')->constrained();
         });
         Schema::table('projects', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
         });
-        Schema::table('contact_duty', function (Blueprint $table) {
+        Schema::table('contact_duties', function (Blueprint $table) {
             $table->foreignId('project_id')->constrained();
             $table->foreignId('contact_id')->constrained();
             $table->foreignId('jiri_id')->constrained();
         });
-
     }
 
     /**
