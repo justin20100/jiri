@@ -4,10 +4,5 @@
     {{--            {{ __('Projects') }}--}}
     {{--        </h2>--}}
     {{--    </x-slot>--}}
-
-
-
-    <div class="jiris__contentContainer">
-
-    </div>
+    <livewire:jiris.jiri-list/>
 </x-app-layout>

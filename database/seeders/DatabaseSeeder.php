@@ -54,7 +54,6 @@ class DatabaseSeeder extends Seeder
 
             $jiris = $user->jiris;
 
-            // Attendances for each event
             foreach ($jiris as $jiri) {
                 $contacts = $user->contacts->random(3);
 
@@ -66,7 +65,6 @@ class DatabaseSeeder extends Seeder
                 }
             }
 
-            // Duties for each event
             foreach ($jiris as $jiri) {
                 $projects = $user->projects->random(3);
 
@@ -75,15 +73,9 @@ class DatabaseSeeder extends Seeder
                         'jiri_id' => $jiri->id,
                         'project_id' => $project->id,
                     ]);
-
-//                    Task::factory()->count(1)->create([
-//                        'project_id' => $project->id,
-//                        'user_id' => $user->id,
-//                    ]);
                 }
             }
 
-            // Implementations for each event (duty & contact id)
             foreach ($jiris as $jiri) {
                 $jiriProjects = $jiri->jiriProjects;
 

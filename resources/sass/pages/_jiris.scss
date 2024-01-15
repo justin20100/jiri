@@ -1,0 +1,78 @@
+/*********************************************
+    JIRIS PAGE
+*********************************************/
+
+.jiris {
+    width: 100%;
+
+    &__contentContainer {
+        width: 100%;
+
+        &__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+
+            &__title {
+                font-family: $titleFont;
+                font-size: $xx-largeSize;
+                color: $lightBlack;
+                font-weight: bold;
+            }
+
+            &__buttonsContainer {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 20px;
+
+                &__filterContainer {
+
+                    &__filter {
+
+                        > label {
+                            display: none;
+                        }
+
+                        > select {
+
+                        }
+                    }
+                }
+
+                &__buttonContainer {
+                    // voir dialog.scss
+                }
+            }
+        }
+
+        &__tableEmpty {
+            width: 100%;
+            height: 100%;
+            margin-top: 20vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+
+            &__text {
+                font-family: $textFont;
+                font-size: $normalSize;
+                color: $lightBlack;
+                line-height: 1.4;
+                text-align: center;
+                max-width: 800px;
+            }
+        }
+
+        &__tableContainer {
+            width: 100%;
+
+            &__table {
+                // voir table.scss
+            }
+        }
+    }
+}
