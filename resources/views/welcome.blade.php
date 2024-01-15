@@ -54,7 +54,7 @@
                 <section class="features" id="features">
                     <div class="wrapper">
                         <div class="features__contentContainer">
-                            <h2 class="features__contentContainer__title">{{__('Fontionnalités')}}</h2>
+                            <h2 class="features__contentContainer__title">{{__('Fonctionnalités')}}</h2>
                             <div class="features__contentContainer__list">
 
                                 <div class="features__contentContainer__list__item">
