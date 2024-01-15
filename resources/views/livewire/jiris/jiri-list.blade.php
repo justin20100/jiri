@@ -61,11 +61,14 @@
                         <th class="table__head__line__cell table__head__line__cell--title">
                             {{__("Titre")}}
                         </th>
-                        <th class="table__head__line__cell table__head__line__cell--description" >
-                            {{__("Description")}}
+                        <th class="table__head__line__cell table__head__line__cell--date" >
+                            {{__("Début du Jiri")}}
                         </th>
-                        <th class="table__head__line__cell table__head__line__cell--more">
-                            {{-- more--}}
+                        <th class="table__head__line__cell table__head__line__cell--date">
+                            {{__("Fin du Jiri")}}
+                        </th>
+                        <th class="table__head__line__cell table__head__line__cell--date">
+                            {{-- actions--}}
                         </th>
                     </tr>
                     </thead>
@@ -73,13 +76,16 @@
                     @foreach($this->jiris as $jiri)
                         <tr class="table__body__line">
                             <td class="table__body__line__cell">
-                                <input type="checkbox" wire:model.change="selectedProjects" value="{{$jiri->id}}" class="table__body__line__cell__checkbox">
+                                <input type="checkbox" wire:model.change="selectedJiris" value="{{$jiri->id}}" class="table__body__line__cell__checkbox">
                             </td>
                             <td class="table__body__line__cell">
-                                {{$jiri->title}}
+                                {{$jiri->name}}
                             </td>
                             <td class="table__body__line__cell">
-                                {{ \Illuminate\Support\Str::limit($jiri->description, 100, $end='...') }}
+                                {{ \Carbon\Carbon::parse($jiri->start)->format('d/m/Y H:i') }}
+                            </td>
+                            <td class="table__body__line__cell">
+                                {{ \Carbon\Carbon::parse($jiri->end)->format('d/m/Y H:i') }}
                             </td>
                             <td class="table__body__line__cell">
                                 {{--  icon avec trois petits points pour afficher le mini dialog --}}
@@ -94,7 +100,7 @@
                                             <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
                                         </svg>
                                     </a>
-                                    <button wire:click="deleteProject({{$jiri->id}})" wire:click.prevent="deleteSelected" onclick="confirm('Suprimer ce jiri ?')|| event.stopImmediatePropagation()" class="table__body__line__cell__actions__delete">
+                                    <button wire:click="deleteJiri({{$jiri->id}})" wire:click.prevent="deleteSelected" onclick="confirm('Suprimer ce jiri ?')|| event.stopImmediatePropagation()" class="table__body__line__cell__actions__delete">
                                         <svg class="table__body__line__cell__actions__delete__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
                                         </svg>

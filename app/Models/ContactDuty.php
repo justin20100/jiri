@@ -33,4 +33,9 @@ class ContactDuty extends Model
     {
         return $this->belongsTo(Project::class);
     }
+
+    public function jiriProject()
+    {
+        return $this->belongsTo(JiriProject::class, 'jiri_project_id');
+    }
 }

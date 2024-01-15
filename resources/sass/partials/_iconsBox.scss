@@ -15,12 +15,12 @@
                 bottom: -50px;
             }
             100% {
-                bottom: 50px;
+                bottom: 30px;
             }
         }
         animation: moveUp 0.3s $ease;
         display: block;
-        bottom: 50px;
+        bottom: 30px;
     }
 
     &__contentContainer {

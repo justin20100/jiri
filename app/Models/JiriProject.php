@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class JiriProject extends Model
 {
@@ -24,4 +25,8 @@ class JiriProject extends Model
         return $this->belongsTo(Jiri::class);
     }
 
+    public function contactDuties(): HasMany
+    {
+        return $this->hasMany(ContactDuty::class);
+    }
 }

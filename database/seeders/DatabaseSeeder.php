@@ -84,9 +84,8 @@ class DatabaseSeeder extends Seeder
 
                     foreach ($contacts as $contact) {
                         ContactDuty::factory()->count(1)->create([
-                            'jiri_id' => $jiri->id,
                             'contact_id' => $contact->id,
-                            'project_id' => $jiriProject->project_id,
+                            'jiri_project_id' => $jiriProject->project_id,
                         ]);
                     }
                 }

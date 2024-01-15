@@ -39,7 +39,7 @@ class Jiri extends Model
         return $this->belongsToMany(Project::class, 'jiri_project', 'jiri_id', 'project_id');
     }
 
-    public function contactsJiris(): HasMany
+    public function contactJiris(): HasMany
     {
         return $this->hasMany(ContactJiri::class);
     }
