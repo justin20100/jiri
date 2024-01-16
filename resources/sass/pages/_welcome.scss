@@ -203,19 +203,35 @@
                             align-items: center;
 
                             &--1 {
-                                background-color: rgb($main1, 0.3);
+                                background-color: rgb($main5, 0.8);
+
+                                > svg{
+                                    fill: $main1;
+                                }
                             }
 
                             &--2 {
-                                background-color: rgba($green, 0.3);
+                                background-color: rgba($green, 0.2);
+
+                                > svg{
+                                    fill: $green;
+                                }
                             }
 
                             &--3 {
-                                background-color: rgba($orange, 0.3);
+                                background-color: rgba($orange, 0.2);
+
+                                > svg{
+                                    fill: $orange;
+                                }
                             }
 
                             &--4 {
-                                background-color: rgba($pink, 0.3);
+                                background-color: rgba($purple, 0.2);
+
+                                > svg{
+                                    fill: $purple;
+                                }
                             }
 
                             &__icon {

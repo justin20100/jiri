@@ -1,10 +1,8 @@
 <div class="jiriCreate">
     <div class="jiriCreate__contentContainer">
         <div class="wrapper">
-            @php($this->selectedProjects)
             <h1 class="jiriCreate__contentContainer__title">{{__("Ajout d'un jiri")}}</h1>
             <p class="jiriCreate__contentContainer__text">{{__("Texte descriptif sur le jiris")}}</p>
-
             <div class="jiriCreate__contentContainer__formContainer">
                 <hr class="jiriCreate__contentContainer__formContainer__line">
                 <form wire:submit="create" class="form jiriCreate__contentContainer__formContainer__form">
@@ -49,7 +47,11 @@
                                     @foreach($this->projects as $project)
                                         <li class="jiriCreate__contentContainer__formContainer__form__projects__listContainer__list__item">
                                             <span>{{$project->title}}</span>
-                                            <a wire:click.prefetch="selectProject({{$project->id}})">+</a>
+                                            <a wire:click.prefetch="selectProject({{$project->id}})">
+                                                <svg>
+                                                    <use xlink:href="{{asset("images/sprite.svg#plus")}}"></use>
+                                                </svg>
+                                            </a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -94,8 +96,16 @@
                                             <span>{{$contact->firstname}}</span>
                                             <span>{{$contact->lastname}}</span>
                                             <span>{{$contact->email}}</span>
-                                            <a wire:click="selectContactAsStudent">+s</a>
-                                            <a wire:click="selectContactAsJury">+j</a>
+                                            <a wire:click="selectContactAsStudent">
+                                                <svg>
+                                                    <use xlink:href="{{asset("images/sprite.svg#plus")}}"></use>
+                                                </svg>
+                                            </a>
+                                            <a wire:click="selectContactAsJury">
+                                                <svg>
+                                                    <use xlink:href="{{asset("images/sprite.svg#plus")}}"></use>
+                                                </svg>
+                                            </a>
                                         </li>
                                     @endforeach
                                 </ul>

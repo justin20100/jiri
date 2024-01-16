@@ -103,7 +103,7 @@
                                     <div class="features__contentContainer__list__item__top">
                                         <div class="features__contentContainer__list__item__top__iconContainer features__contentContainer__list__item__top__iconContainer--4">
                                             <svg class="features__contentContainer__list__item__top__iconContainer__icon">
-                                                <use xlink:href="{{asset("images/sprite.svg#featur4")}}"></use>
+                                                <use xlink:href="{{asset("images/sprite.svg#feature4")}}"></use>
                                             </svg>
                                         </div>
                                         <h3 class="features__contentContainer__list__item__top__title">Invitation automatique des membres du jury</h3>

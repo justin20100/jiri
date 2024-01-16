@@ -144,6 +144,13 @@
 
                                 > a {
                                     padding-right: 30px;
+                                    cursor: pointer;
+
+                                    > svg {
+                                        width: 15px;
+                                        height: 15px;
+                                        fill: $main2;
+                                    }
                                 }
                             }
                         }
@@ -195,6 +202,7 @@
 
                                 > a {
                                     padding-right: 30px;
+                                    cursor: pointer;
 
                                     > svg {
                                         width: 20px;
@@ -279,9 +287,16 @@
 
                                 > a {
                                     justify-self: end;
+                                    cursor: pointer;
 
                                     &:last-of-type{
                                         padding-right: 30px;
+                                    }
+
+                                    > svg {
+                                        width: 15px;
+                                        height: 15px;
+                                        fill: $main2;
                                     }
                                 }
                             }
@@ -343,6 +358,7 @@
 
                                         > a {
                                             justify-self: end;
+                                            cursor: pointer;
 
                                             &:last-of-type{
                                                 padding-right: 30px;
@@ -407,6 +423,7 @@
 
                                         > a {
                                             justify-self: end;
+                                            cursor: pointer;
 
                                             &:last-of-type{
                                                 padding-right: 30px;
