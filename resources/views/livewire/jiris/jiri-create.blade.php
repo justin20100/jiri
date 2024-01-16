@@ -1,6 +1,7 @@
 <div class="jiriCreate">
     <div class="jiriCreate__contentContainer">
         <div class="wrapper">
+            @php($this->selectedProjects)
             <h1 class="jiriCreate__contentContainer__title">{{__("Ajout d'un jiri")}}</h1>
             <p class="jiriCreate__contentContainer__text">{{__("Texte descriptif sur le jiris")}}</p>
 
@@ -45,10 +46,12 @@
                             </div>
                             <div class="jiriCreate__contentContainer__formContainer__form__projects__listContainer__bottom">
                                 <ul class="jiriCreate__contentContainer__formContainer__form__projects__listContainer__list">
-                                    <li class="jiriCreate__contentContainer__formContainer__form__projects__listContainer__list__item">
-                                        <span>lalalala</span>
-                                        <a wire:click="">+</a>
-                                    </li>
+                                    @foreach($this->projects as $project)
+                                        <li class="jiriCreate__contentContainer__formContainer__form__projects__listContainer__list__item">
+                                            <span>{{$project->title}}</span>
+                                            <a wire:click.prefetch="selectProject({{$project->id}})">+</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -58,14 +61,16 @@
                             </p>
                             <div class="jiriCreate__contentContainer__formContainer__form__projects__selectedContainer__bottom">
                                 <ul class="jiriCreate__contentContainer__formContainer__form__projects__selectedContainer__list">
-                                    <li class="jiriCreate__contentContainer__formContainer__form__projects__selectedContainer__list__item">
-                                        <span>lalalala</span>
-                                        <a wire:click="">
-                                            <svg>
-                                                <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
+                                    @foreach($this->selectedProjects as $selectedproject)
+                                        <li class="jiriCreate__contentContainer__formContainer__form__projects__selectedContainer__list__item">
+                                            <span>{{$selectedproject->title}}</span>
+                                            <a wire:click="removeProject({{$selectedproject->id}})">
+                                                <svg>
+                                                    <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
+                                                </svg>
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>
@@ -84,10 +89,15 @@
                             </div>
                             <div class="jiriCreate__contentContainer__formContainer__form__contacts__listContainer__bottom">
                                 <ul class="jiriCreate__contentContainer__formContainer__form__contacts__listContainer__list">
-                                    <li class="jiriCreate__contentContainer__formContainer__form__contacts__listContainer__list__item">
-                                        <span>lalalala</span>
-                                        <a wire:click="">+</a>
-                                    </li>
+                                    @foreach($this->contacts as $contact)
+                                        <li class="jiriCreate__contentContainer__formContainer__form__contacts__listContainer__list__item">
+                                            <span>{{$contact->firstname}}</span>
+                                            <span>{{$contact->lastname}}</span>
+                                            <span>{{$contact->email}}</span>
+                                            <a wire:click="selectContactAsStudent">+s</a>
+                                            <a wire:click="selectContactAsJury">+j</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </div>

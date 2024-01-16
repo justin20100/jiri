@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Jiris;
 
+use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -13,19 +14,20 @@ class JiriCreate extends Component
         'refreshProjectList' => 'refreshProjectList',
         'refreshContactList' => 'refreshContactList',
     ];
-    public array $selectedProjects = [];
-    public array $selectedContacts = [];
+    public $selectedProjects;
+    public $selectedContacts;
     public bool $actionsDisabled = true;
 
     public function mount(): void
     {
         $this->projects = Auth::user()->projects()->orderBy('created_at', 'desc')->get();
         $this->contacts = Auth::user()->contacts()->orderBy('created_at', 'desc')->get();
+        $this->selectedProjects = collect();
+        $this->selectedContacts = collect();
     }
 
     public function render()
     {
-        $this->mount();
         return view('livewire.jiris.jiri-create');
     }
 
@@ -39,9 +41,27 @@ class JiriCreate extends Component
         $this->contacts = Auth::user()->contacts()->orderBy('created_at', 'desc')->get();
     }
 
+    public function selectProject($projectId): void
+    {
+        $selectedProject = Project::findOrFail($projectId);
+
+        $this->removeProjectFromCollection($this->projects, $selectedProject);
+        $this->selectedProjects->push($selectedProject);
+    }
+
     public function removeProject($projectId): void
     {
-        $this->selectedProjects = array_diff($this->selectedProjects, [$projectId]);
+        $selectedProject = Project::find($projectId);
+
+        $this->removeProjectFromCollection($this->selectedProjects, $selectedProject);
+        $this->projects->push($selectedProject);
+    }
+
+    protected function removeProjectFromCollection(&$collection, $selectedProject): void
+    {
+        $collection = $collection->filter(function ($project) use ($selectedProject) {
+            return $project->id !== $selectedProject->id;
+        });
     }
 
     public function removecontact($contactId): void

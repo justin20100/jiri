@@ -261,10 +261,10 @@
                                 background-color: $main5;
                                 padding: 15px 0;
                                 border-radius: 10px;
-                                display: flex;
-                                flex-direction: row;
+                                display: grid;
+                                grid-template-columns: 3fr 3fr 6fr 1fr 1fr;
                                 align-items: center;
-                                justify-content: space-between;
+                                justify-content: start;
                                 width: 100%;
 
                                 > span {
@@ -272,11 +272,17 @@
                                     font-size: $normalSize;
                                     color: $lightBlack;
                                     line-height: 1.4;
-                                    padding-left: 30px;
+                                    &:first-of-type {
+                                        padding-left: 30px;
+                                    }
                                 }
 
                                 > a {
-                                    padding-right: 30px;
+                                    justify-self: end;
+
+                                    &:last-of-type{
+                                        padding-right: 30px;
+                                    }
                                 }
                             }
                         }
@@ -316,10 +322,10 @@
                                         background-color: $main5;
                                         padding: 15px 0;
                                         border-radius: 10px;
-                                        display: flex;
-                                        flex-direction: row;
+                                        display: grid;
+                                        grid-template-columns: 2fr 2fr 3fr 1fr 1fr;
                                         align-items: center;
-                                        justify-content: space-between;
+                                        justify-content: start;
                                         width: 100%;
 
 
@@ -336,6 +342,8 @@
                                         }
 
                                         > a {
+                                            justify-self: end;
+
                                             &:last-of-type{
                                                 padding-right: 30px;
                                             }
@@ -380,10 +388,10 @@
                                         background-color: $main5;
                                         padding: 15px 0;
                                         border-radius: 10px;
-                                        display: flex;
-                                        flex-direction: row;
+                                        display: grid;
+                                        grid-template-columns: 2fr 2fr 3fr 1fr 1fr;
                                         align-items: center;
-                                        justify-content: space-between;
+                                        justify-content: start;
                                         width: 100%;
 
                                         > span {
@@ -398,6 +406,8 @@
                                         }
 
                                         > a {
+                                            justify-self: end;
+
                                             &:last-of-type{
                                                 padding-right: 30px;
                                             }
