@@ -4,7 +4,7 @@ FORMS
 
 form {
     // INPUTS ------------------------------
-    input[type="text"], input[type="email"], input[type="password"], input[type="search"], input[type="tel"], input[type="url"], textarea {
+    input[type="text"], input[type="email"], input[type="password"], input[type="search"], input[type="tel"], input[type="url"], input[type=datetime-local], textarea {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
@@ -47,7 +47,7 @@ form {
     }
 
     // FORMS PARTS ------------------------------
-    .form__email, .form__password, .form__firstname, .form__lastname, .form__title, .form__description {
+    .form__email, .form__password, .form__firstname, .form__lastname, .form__title,.form__name, .form__description, .form__date {
         margin-bottom: 20px;
 
         > label {

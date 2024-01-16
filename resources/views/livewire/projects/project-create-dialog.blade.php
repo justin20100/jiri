@@ -1,13 +1,13 @@
 <div>
-    <button wire:click="openDialog" class="button">{{__('Ajouter un projet')}}</button>
+    <a wire:click="openDialog" class="button">{{__('Ajouter un projet')}}</a>
     @if($isOpen)
         <div class="dialog">
             <div class="dialog__contentContainer">
-                <button wire:click="closeDialog" class="dialog__contentContainer__closeContainer">
+                <a wire:click="closeDialog" class="dialog__contentContainer__closeContainer">
                     <svg class="dialog__contentContainer__closeContainer__svg">
                         <use xlink:href="{{asset("images/sprite.svg#close")}}"></use>
                     </svg>
-                </button>
+                </a>
                 <div class="dialog__contentContainer__formContainer">
                     <form wire:submit="create" class="form dialog__contentContainer__formContainer__form">
                         <h2 class="dialog__contentContainer__formContainer__form__title">{{__("Ajout d'un projet")}}</h2>

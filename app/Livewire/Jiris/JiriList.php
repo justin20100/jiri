@@ -17,7 +17,7 @@ class JiriList extends Component
 
     public function mount(): void
     {
-        $this->jiris = Auth::user()->jiris()->orderBy('start', 'desc')->paginate(10)->getCollection();
+        $this->jiris = Auth::user()->jiris()->orderBy('start', 'desc')->get();
     }
 
     public function render()
@@ -29,7 +29,7 @@ class JiriList extends Component
 
     public function refreshJiriList(): void
     {
-        $this->jiris = Auth::user()->jiris()->orderBy('start', 'desc')->paginate(10)->getCollection();
+        $this->jiris = Auth::user()->jiris()->orderBy('start', 'desc')->get();
     }
 
     public function cancelSelected(): void

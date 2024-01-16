@@ -16,7 +16,7 @@ class ProjectForm extends Form
 
     public Project $project;
 
-    public function setProject($project)
+    public function setProject($project): void
     {
         $this->project = $project;
         $this->title = $project->title;
