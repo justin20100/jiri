@@ -24,14 +24,6 @@ class ContactForm extends Form
 
     public Contact $contact;
 
-    public function setContact($contact): void
-    {
-        $this->contact = $contact;
-        $this->firstname = $contact->firstname;
-        $this->lastname = $contact->lastname;
-        $this->email = $contact->email;
-        $this->avatar = $contact->avatar;
-    }
 
     public function create(): void
     {

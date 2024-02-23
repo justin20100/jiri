@@ -17,13 +17,6 @@ class JiriForm extends Form
 
     public Jiri $jiri;
 
-    public function setJiri($jiri)
-    {
-        $this->jiri = $jiri;
-        $this->name = $jiri->name;
-        $this->start = $jiri->start;
-        $this->end = $jiri->end;
-    }
 
     public function create(): void
     {

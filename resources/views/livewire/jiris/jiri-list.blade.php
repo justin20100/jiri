@@ -48,7 +48,7 @@
                 <p class="jiris__contentContainer__tableEmpty__text">
                     {{__("C'est ici que vous pouvez retrouver tous les jiris que vous avez crées. Mais vous n'avez pas encore de jiris alors ajoutez en un !")}}
                 </p>
-                <livewire:jiris.jiri-create-dialog/>
+                <a href="{{ route('jiris.create') }}" class="button">Ajouter un Jiri</a>
             </div>
         @else
             <div class="jiris__contentContainer__tableContainer">

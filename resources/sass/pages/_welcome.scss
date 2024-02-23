@@ -137,7 +137,10 @@
 
                 &--second {
                     bottom: 50px;
+                    left: inherit;
+                    top: inherit;
                     right: -250px;
+                    display: none;
                 }
             }
         }
