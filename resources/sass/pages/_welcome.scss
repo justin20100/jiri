@@ -208,7 +208,7 @@
                             &--1 {
                                 background-color: rgb($main5, 0.8);
 
-                                > svg{
+                                > svg {
                                     fill: $main1;
                                 }
                             }
@@ -216,7 +216,7 @@
                             &--2 {
                                 background-color: rgba($green, 0.2);
 
-                                > svg{
+                                > svg {
                                     fill: $green;
                                 }
                             }
@@ -224,7 +224,7 @@
                             &--3 {
                                 background-color: rgba($orange, 0.2);
 
-                                > svg{
+                                > svg {
                                     fill: $orange;
                                 }
                             }
@@ -232,7 +232,7 @@
                             &--4 {
                                 background-color: rgba($purple, 0.2);
 
-                                > svg{
+                                > svg {
                                     fill: $purple;
                                 }
                             }
@@ -258,6 +258,88 @@
                         font-size: $normalSize;
                         line-height: 1.4;
                         color: $lightBlack;
+                    }
+                }
+            }
+        }
+    }
+
+    .contact {
+        > .wrapper {
+            position: relative;
+            z-index: 3;
+            max-width: 1400px;
+            margin: 0 auto;
+
+            @include w1450-down {
+                margin: 0 50px;
+            }
+        }
+
+        &__contentContainer {
+            padding: 80px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &__heading {
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+                justify-content: center;
+                gap: 10px;
+
+                font-family: $titleFont;
+                font-size: $x-largeSize;
+                text-align: center;
+                margin-bottom: 50px;
+
+                &__title {
+                    color: $main1;
+                }
+
+                &__question {
+                    color: $lightBlack;
+                }
+            }
+
+            &__formContainer {
+                max-width: 700px;
+                width: 100%;
+
+                &__form {
+                }
+
+                .welcome-form {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 20px;
+
+                    &__inputContainer {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 7px;
+                        width: 100%;
+
+                        &__input {
+                        }
+
+                        &__textarea {
+                        }
+                    }
+
+                    &__row {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                        gap: 20px;
+
+                        &__input {
+                            width: 100%;
+                        }
                     }
                 }
             }
@@ -294,7 +376,7 @@
                 align-items: center;
                 justify-content: center;
 
-                &__link{
+                &__link {
                     font-family: $textFont;
                     font-size: $smallSize;
                     color: $main1;
