@@ -136,11 +136,11 @@
                 }
 
                 &--second {
-                    bottom: 50px;
+                    bottom: -50px;
                     left: inherit;
                     top: inherit;
-                    right: -250px;
-                    display: none;
+                    right: 0;
+                    //display: none;
                 }
             }
         }
@@ -265,6 +265,7 @@
     }
 
     .contact {
+        position: relative;
         > .wrapper {
             position: relative;
             z-index: 3;
@@ -293,7 +294,7 @@
                 font-family: $titleFont;
                 font-size: $x-largeSize;
                 text-align: center;
-                margin-bottom: 50px;
+                margin-bottom: 80px;
 
                 &__title {
                     color: $main1;
@@ -315,12 +316,12 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
-                    gap: 20px;
+                    gap: 30px;
 
                     &__inputContainer {
                         display: flex;
                         flex-direction: column;
-                        gap: 7px;
+                        gap: 10px;
                         width: 100%;
 
                         &__input {
@@ -328,6 +329,10 @@
 
                         &__textarea {
                         }
+                    }
+
+                    &__button {
+                        align-self: end;
                     }
 
                     &__row {
@@ -341,6 +346,26 @@
                             width: 100%;
                         }
                     }
+                }
+            }
+
+            &__illu {
+                position: absolute;
+                z-index: -3;
+                pointer-events: none;
+
+                &--first {
+                    top: 70px;
+                    right: -100px;
+                    bottom: inherit;
+                    left: inherit;
+                }
+
+                &--second {
+                    top: inherit;
+                    right: inherit;
+                    bottom: 10px;
+                    left: -50px;
                 }
             }
         }

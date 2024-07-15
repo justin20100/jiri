@@ -117,6 +117,8 @@
                     </div>
                 </section>
                 <section class="contact">
+                    <img src="{{asset('/images/welcome/welcome-third-illu.jpg')}}" alt="" class="contact__contentContainer__illu contact__contentContainer__illu--first">
+                    <img src="{{asset('/images/welcome/welcome-fourth-illu.jpg')}}" alt="" class="contact__contentContainer__illu contact__contentContainer__illu--second">
                     <div class="wrapper">
                         <div class="contact__contentContainer">
                             <div class="contact__contentContainer__heading">
