@@ -15,6 +15,59 @@
         border-radius: 10px;
         padding: 60px;
         position: relative;
-        min-width: 600px;
+        width: 80%;
+        max-width: 1500px;
+        height: 70%;
+        max-height: 900px;
+
+        &__content {
+
+            &__splitter{
+                display: flex;
+                flex-direction: row;
+                gap: 20px;
+
+                &__left {
+                    width: 50%;
+
+                    &__logo{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 20px;
+
+                        > svg {
+                            fill: $main1;
+                            width: 100px;
+                            height: 100px;
+                        }
+                    }
+                }
+
+                &__right {
+                    width: 50%;
+
+                    &__closeContainer {
+                        background: none;
+                        border: none;
+                        position: absolute;
+                        top: 20px;
+                        right: 20px;
+                        cursor: pointer;
+                        outline: none;
+
+                        &__svg {
+                            fill: $main1;
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+                }
+            }
+
+
+
+
+        }
     }
 }
