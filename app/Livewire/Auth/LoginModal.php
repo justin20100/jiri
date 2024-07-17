@@ -11,10 +11,10 @@ class LoginModal extends Component
 {
     public LoginForm $form;
 
-    public function mount(): void
-    {
-        $this->form = new LoginForm();
-    }
+//    public function mount(): void
+//    {
+//        $this->form = new LoginForm();
+//    }
 
     public function login(): void
     {
