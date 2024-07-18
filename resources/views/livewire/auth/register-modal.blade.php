@@ -1,6 +1,6 @@
-<div x-data="{ open: @entangle('show') }">
-    <div @click="open = true" class="button login-button">Créer un compte</div>
-    <div x-show="open" class="modal">
+<div x-data="{ registerModal: @entangle('show') }">
+    <div @click="registerModal = true" class="button login-button">Créer un compte</div>
+    <div x-show="registerModal" class="modal">
         <div class="modal__contentContainer">
             <div class="modal__contentContainer__content">
                 <div class="modal__contentContainer__content__splitter">
@@ -13,11 +13,16 @@
                         <a href="/" wire:navigate class="modal__contentContainer__content__splitter__left__logo">
                             <x-application-logo/>
                         </a>
-                        <span class="modal__contentContainer__content__splitter__left__register">Pas encore de compte ? <a href="{{route('register')}}" wire:navigate> Inscrivez-vous !</a></span>
+                        <span class="modal__contentContainer__content__splitter__left__register">Vous avez déja un compte ?
+                            <a
+                                {{--                                href="{{route('register')}}" wire:navigate--}}
+                                @click="registerModal = false"
+                            > connectez-vous !</a>
+                        </span>
                     </div>
                     <div class="modal__contentContainer__content__splitter__right">
                         {{--     Right part   --}}
-                        <a @click="open = false" class="modal__contentContainer__content__splitter__right__closeContainer">
+                        <a @click="registerModal = false" class="modal__contentContainer__content__splitter__right__closeContainer">
                             <svg class="modal__contentContainer__content__splitter__right__closeContainer__svg">
                                 <use xlink:href="{{asset("images/sprite.svg#close")}}"></use>
                             </svg>
