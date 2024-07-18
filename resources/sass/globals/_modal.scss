@@ -1,0 +1,138 @@
+/*********************************************
+    Modal GLOBAL
+*********************************************/
+
+.modal {
+    position: fixed;
+    z-index: 1000 !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($black, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__contentContainer {
+        background-color: $white;
+        border-radius: 14px;
+        position: relative;
+        width: 80%;
+        max-width: 1500px;
+        height: 70%;
+        max-height: 900px;
+
+        &__content {
+            width: 100%;
+            height: 100%;
+
+            &__splitter {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                height: 100%;
+
+                &__left {
+                    position: relative;
+                    background-color: $main5;
+                    border-radius: 14px 0 0 14px;
+                    padding: 50px 70px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    &__illu {
+                        position: absolute;
+
+                        &--first {
+                            right: 0;
+                            top: 20px;
+                        }
+
+                        &--second {
+                            left: 0;
+                            bottom: 160px;
+                        }
+                    }
+
+                    &__welcome {
+                        font-family: $textFont;
+                        font-weight: 500;
+                        font-size: $largeSize;
+                        color: $main1;
+                    }
+
+                    &__logo {
+                        align-self: center;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-bottom: 20px;
+
+                        > svg {
+                            fill: $main1;
+                            width: 170px;
+                            height: 170px;
+                        }
+                    }
+
+                    &__register {
+                        font-family: $textFont;
+                        font-size: $normalSize;
+                        color: $main1;
+                        margin-top: 20px;
+
+                        > a {
+                            margin-left: 5px;
+                            color: $main1;
+                            font-weight: 700;
+                            text-decoration: underline;
+
+                            &:hover {
+                                color: $blue;
+                            }
+                        }
+                    }
+                }
+
+                &__right {
+                    padding: 50px 70px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    &__closeContainer {
+                        background: none;
+                        border: none;
+                        position: absolute;
+                        top: 30px;
+                        right: 30px;
+                        cursor: pointer;
+                        outline: none;
+
+                        &__svg {
+                            fill: $main1;
+                            width: 16px;
+                            height: 16px;
+                        }
+                    }
+
+                    &__formContainer {
+
+                        &__form{
+                            // Voir forms.scss
+
+                            &__title{
+                                font-family: $titleFont;
+                                color: $main1;
+                                font-size: $xx-largeSize;
+                                font-weight: 700;
+                                margin-bottom: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

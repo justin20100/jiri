@@ -1,16 +1,36 @@
 // font Family imports
+// Manrope
 @font-face {
     font-family: 'Manrope';
     font-style: normal;
     font-weight: 400;
     src: url('../fonts/Manrope-Regular.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'Manrope';
+    font-style: medium;
+    font-weight: 500;
+    src: url('../fonts/Manrope-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Manrope';
+    font-style: bold;
+    font-weight: 700;
+    src: url('../fonts/Manrope-Bold.ttf') format('truetype');
+}
 
+// EXO
 @font-face {
     font-family: 'Exo';
     font-style: medium;
     font-weight: 500;
     src: url('../fonts/Exo-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Exo';
+    font-style: bold;
+    font-weight: 700;
+    src: url('../fonts/Exo-Bold.ttf') format('truetype');
 }
 
 // font families variables
