@@ -5,7 +5,8 @@
         @livewire('auth.login-modal')
 {{--        <a class="button button--light" href="{{ route('login') }}" wire:navigate>Se connecter</a>--}}
         @if (Route::has('register'))
-            <a class="button" href="{{ route('register') }}" wire:navigate>Créer un compte</a>
+            @livewire('auth.register-modal')
+{{--            <a class="button" href="{{ route('register') }}" wire:navigate>Créer un compte</a>--}}
         @endif
     @endauth
 </div>
