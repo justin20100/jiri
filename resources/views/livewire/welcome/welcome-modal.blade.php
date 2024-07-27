@@ -1,4 +1,4 @@
-<div>
+<div class="welcomeModal">
     {{--    BUttons  --}}
     <div wire:click="openLoginDialog" class="button button--light login-button">Se connecter</div>
     <div wire:click="openRegisterDialog" class="button">Créer un compte</div>
