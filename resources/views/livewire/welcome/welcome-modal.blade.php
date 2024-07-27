@@ -1,11 +1,11 @@
 <div class="welcomeModal">
     {{--    BUttons  --}}
-    <div wire:click="openLoginDialog" class="button button--light login-button">Se connecter</div>
-    <div wire:click="openRegisterDialog" class="button">Créer un compte</div>
+    <div wire:click="openLoginModal" class="button button--light login-button">Se connecter</div>
+    <div wire:click="openRegisterModal" class="button">Créer un compte</div>
 
     {{--    Template    --}}
     @if($isOpen!="none")
-        <div class="modal">
+        <div class="modal" wire:keydown.escape.prevent="closeWelcomeModal">
             <div class="modal__contentContainer">
                 <div class="modal__contentContainer__content">
                     {{--     Splitter    --}}
@@ -20,14 +20,14 @@
                                 <x-application-logo/>
                             </a>
                             @if($isOpen=="login")
-                                <span class="modal__contentContainer__content__splitter__left__register">Pas encore de compte ? <a wire:click="openRegisterDialog"> Inscrivez-vous !</a></span>
+                                <span class="modal__contentContainer__content__splitter__left__register">Pas encore de compte ? <a wire:click="openRegisterModal"> Inscrivez-vous !</a></span>
                             @elseif($isOpen=="register")
-                                <span class="modal__contentContainer__content__splitter__left__register">Déjà un compte ? <a wire:click="openLoginDialog"> Connectez-vous !</a></span>
+                                <span class="modal__contentContainer__content__splitter__left__register">Déjà un compte ? <a wire:click="openLoginModal"> Connectez-vous !</a></span>
                             @endif
                         </div>
                         {{--     Right part   --}}
                         <div class="modal__contentContainer__content__splitter__right">
-                            <a wire:click="closeWelcomeDialog" class="modal__contentContainer__content__splitter__right__closeContainer">
+                            <a wire:click="closeWelcomeModal" class="modal__contentContainer__content__splitter__right__closeContainer">
                                 <svg class="modal__contentContainer__content__splitter__right__closeContainer__svg">
                                     <use xlink:href="{{asset("images/sprite.svg#close")}}"></use>
                                 </svg>

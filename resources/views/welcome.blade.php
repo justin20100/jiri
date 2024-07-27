@@ -40,7 +40,8 @@
                                 <p class="banner__contentContainer__content__text">Créez des contacts ainsi que des projets pour en faire un Jiri. Ce Jiri une fois crée, donne aux jurys de celui-ci accès à une interface pour noter les étudiants sur un ou plusieurs projets.</p>
                                 <div class="banner__contentContainer__content__buttonContainer">
                                     <a href="#features" class="banner__contentContainer__content__buttonContainer__button button button--light">En savoir plus</a>
-                                    <a href="{{route('register')}}" class="banner__contentContainer__content__buttonContainer__button button">Créer un compte</a>
+                                    <a href="#contact" class="banner__contentContainer__content__buttonContainer__button button">Contactez-nous</a>
+{{--                                    <a href="{{route('register')}}" class="banner__contentContainer__content__buttonContainer__button button">Créer un compte</a>--}}
                                 </div>
                             </div>
                             <div class="banner__contentContainer__screen">
@@ -116,7 +117,7 @@
                         </div>
                     </div>
                 </section>
-                <section class="contact">
+                <section class="contact" id="contact">
                     <img src="{{asset('/images/welcome/welcome-third-illu.jpg')}}" alt="" class="contact__contentContainer__illu contact__contentContainer__illu--first">
                     <img src="{{asset('/images/welcome/welcome-fourth-illu.jpg')}}" alt="" class="contact__contentContainer__illu contact__contentContainer__illu--second">
                     <div class="wrapper">

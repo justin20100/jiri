@@ -11,21 +11,31 @@ class WelcomeModal extends Component
         return view('livewire.welcome.welcome-modal');
     }
 
+    protected $listeners = [
+        'openLoginModal' => 'openLoginModal',
+        'openRegisterModal' => 'openRegisterModal',
+        'closeWelcomeModal' => 'closeWelcomeModal',
+    ];
+
     // ---------- Modal
     public $isOpen = "none";
 
-    public function openLoginDialog(): void
+    public function openLoginModal(): void
     {
         $this->isOpen = "login";
     }
 
-    public function openRegisterDialog(): void
+    public function openRegisterModal(): void
     {
         $this->isOpen = "register";
     }
 
-    public function closeWelcomeDialog(): void
+    public function closeWelcomeModal(): void
     {
         $this->isOpen = "none";
     }
+
+//    add an event listener to listen escape keydown event
+
+
 }
