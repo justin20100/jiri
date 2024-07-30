@@ -14,15 +14,14 @@
                         <div class="modal__contentContainer__content__splitter__left">
                             <img src="{{asset('/images/welcome/welcome-fifth-illu.jpg')}}" alt="" class="modal__contentContainer__content__splitter__left__illu modal__contentContainer__content__splitter__left__illu--first">
                             <img src="{{asset('/images/welcome/welcome-sixth-illu.jpg')}}" alt="" class="modal__contentContainer__content__splitter__left__illu modal__contentContainer__content__splitter__left__illu--second">
-                            {{--     Left part      --}}
                             <p class="modal__contentContainer__content__splitter__left__welcome">Bienvenue&nbsp;!</p>
                             <a href="/" wire:navigate class="modal__contentContainer__content__splitter__left__logo">
                                 <x-application-logo/>
                             </a>
                             @if($isOpen=="login")
-                                <span class="modal__contentContainer__content__splitter__left__register">Pas encore de compte ? <a wire:click="openRegisterModal"> Inscrivez-vous !</a></span>
+                                <span class="modal__contentContainer__content__splitter__left__register">Pas encore de compte ? <span wire:click="openRegisterModal" title="Login" class="fakeLink"> Inscrivez-vous !</span></span>
                             @elseif($isOpen=="register")
-                                <span class="modal__contentContainer__content__splitter__left__register">Déjà un compte ? <a wire:click="openLoginModal"> Connectez-vous !</a></span>
+                                <span class="modal__contentContainer__content__splitter__left__register">Déjà un compte ? <span wire:click="openLoginModal" title="register" class="fakeLink"> Connectez-vous !</span></span>
                             @endif
                         </div>
                         {{--     Right part   --}}
@@ -46,11 +45,4 @@
             </div>
         </div>
     @endif
-    {{-- The Master doesn't talk, he acts. --}}
-{{--    @livewire('auth.login-modal')--}}
-{{--    <a class="button button--light" href="{{ route('login') }}" wire:navigate>Se connecter</a>--}}
-{{--    @if (Route::has('register'))--}}
-{{--        @livewire('auth.register-modal')--}}
-{{--        <a class="button" href="{{ route('register') }}" wire:navigate>Créer un compte</a>--}}
-{{--    @endif--}}
 </div>

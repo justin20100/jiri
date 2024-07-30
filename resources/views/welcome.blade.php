@@ -6,10 +6,6 @@
 
         <title>Jiri</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
-
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
@@ -118,8 +114,10 @@
                     </div>
                 </section>
                 <section class="contact" id="contact">
-                    <img src="{{asset('/images/welcome/welcome-third-illu.jpg')}}" alt="" class="contact__contentContainer__illu contact__contentContainer__illu--first">
-                    <img src="{{asset('/images/welcome/welcome-fourth-illu.jpg')}}" alt="" class="contact__contentContainer__illu contact__contentContainer__illu--second">
+                    <div class="contact__illustrationContainer">
+                        <img src="{{asset('/images/welcome/welcome-third-illu.jpg')}}" alt="" class="contact__illustrationContainer__illu contact__illustrationContainer__illu--first">
+                        <img src="{{asset('/images/welcome/welcome-fourth-illu.jpg')}}" alt="" class="contact__illustrationContainer__illu contact__illustrationContainer__illu--second">
+                    </div>
                     <div class="wrapper">
                         <div class="contact__contentContainer">
                             <div class="contact__contentContainer__heading">

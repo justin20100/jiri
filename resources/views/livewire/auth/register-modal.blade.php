@@ -1,5 +1,6 @@
 {{--   Register Form  --}}
 <form wire:submit="register" class="register__contentContainer__right__formContainer__form form">
+    <h2 class="modal__contentContainer__content__splitter__right__formContainer__form__title">{{__("Inscrivez-vous")}}</h2>
     <!-- Avatar -->
     <div class="form__avatar">
         <div class="form__avatar__preview">
