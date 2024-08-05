@@ -265,6 +265,7 @@
     }
 
     .contact {
+        overflow: hidden;
 
         > .wrapper {
             position: relative;
@@ -293,6 +294,7 @@
                 }
 
                 &--second {
+                    z-index: -100;
                     bottom: inherit;
                     right: inherit;
                     top: 500px;

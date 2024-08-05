@@ -21,9 +21,7 @@
                                         <img src="{{asset('/images/logo-jiri.svg')}}" alt="Jiri logo" class="header__contentContainer__content__logo__link__img">
                                     </a>
                                 </div>
-                                @if (Route::has('login'))
-                                    <livewire:welcome.navigation/>
-                                @endif
+                                <livewire:welcome.navigation/>
                             </div>
                         </div>
                     </div>
@@ -155,8 +153,9 @@
                         <div class="footer__contentContainer">
                             <div class="footer__contentContainer__links">
                                 <div class="footer__contentContainer__links__buttonsContainer">
-                                    <a href="{{route('login')}}" class="footer__contentContainer__links__buttonsContainer__button button button--white">Se connecter</a>
-                                    <a href="{{route('register')}}" class="footer__contentContainer__links__buttonsContainer__button button">Créer un compte</a>
+                                    <div>
+                                        <livewire:welcome.navigation/>
+                                    </div>
                                 </div>
                             </div>
                             <div class="footer__contentContainer__legal">
