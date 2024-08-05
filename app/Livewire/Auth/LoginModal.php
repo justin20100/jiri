@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 class LoginModal extends Component
 {
     public LoginForm $form;
+    public bool $passwordVisible = false;
 
 //    public function mount(): void
 //    {
@@ -28,6 +29,11 @@ class LoginModal extends Component
             session('url.intended', RouteServiceProvider::HOME),
             navigate: true
         );
+    }
+
+    public function togglePasswordVisibility(): void
+    {
+        $this->passwordVisible = ! $this->passwordVisible;
     }
 
     public function render()

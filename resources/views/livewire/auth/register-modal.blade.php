@@ -55,13 +55,18 @@
     <!-- Password -->
     <div class="form__password">
         <x-input-label for="password" :value="__('Mot de passe')"/>
-
         <x-text-input wire:model="password" id="password"
-                      type="password"
+                      type="{{ $this->passwordVisible ? 'text' : 'password' }}"
                       name="password"
                       placeholder="{{__('Votre mot de passe ici')}}"
                       required autocomplete="new-password"/>
-
+        <div class="form__password__visibility">
+            <button wire:click.prevent="togglePasswordVisibility" class="form__password__visibility__button">
+                <svg class="form__password__visibility__button__svg">
+                    <use xlink:href="{{asset("images/sprite.svg#trash")}}"></use>
+                </svg>
+            </button>
+        </div>
         <x-input-error :messages="$errors->get('password')"/>
     </div>
 
@@ -70,7 +75,7 @@
         <x-input-label for="password_confirmation" :value="__('Confirmation du mot de passe')"/>
 
         <x-text-input wire:model="password_confirmation" id="password_confirmation"
-                      type="password"
+                      type="{{ $this->passwordVisible ? 'text' : 'password' }}"
                       name="password_confirmation"
                       placeholder="{{__('Votre mot de passe ici')}}"
                       required autocomplete="new-password"/>

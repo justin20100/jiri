@@ -1,11 +1,11 @@
 <div class="welcomeModal">
-    {{--    BUttons  --}}
+    {{--    Buttons  --}}
     <div wire:click="openLoginModal" class="button button--light login-button">Se connecter</div>
     <div wire:click="openRegisterModal" class="button">Créer un compte</div>
 
     {{--    Template    --}}
     @if($isOpen!="none")
-        <div class="modal" wire:keydown.escape.prevent="closeWelcomeModal">
+        <div class="modal" wire:keydown.escape.window="closeWelcomeModal">
             <div class="modal__contentContainer">
                 <div class="modal__contentContainer__content">
                     {{--     Splitter    --}}

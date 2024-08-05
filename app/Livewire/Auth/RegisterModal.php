@@ -23,6 +23,7 @@ class RegisterModal extends Component
     public string $password = '';
     public string $password_confirmation = '';
     public $uploadFile;
+    public bool $passwordVisible=false;
 
     /**
      * Handle an incoming registration request.
@@ -50,6 +51,10 @@ class RegisterModal extends Component
         $this->redirect(RouteServiceProvider::HOME, navigate: true);
     }
 
+    public function togglePasswordVisibility(): void
+    {
+        $this->passwordVisible = ! $this->passwordVisible;
+    }
 
     public function render()
     {

@@ -71,6 +71,31 @@ form {
         }
     }
 
+    .form__password{
+
+        &__visibility{
+            position: relative;
+
+            &__button{
+                position: absolute;
+                right: 6px;
+                bottom: 12px;
+                background: none;
+                border: none;
+
+                &:hover{
+                    cursor: pointer;
+                }
+
+                &__svg{
+                    fill: $main1;
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+
     .form__avatar {
         position: relative;
         display: flex;
