@@ -54,7 +54,7 @@
             <div class="projects__contentContainer__tableContainer">
                 <table class="projects__contentContainer__tableContainer__table table">
                     <thead class="table__head">
-                    <tr class="table__head__line">
+                    <tr class="table__head__line table__head__line--projects">
                         <th class="table__head__line__cell table__head__line__cell--select">
                             {{-- select  --}}
                         </th>
@@ -71,7 +71,7 @@
                     </thead>
                     <tbody class="table__body">
                     @foreach($this->projects as $project)
-                        <tr class="table__body__line">
+                        <tr class="table__body__line table__body__line--projects">
                             <td class="table__body__line__cell">
                                 <input type="checkbox" wire:model.change="selectedProjects" value="{{$project->id}}" class="table__body__line__cell__checkbox">
                             </td>
@@ -81,7 +81,7 @@
                             <td class="table__body__line__cell">
                                 {{ \Illuminate\Support\Str::limit($project->description, 100, $end='...') }}
                             </td>
-                            <td class="table__body__line__cell">
+                            <td class="table__body__line__cell table__body__line__cell--actions">
                                 {{--  icon avec trois petits points pour afficher le mini dialog --}}
                                 {{--                            <div class="table__body__line__cell__icon">--}}
                                 {{--                                <svg class="table__body__line__cell__icon__svg">--}}

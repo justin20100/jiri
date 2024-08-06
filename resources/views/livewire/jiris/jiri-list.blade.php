@@ -54,7 +54,7 @@
             <div class="jiris__contentContainer__tableContainer">
                 <table class="jiris__contentContainer__tableContainer__table table">
                     <thead class="table__head">
-                    <tr class="table__head__line">
+                    <tr class="table__head__line table__head__line--jiris">
                         <th class="table__head__line__cell table__head__line__cell--select">
                             {{-- select  --}}
                         </th>
@@ -77,7 +77,7 @@
                     </thead>
                     <tbody class="table__body">
                     @foreach($this->jiris as $jiri)
-                        <tr class="table__body__line">
+                        <tr class="table__body__line table__body__line--jiris">
                             <td class="table__body__line__cell">
                                 <input type="checkbox" wire:model.change="selectedJiris" value="{{$jiri->id}}" class="table__body__line__cell__checkbox">
                             </td>
@@ -102,13 +102,7 @@
                                     {{ $jiri->status }}
                                 </p>
                             </td>
-                            <td class="table__body__line__cell">
-                                {{--  icon avec trois petits points pour afficher le mini dialog --}}
-                                {{--                            <div class="table__body__line__cell__icon">--}}
-                                {{--                                <svg class="table__body__line__cell__icon__svg">--}}
-                                {{--                                    <use xlink:href="{{asset("images/sprite.svg#more")}}"></use>--}}
-                                {{--                                </svg>--}}
-                                {{--                            </div>--}}
+                            <td class="table__body__line__cell table__body__line__cell--actions">
                                 <div class="table__body__line__cell__actions">
                                     <a href="{{route('jiris.edit', $jiri->id)}}" class="table__body__line__cell__actions__edit">
                                         <svg class="table__body__line__cell__actions__edit__svg">

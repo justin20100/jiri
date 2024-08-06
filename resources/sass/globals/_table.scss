@@ -3,67 +3,49 @@
 *********************************************/
 
 .table {
+    display: block;
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 5px;
 
     &__head {
-        margin-bottom: 20px;
+        width: 100%;
+        display: grid;
+        align-items: start;
+        margin-bottom: 5px;
 
         &__line {
+            display: grid;
+            align-items: center;
+            justify-items: start;
             background-color: $white;
-            border-radius: 50px;
+            border-radius: 10px;
+
+            &--contacts {
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 5fr;
+            }
+            &--jiris {
+                grid-template-columns: 1fr 2fr 1.5fr 1.5fr 1fr 5fr;
+            }
+            &--projects {
+                 grid-template-columns: 1fr 1fr 4fr 2fr;
+             }
 
             &__cell {
+                width: 100%;
                 text-align: left;
                 padding-top: 10px;
                 padding-bottom: 10px;
-                vertical-align: middle;
-
                 color: $grey;
                 font-family: $textFont;
                 font-weight: 100;
 
-                &--select {
-                    width: 80px;
-                }
-
-                &--avatar {
-                    width: 100px;
-                }
-
-                &--firstname {
-                    width: 200px;
-                }
-
-                &--lastname {
-                    width: 200px;
-                }
-
-                &--email {
-                    width: 300px;
-                }
-
-                &--title {
-                    width: 400px;
-                }
-
-                &--description {
-                    max-width: 800px;
-                }
-
-                &--more {
-                    max-width: 100%;
-                }
-
                 &:first-child {
-                    padding-left: 40px;
+                    padding-left: 30px;
                     border-top-left-radius: 10px;
                     border-bottom-left-radius: 10px;
                 }
 
                 &:last-child {
-                    padding-right: 40px;
+                    padding-right: 30px;
                     border-top-right-radius: 10px;
                     border-bottom-right-radius: 10px;
                 }
@@ -72,41 +54,39 @@
     }
 
     &__body {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+        overflow: scroll;
 
         &__line {
+            width: 100%;
+            display: grid;
+            align-items: center;
+            justify-items: start;
             background-color: $white;
-            border-radius: 50px;
+            border-radius: 10px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            &--contacts {
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 5fr;
+            }
+            &--jiris {
+                grid-template-columns: 1fr 2fr 1.5fr 1.5fr 1fr 5fr;
+            }
+            &--projects {
+                grid-template-columns: 1fr 1fr 4fr 2fr;
+            }
 
             &__cell {
                 text-align: left;
-                padding-top: 15px;
-                padding-bottom: 15px;
-                padding-right: 20px;
                 vertical-align: middle;
 
                 font-family: $textFont;
                 font-size: $smallSize;
                 color: $lightBlack;
-
-                &--select {
-                    width: 10px;
-                }
-
-                &--firstname {
-                    max-width: 25px;
-                }
-
-                &--lastname {
-                    max-width: 25px;
-                }
-
-                &--email {
-                    max-width: 150px;
-                }
-
-                &--more {
-                    max-width: 100%;
-                }
 
                 &__icon {
                     display: flex;
@@ -120,10 +100,15 @@
                     }
                 }
 
+                // Revoir
+                &--actions {
+                    justify-self: end;
+                }
                 &__actions {
                     display: flex;
-                    justify-content: flex-end;
+                    justify-self: end;
                     align-items: center;
+                    width: 100%;
                     gap: 20px;
 
                     &__edit {
@@ -176,15 +161,15 @@
                     color: $white;
                     width: fit-content;
 
-                    &--orange{
+                    &--orange {
                         background-color: $orange;
                     }
 
-                    &--green{
+                    &--green {
                         background-color: $green;
                     }
 
-                    &--blue{
+                    &--blue {
                         background-color: $blue;
                     }
                 }
