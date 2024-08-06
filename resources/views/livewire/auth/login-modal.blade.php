@@ -18,7 +18,7 @@
         <div class="form__password__visibility">
             <button wire:click.prevent="togglePasswordVisibility" class="form__password__visibility__button">
                 <svg class="form__password__visibility__button__svg">
-                    <use xlink:href="{{asset("images/sprite.svg#trash")}}"></use>
+                    <use xlink:href="{{asset("images/sprite.svg#eye")}}"></use>
                 </svg>
             </button>
         </div>

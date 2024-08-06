@@ -19,41 +19,45 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Creation de deux users
         $user1 = User::factory()
             ->create([
                 'avatar' => 'defaultavatar.jpg',
-                'firstname' => 'adminFirst',
-                'lastname' => 'adminLast',
+                'firstname' => 'adminFirstName',
+                'lastname' => 'adminLastName',
                 'email' => 'admin@gmail.com',
-                'password' => bcrypt('admin'),
+                'password' => bcrypt('Admin1234'),
             ]);
-
         $user2 = User::factory()
             ->create([
                 'avatar' => 'defaultavatar.jpg',
                 'firstname' => 'Justin',
                 'lastname' => 'Vincent',
                 'email' => 'justinvincent@gmail.com',
-                'password' => bcrypt('admin'),
+                'password' => bcrypt('Admin1234'),
             ]);
-
         $users = collect([$user1, $user2]);
 
         foreach ($users as $user) {
-            Jiri::factory()->count(32)->create([
+
+            // Création de contacts
+            Contact::factory()->count(20)->create([
                 'user_id' => $user->id,
             ]);
 
-            Contact::factory()->count(25)->create([
+            // Création de projets
+            Project::factory()->count(10)->create([
                 'user_id' => $user->id,
             ]);
 
-            Project::factory()->count(12)->create([
+            // Création de jiris
+            Jiri::factory()->count(5)->create([
                 'user_id' => $user->id,
             ]);
 
             $jiris = $user->jiris;
 
+            // Ajout de contacts aux jiris
             foreach ($jiris as $jiri) {
                 $contacts = $user->contacts->random(3);
 
@@ -65,6 +69,7 @@ class DatabaseSeeder extends Seeder
                 }
             }
 
+            // Ajout de projets aux jiris
             foreach ($jiris as $jiri) {
                 $projects = $user->projects->random(3);
 
@@ -76,6 +81,7 @@ class DatabaseSeeder extends Seeder
                 }
             }
 
+            // Ajout de points de contact aux projets
             foreach ($jiris as $jiri) {
                 $jiriProjects = $jiri->jiriProjects;
 

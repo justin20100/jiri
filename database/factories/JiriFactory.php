@@ -12,7 +12,7 @@ class JiriFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'name' => $this->faker->sentence(3),
             'start' => $this->faker->dateTime(),
             'end' => $this->faker->dateTime(),
             'status' => $this->faker->randomElement(['verrouillé', 'cloturé', 'disponnible']),
