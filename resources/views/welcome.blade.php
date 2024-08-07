@@ -123,27 +123,7 @@
                                 <h2 class="contact__contentContainer__heading__title">Contactez-nous</h2>
                             </div>
                             <did class="contact__contentContainer__formContainer">
-                                <form action="" class="contact__contentContainer__formContainer__form welcome-form">
-                                    <div class="welcome-form__row">
-                                        <div class="welcome-form__inputContainer">
-                                            <label for="name" class="welcome-form__inputContainer__label">Nom</label>
-                                            <input type="text" id="name" class="welcome-form__inputContainer__input" placeholder="Votre nom">
-                                        </div>
-                                        <div class="welcome-form__inputContainer">
-                                            <label for="firstname" class="welcome-form__inputContainer__label">Prénom</label>
-                                            <input type="text" id="firstname" class="welcome-form__inputContainer__input" placeholder="Votre prénom">
-                                        </div>
-                                    </div>
-                                    <div class="welcome-form__inputContainer">
-                                        <label for="email" class="welcome-form__inputContainer__label">Email</label>
-                                        <input type="email" id="email" class="welcome-form__inputContainer__input" placeholder="Votre email">
-                                    </div>
-                                    <div class="welcome-form__inputContainer">
-                                        <label for="message" class="welcome-form__inputContainer__label">Message</label>
-                                        <textarea name="message" id="message" class="welcome-form__inputContainer__textarea" placeholder="Votre message"></textarea>
-                                    </div>
-                                    <button type="submit" class="welcome-form__button button">Envoyer</button>
-                                </form>
+                                <livewire:welcome.contact-us/>
                             </did>
                         </div>
                     </div>
