@@ -3,30 +3,27 @@
 namespace App\Livewire\Welcome;
 
 use App\Livewire\Forms\ContactUsForm;
-use App\Livewire\Forms\ContactUsMail;
-use App\Livewire\Forms\Mail;
-use App\Livewire\Forms\Validate;
+use App\Mail\ContactUsMail;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class ContactUs extends Component
 {
-
     public ContactUsForm $form;
-
 
     public function submitForm()
     {
         // Validate form
-        $this->validate();
+        $this->form->validate();
 
-        // Send email
-         Mail::to(config('mail.from.address'))->send(new ContactUsMail($this->firstname, $this->lastname, $this->email, $this->message));
+        // Send email to admin with the form data
+        Mail::to('dev@justin-vincent.be')->send(new ContactUsMail());
 
         // Flash message
         session()->flash('success', 'Your message has been sent successfully!');
 
         // Clear form
-        $this->reset();
+        $this->form->reset();
     }
 
     public function render()

@@ -1,4 +1,4 @@
-<form action="" class="contact__contentContainer__formContainer__form welcome-form">
+<form wire:submit="submitForm" action="#" class="contact__contentContainer__formContainer__form welcome-form">
     <div class="welcome-form__row">
         <div class="welcome-form__inputContainer">
             <label for="firstname" class="welcome-form__inputContainer__label">Prénom</label>
