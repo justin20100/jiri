@@ -48,7 +48,7 @@ form {
     }
 
     // FORMS PARTS ------------------------------
-    .form__email, .form__password, .form__firstname, .form__lastname, .form__title,.form__name, .form__description, .form__date {
+    .form__email, .form__password, .form__firstname, .form__lastname, .form__title, .form__name, .form__description, .form__date {
         margin-bottom: 20px;
 
         > label {
@@ -72,23 +72,23 @@ form {
         }
     }
 
-    .form__password{
+    .form__password {
 
-        &__visibility{
+        &__visibility {
             position: relative;
 
-            &__button{
+            &__button {
                 position: absolute;
                 right: 6px;
                 bottom: 12px;
                 background: none;
                 border: none;
 
-                &:hover{
+                &:hover {
                     cursor: pointer;
                 }
 
-                &__svg{
+                &__svg {
                     fill: $main1;
                     width: 20px;
                     height: 20px;
@@ -181,12 +181,12 @@ form {
         }
     }
 
-    .errorContainer{
+    .errorContainer {
         position: absolute;
         top: calc(100% + 5px);
         left: 0;
 
-        &__error{
+        &__error {
             font-family: $textFont;
             color: $red;
             font-size: $smallSize;
@@ -194,35 +194,28 @@ form {
         }
     }
 
-    //input[type="text"], input[type="email"], input[type="file"], select {
-    //    border-bottom: 1px solid $grey;
-    //    //padding: 4px 14px;
-    //    //padding-left: 0;
-    //    //font-size: $normalSize;
-    //    height: 40px;
-    //    line-height: 40px;
-    //    font-family: $textFont;
-    //    background: none;
-    //    color: $grey; // $secondary
-    //    font-weight: normal;
-    //    width: 100%;
-    //
-    //    &::placeholder {
-    //        color: $main1;
-    //        font-weight: normal;
-    //    }
-    //}
+    // SUCCESS --------------------------------
+    .success {
+        background-color: lighten($green, 34%);
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        border-radius: 5px;
 
-    // CV
-    //input[type="file"] {
-    //    padding-left: 80px; // space for label
-    //    direction: rtl; // file and button
-    //
-    //    @media all and (max-width: 600px) {
-    //        padding-left: 40px;
-    //    }
-    //}
+        &__icon {
+            fill: $green;
+            width: 20px;
+            height: 20px;
+        }
 
+        &__text {
+            padding-left: 10px;
+            font-family: $textFont;
+            font-size: $smallSize;
+            font-weight: normal;
+            color: $green;
+        }
+    }
 
     //textarea
     textarea {
