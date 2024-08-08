@@ -180,6 +180,19 @@ form {
         }
     }
 
+    .errorContainer{
+        position: absolute;
+        top: calc(100% + 5px);
+        left: 0;
+
+        &__error{
+            font-family: $textFont;
+            color: $red;
+            font-size: $smallSize;
+            font-weight: normal;
+        }
+    }
+
     //input[type="text"], input[type="email"], input[type="file"], select {
     //    border-bottom: 1px solid $grey;
     //    //padding: 4px 14px;
@@ -221,6 +234,7 @@ form {
         font-weight: normal;
     }
 }
+
 
 // checkbox
 input[type="checkbox"] {
