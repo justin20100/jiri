@@ -17,7 +17,7 @@ class ContactUs extends Component
         $this->form->validate();
 
         // Send email to admin with the form data
-        Mail::to('dev@justin-vincent.be')->send(new ContactUsMail());
+        Mail::to('dev@justin-vincent.be')->send(new ContactUsMail($this->form->toArray()));
 
         // Flash message
         session()->flash('success', 'Your message has been sent successfully!');

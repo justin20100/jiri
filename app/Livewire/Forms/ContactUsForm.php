@@ -16,6 +16,6 @@ class ContactUsForm extends Form
     #[Validate('required|email|max:255')]
     public string $email = '';
 
-    #[Validate('required|min:3|max:300')]
+    #[Validate('required|min:3|max:800')]
     public string $message = '';
 }

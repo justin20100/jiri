@@ -2,6 +2,7 @@
 FORMS
 *********************************************/
 
+// form
 form {
     // INPUTS ------------------------------
     input[type="text"], input[type="email"], input[type="password"], input[type="search"], input[type="tel"], input[type="url"], input[type=datetime-local], textarea {
@@ -235,12 +236,8 @@ form {
     }
 }
 
-
 // checkbox
 input[type="checkbox"] {
     accent-color: $main1;
     border-radius: 10px;
 }
-
-
-
