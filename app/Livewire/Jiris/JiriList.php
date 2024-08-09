@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Jiris;
 
+use App\Livewire\Tools\ConfirmModal;
 use App\Models\Jiri;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -10,10 +11,12 @@ use Livewire\WithPagination;
 class JiriList extends Component
 {
     use WithPagination;
+
     public $jiris;
-    protected $listeners = ['refreshJiriList' => 'refreshJiriList'];
+    protected $listeners = ['refreshJiriList' => 'refreshJiriList', 'confirmed' => 'onConfirmed', 'cancelled' => 'onCancelled'];
     public array $selectedJiris = [];
     public bool $actionsDisabled = true;
+    public array $jiriToDelete = [];
 
     public function mount(): void
     {
@@ -39,26 +42,33 @@ class JiriList extends Component
 
     public function deleteSelected(): void
     {
-        foreach ($this->selectedJiris as $jiriId) {
-            $this->deleteJiri($jiriId);
-        }
-
-        $this->selectedJiris = [];
-        $this->refreshJiriList();
+        $this->jiriToDelete = $this->selectedJiris;
+        $this->dispatch('checkConfirm', 'Are you sure you want to delete the selected jiris?');
     }
 
     public function deleteJiri($jiriId): void
     {
-        $jiri = Jiri::findOrFail($jiriId);
+        $this->jiriToDelete = [$jiriId];
+        $this->dispatch('checkConfirm', 'Are you sure you want to delete this jiri?');
+    }
 
-        foreach ($jiri->jiriProjects as $jiriProject) {
-            $jiriProject->contactDuties()->delete();
+    public function onConfirmed(): void
+    {
+        foreach ($this->jiriToDelete as $jiriId) {
+            $jiri = Jiri::findOrFail($jiriId);
+            foreach ($jiri->jiriProjects as $jiriProject) {
+                $jiriProject->contactDuties()->delete();
+            }
+            $jiri->contactJiris()->delete();
+            $jiri->jiriProjects()->delete();
+            $jiri->delete();
         }
-
-        $jiri->contactJiris()->delete();
-        $jiri->jiriProjects()->delete();
-        $jiri->delete();
-
+        $this->selectedJiris = [];
         $this->refreshJiriList();
+    }
+
+    public function onCancelled(): void
+    {
+        $this->jiriToDelete = [];
     }
 }

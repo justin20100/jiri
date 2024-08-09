@@ -8,7 +8,7 @@
                         <div class="iconsBox__contentContainer">
                             <div class="iconsBox__contentContainer__list">
                                 <div class="iconsBox__contentContainer__list__item">
-                                    <button wire:click.prevent="deleteSelected"  wire:confirm="suprimer ces jiris ?"
+                                    <button wire:click.prevent="deleteSelected"
                                             class="iconsBox__contentContainer__list__item__button" title="{{__('Supprimer les éléments sélectionnés')}}">
                                         <svg class="iconsBox__contentContainer__list__item__button__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
@@ -52,6 +52,7 @@
             </div>
         @else
             <div class="jiris__contentContainer__tableContainer">
+                <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
                 <table class="jiris__contentContainer__tableContainer__table table">
                     <thead class="table__head">
                     <tr class="table__head__line table__head__line--jiris">
@@ -109,7 +110,7 @@
                                             <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
                                         </svg>
                                     </a>
-                                    <button wire:click="deleteJiri({{$jiri->id}})" wire:click.prevent="deleteSelected" onclick="confirm('Suprimer ce jiri ?')|| event.stopImmediatePropagation()" class="table__body__line__cell__actions__delete">
+                                    <button wire:click="deleteJiri({{$jiri->id}})" wire:click.prevent="deleteSelected" class="table__body__line__cell__actions__delete">
                                         <svg class="table__body__line__cell__actions__delete__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
                                         </svg>
