@@ -31,6 +31,21 @@
         }
     }
 
+    &--red {
+        background-color: $red;
+        border: solid 1px $red;
+        color: $white;
+
+        &:hover {
+            background-color: $white;
+            color: $red;
+        }
+
+        > a {
+            color: $white;
+        }
+    }
+
     // red BG and white font
     &--white {
         background-color: $white;
