@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Jiris;
 
-use App\Livewire\Tools\ConfirmModal;
 use App\Models\Jiri;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;

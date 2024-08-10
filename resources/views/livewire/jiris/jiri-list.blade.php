@@ -110,7 +110,7 @@
                                             <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
                                         </svg>
                                     </a>
-                                    <button wire:click="deleteJiri({{$jiri->id}})" wire:click.prevent="deleteSelected" class="table__body__line__cell__actions__delete">
+                                    <button wire:click="deleteJiri({{$jiri->id}})" class="table__body__line__cell__actions__delete">
                                         <svg class="table__body__line__cell__actions__delete__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
                                         </svg>
