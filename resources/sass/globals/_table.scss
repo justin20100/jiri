@@ -21,7 +21,7 @@
             border-radius: 10px;
 
             &--contacts {
-                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 5fr;
+                grid-template-columns: 1fr 1fr 2fr 2fr 4fr 2fr;
             }
             &--jiris {
                 grid-template-columns: 1fr 2fr 1.5fr 1.5fr 1fr 5fr;
@@ -71,7 +71,7 @@
             border-radius: 10px;
 
             &--contacts {
-                grid-template-columns: 1fr 1fr 1fr 1fr 1fr 5fr;
+                grid-template-columns: 1fr 1fr 2fr 2fr 4fr 2fr;
             }
             &--jiris {
                 grid-template-columns: 1fr 2fr 1.5fr 1.5fr 1fr 5fr;
