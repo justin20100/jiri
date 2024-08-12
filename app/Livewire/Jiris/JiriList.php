@@ -4,6 +4,7 @@ namespace App\Livewire\Jiris;
 
 use App\Models\Jiri;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -22,7 +23,7 @@ class JiriList extends Component
         $this->jiris = Auth::user()->jiris()->orderBy('start', 'desc')->get();
     }
 
-    public function render()
+    public function render() : View
     {
         $this->actionsDisabled = count($this->selectedJiris) < 1;
         $this->mount();

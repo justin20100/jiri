@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         // Creation de deux users
         $user1 = User::factory()
             ->create([
-                'avatar' => 'defaultavatar.jpg',
+                'avatar' => 'defaultAvatar.jpg',
                 'firstname' => 'adminFirstName',
                 'lastname' => 'adminLastName',
                 'email' => 'admin@gmail.com',
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
             ]);
         $user2 = User::factory()
             ->create([
-                'avatar' => 'defaultavatar.jpg',
+                'avatar' => 'defaultAvatar.jpg',
                 'firstname' => 'Justin',
                 'lastname' => 'Vincent',
                 'email' => 'justinvincent@gmail.com',

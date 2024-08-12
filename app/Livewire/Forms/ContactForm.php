@@ -37,7 +37,7 @@ class ContactForm extends Form
             'firstname' => $this->firstname,
             'lastname' => $this->lastname,
             'email' => $this->email,
-            'avatar' => $this->storeFile($this->avatar) ?? 'defaultavatar.jpg',
+            'avatar' => $this->storeFile($this->avatar) ?? 'defaultAvatar.jpg',
         ]);
 
         $this->reset(['firstname', 'lastname', 'email', 'avatar']);
@@ -51,7 +51,7 @@ class ContactForm extends Form
             'firstname' => $this->firstname,
             'lastname' => $this->lastname,
             'email' => $this->email,
-            'avatar' => $this->storeFile($this->avatar) ?? 'defaultavatar.jpg',
+            'avatar' => $this->storeFile($this->avatar) ?? 'defaultAvatar.jpg',
         ]);
     }
 
