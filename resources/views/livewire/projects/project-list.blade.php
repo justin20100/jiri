@@ -8,7 +8,7 @@
                         <div class="iconsBox__contentContainer">
                             <div class="iconsBox__contentContainer__list">
                                 <div class="iconsBox__contentContainer__list__item">
-                                    <button wire:click.prevent="deleteSelected"  wire:confirm="suprimer ces projets ?"
+                                    <button wire:click.prevent="deleteSelected"
                                             class="iconsBox__contentContainer__list__item__button" title="{{__('Supprimer les éléments sélectionnés')}}">
                                         <svg class="iconsBox__contentContainer__list__item__button__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
@@ -52,6 +52,20 @@
             </div>
         @else
             <div class="projects__contentContainer__tableContainer">
+
+                <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
+
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
                 <table class="projects__contentContainer__tableContainer__table table">
                     <thead class="table__head">
                     <tr class="table__head__line table__head__line--projects">
@@ -82,19 +96,13 @@
                                 {{ \Illuminate\Support\Str::limit($project->description, 100, $end='...') }}
                             </td>
                             <td class="table__body__line__cell table__body__line__cell--actions">
-                                {{--  icon avec trois petits points pour afficher le mini dialog --}}
-                                {{--                            <div class="table__body__line__cell__icon">--}}
-                                {{--                                <svg class="table__body__line__cell__icon__svg">--}}
-                                {{--                                    <use xlink:href="{{asset("images/sprite.svg#more")}}"></use>--}}
-                                {{--                                </svg>--}}
-                                {{--                            </div>--}}
                                 <div class="table__body__line__cell__actions">
                                     <a href="{{route('projects.edit', $project->id)}}" class="table__body__line__cell__actions__edit">
                                         <svg class="table__body__line__cell__actions__edit__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
                                         </svg>
                                     </a>
-                                    <button wire:click="deleteProject({{$project->id}})" wire:click.prevent="deleteSelected" onclick="confirm('Suprimer ce projet ?')|| event.stopImmediatePropagation()" class="table__body__line__cell__actions__delete">
+                                    <button wire:click="deleteProject({{$project->id}})" class="table__body__line__cell__actions__delete">
                                         <svg class="table__body__line__cell__actions__delete__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
                                         </svg>

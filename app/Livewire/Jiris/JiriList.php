@@ -42,6 +42,7 @@ class JiriList extends Component
     {
         $this->selectedJiris = [];
     }
+
     public function deleteSelected(): void
     {
         $this->jiriToDelete = $this->selectedJiris;
@@ -49,7 +50,6 @@ class JiriList extends Component
             titleMessage: __('Are you sure you want to delete the selected jiris?'),
             message: __('If you delete the selected jiris, all related data will be lost but not the projects and the contacts.'));
     }
-
     public function deleteJiri($jiriId): void
     {
         $this->jiriToDelete = [$jiriId];

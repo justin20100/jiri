@@ -97,5 +97,10 @@ class DatabaseSeeder extends Seeder
                 }
             }
         }
+
+        Project::factory()->count(4)->create([
+            'user_id' => 1,
+            'title' => 'Projet sans jiri',
+        ]);
     }
 }

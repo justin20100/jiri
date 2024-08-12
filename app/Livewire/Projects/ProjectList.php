@@ -4,18 +4,22 @@ namespace App\Livewire\Projects;
 
 use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 
 class ProjectList extends Component
 {
-    public $projects;
-    protected $listeners = ['refreshProjectList' => 'refreshProjectList'];
-    public array $selectedProjects = [];
+    protected $listeners = ['refreshProjectList' => 'refreshProjectList', 'confirmed' => 'onConfirmed', 'cancelled' => 'onCancelled'];
     public bool $actionsDisabled = true;
+    public array $selectedProjects = [];
+    public array $projectsToDelete = [];
 
-    public function mount(): void
+
+    #[Computed]
+    public function projects(): mixed
     {
-        $this->projects = Auth::user()->projects()->get();
+        return Auth::user()->projects()->get();
     }
 
     public function render()
@@ -24,7 +28,7 @@ class ProjectList extends Component
         return view('livewire.projects.project-list');
     }
 
-    // Refresh the projects list by getting all the user his projects
+    // Selection helpers
     public function refreshProjectList(): void
     {
         $this->projects = Auth::user()->projects()->get();
@@ -35,18 +39,49 @@ class ProjectList extends Component
         $this->selectedProjects = [];
     }
 
-    // Delete all the selected Projects
+    // Verify if the selected projects have jiris and can be deleted and wait a confirmation
     public function deleteSelected(): void
     {
-        Project::query()->whereIn('id', $this->selectedProjects)->delete();
-        $this->selectedProjects = [];
-        $this->refreshProjectList();
+        $this->projectsToDelete = $this->selectedProjects;
+        $this->dispatch('checkConfirm',
+            titleMessage: __('Are you sure you want to delete the selected projects?'),
+            message: __('Only projects without jiris can be deleted.'));
     }
 
     // Delete a project by passing the id
     public function deleteProject($projectId): void
     {
-        Project::destroy($projectId);
-        $this->refreshProjectList();
+        $this->projectsToDelete = [$projectId];
+        $this->dispatch('checkConfirm',
+            titleMessage: __('Are you sure you want to delete the selected projects?'),
+            message: __('Only projects without jiris can be deleted.'));
+    }
+
+    public function onConfirmed(): void
+    {
+        DB::transaction(function () {
+            $projects = Project::whereIn('id', $this->projectsToDelete)->withCount('jirisProjects')->get();
+
+            $undeletableProjects = [];
+
+            foreach ($projects as $project) {
+                if ($project->jiris_projects_count > 0) {
+                    $undeletableProjects[] = $project->title;
+                } else {
+                    $project->delete();
+                }
+            }
+
+            if (!empty($undeletableProjects)) {
+                session()->flash('error', __("You can't delete the following projects as they are used in a jiri: ") . implode(', ', $undeletableProjects));
+            } else {
+                session()->flash('success', __("Projects deleted successfully."));
+            }
+
+            $this->selectedProjects = [];
+            $this->projectsToDelete = [];
+
+            $this->refreshProjectList();
+        });
     }
 }
