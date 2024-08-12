@@ -22,7 +22,6 @@ class JiriList extends Component
     {
         $this->jiris = Auth::user()->jiris()->orderBy('start', 'desc')->get();
     }
-
     public function render() : View
     {
         $this->actionsDisabled = count($this->selectedJiris) < 1;
@@ -39,17 +38,20 @@ class JiriList extends Component
     {
         $this->selectedJiris = [];
     }
-
     public function deleteSelected(): void
     {
         $this->jiriToDelete = $this->selectedJiris;
-        $this->dispatch('checkConfirm', 'Are you sure you want to delete the selected jiris?');
+        $this->dispatch('checkConfirm',
+            titleMessage: __('Are you sure you want to delete the selected jiris?'),
+            message: __('If you delete the selected jiris, all related data will be lost but not the projects and the contacts.'));
     }
 
     public function deleteJiri($jiriId): void
     {
         $this->jiriToDelete = [$jiriId];
-        $this->dispatch('checkConfirm', 'Are you sure you want to delete this jiri?');
+        $this->dispatch('checkConfirm',
+            titleMessage: __('Are you sure you want to delete the selected jiris?'),
+            message: __('If you delete the selected jiris, all related data will be lost but not the projects and the contacts.'));
     }
 
     public function onConfirmed(): void
@@ -66,7 +68,6 @@ class JiriList extends Component
         $this->selectedJiris = [];
         $this->refreshJiriList();
     }
-
     public function onCancelled(): void
     {
         $this->jiriToDelete = [];

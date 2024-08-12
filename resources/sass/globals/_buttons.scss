@@ -16,7 +16,7 @@
         color: $main1;
     }
 
-    // main 5 BG and main1 font
+    // ----------- Colors
     &--light {
         background-color: $main5;
         border: solid 1px $main5;
@@ -30,7 +30,6 @@
             color: $main1;
         }
     }
-
     &--red {
         background-color: $red;
         border: solid 1px $red;
@@ -45,8 +44,6 @@
             color: $white;
         }
     }
-
-    // red BG and white font
     &--white {
         background-color: $white;
         border: solid 1px $white;
@@ -60,7 +57,6 @@
             color: $main1;
         }
     }
-
     &--red {
         background-color: $red;
         border: solid 1px $red;
@@ -76,7 +72,12 @@
         }
     }
 
+    // ----------- Sizes
     &--fullwidth {
         width: 100%;
+    }
+    &--small {
+        padding: 10px 18px;
+        font-size: $smallSize;
     }
 }

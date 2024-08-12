@@ -16,25 +16,36 @@
 
     &__contentContainer {
         background-color: $white;
-        padding: 40px;
-        border-radius: 8px;
+        padding: 50px 70px;
+        border-radius: 14px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         max-width: 400px;
         width: 90%;
         text-align: center;
 
-        &__message {
-            font-size: $largeSize;
+        &__titleMessage {
+            font-size: $x-largeSize;
             font-family: $textFont;
-            font-weight: 500;
+            font-weight: 600;
             color: $main1;
             line-height: 1.5;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+
+        &__message {
+            font-size: $normalSize;
+            font-family: $textFont;
+            font-weight: 300;
+            color: $lightBlack;
+            line-height: 1.5;
             margin-bottom: 50px;
+            padding: 0 20px;
         }
 
         &__buttons {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-content: center;
 
             &__button {

@@ -7,6 +7,7 @@ use Livewire\Component;
 class ConfirmModal extends Component
 {
     public bool $show = false;
+    public string $titleMessage = '';
     public string $message = '';
     protected $listeners = ['checkConfirm' => 'checkConfirm',];
 
@@ -15,13 +16,15 @@ class ConfirmModal extends Component
     {
         return view('livewire.tools.confirm-modal', [
             'show'=> $this->show,
+            'titleMessage' => $this->titleMessage,
             'message' => $this->message,
         ]);
     }
 
-    public function checkConfirm($message): void
+    public function checkConfirm($titleMessage, $message): void
     {
         $this->show = true;
+        $this->titleMessage = $titleMessage;
         $this->message = $message;
     }
 
