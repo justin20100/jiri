@@ -21,7 +21,7 @@ class ConfirmModal extends Component
         ]);
     }
 
-    public function checkConfirm($titleMessage, $message): void
+    public function checkConfirm($titleMessage = '', $message = ''): void
     {
         $this->show = true;
         $this->titleMessage = $titleMessage;
