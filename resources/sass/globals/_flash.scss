@@ -1,0 +1,71 @@
+/*********************************************
+    FLASH GLOBALS
+*********************************************/
+
+.flash {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    animation: ease-in-out 0.4s flash__animation;
+
+    @keyframes flash__animation {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: end;
+        justify-content: center;
+        width: 100%;
+
+        &__type {
+            border-radius: 14px;
+            padding: 15px 20px;
+
+            &--success {
+                background-color: lighten($appleGreen, 22%);
+
+                > .flash__container__type__name {
+                    color: $darkGreen;
+                }
+                > .flash__container__type__message {
+                    color: $darkGreen;
+                }
+            }
+
+            &--error {
+                background-color: lighten($red, 20%);
+
+                > .flash__container__type__name {
+                    color: $darkRed;
+                }
+                > .flash__container__type__message {
+                    color: $darkRed;
+                }
+            }
+
+            &__name {
+                font-family: $titleFont;
+                font-size: $normalSize;
+                font-weight: 400;
+                margin-bottom: 7px;
+                line-height: 1.2;
+            }
+
+            &__message {
+                font-family: $textFont;
+                font-size: $smallSize;
+                font-weight: 400;
+                line-height: 1.3;
+            }
+        }
+    }
+}

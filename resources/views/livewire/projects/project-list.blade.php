@@ -1,4 +1,44 @@
 <section class="projects">
+
+    {{--  FLASH MESSAGES  --}}
+        @if (session('success') || session('error'))
+            <div class="flash">
+                <div class="flash__container">
+                    @if (session('success'))
+                        <div class="flash__container__type flash__container__type--success"
+                             x-data="{ show: true }"
+                             x-init="setTimeout(() => show = false, 8000)"
+                             x-show="show">
+                            <p class="flash__container__type__name">
+                                {{__('Successfully deleted :')}}
+                            </p>
+                            <p class="flash__container__type__message">
+                                {{ session('success') }}
+                            </p>
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="flash__container__type flash__container__type--error"
+                             x-data="{ show: true }"
+                             x-init="setTimeout(() => show = false, 8000)"
+                             x-show="show">
+                            <p class="flash__container__type__name">
+                                {{__('Not deleted because used in a jiri :')}}
+                            </p>
+                            <p class="flash__container__type__message">
+                                {{ session('error') }}
+                            </p>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        @endif
+    {{--  END FLASH MESSAGES  --}}
+
+    {{--  CONFIRM MODAL  --}}
+        <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
+    {{--  END CONFIRM MODAL  --}}
+
     <div class="projects__contentContainer">
         <div class="projects__contentContainer__header">
             <h1 class="projects__contentContainer__header__title">{{__("Projets")}}</h1>
@@ -52,19 +92,6 @@
             </div>
         @else
             <div class="projects__contentContainer__tableContainer">
-
-                <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
-
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
-                @if (session('error'))
-                    <div class="alert alert-danger">
-                        {{ session('error') }}
-                    </div>
-                @endif
 
                 <table class="projects__contentContainer__tableContainer__table table">
                     <thead class="table__head">

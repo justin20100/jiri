@@ -63,19 +63,22 @@ class ProjectList extends Component
             $projects = Project::whereIn('id', $this->projectsToDelete)->withCount('jirisProjects')->get();
 
             $undeletableProjects = [];
+            $deletableProjects = [];
 
             foreach ($projects as $project) {
                 if ($project->jiris_projects_count > 0) {
                     $undeletableProjects[] = $project->title;
                 } else {
+                    $deletableProjects[] = $project->title;
                     $project->delete();
                 }
             }
 
             if (!empty($undeletableProjects)) {
-                session()->flash('error', __("You can't delete the following projects as they are used in a jiri: ") . implode(', ', $undeletableProjects));
-            } else {
-                session()->flash('success', __("Projects deleted successfully."));
+                session()->flash('error', implode(', ', $undeletableProjects));
+            }
+            if (!empty($deletableProjects)) {
+                session()->flash('success', implode(', ', $deletableProjects));
             }
 
             $this->selectedProjects = [];
