@@ -1,4 +1,44 @@
 <section class="contacts">
+
+    {{--  FLASH MESSAGES  --}}
+    @if (session('success') || session('error'))
+        <div class="flash">
+            <div class="flash__container">
+                @if (session('success'))
+                    <div class="flash__container__type flash__container__type--success"
+                         x-data="{ show: true }"
+                         x-init="setTimeout(() => show = false, 8000)"
+                         x-show="show">
+                        <p class="flash__container__type__name">
+                            {{__('Successfully deleted :')}}
+                        </p>
+                        <p class="flash__container__type__message">
+                            {{ session('success') }}
+                        </p>
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div class="flash__container__type flash__container__type--error"
+                         x-data="{ show: true }"
+                         x-init="setTimeout(() => show = false, 8000)"
+                         x-show="show">
+                        <p class="flash__container__type__name">
+                            {{__('Not deleted because used in a jiri :')}}
+                        </p>
+                        <p class="flash__container__type__message">
+                            {{ session('error') }}
+                        </p>
+                    </div>
+                @endif
+            </div>
+        </div>
+    @endif
+    {{--  END FLASH MESSAGES  --}}
+
+    {{--  CONFIRM MODAL  --}}
+    <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
+    {{--  END CONFIRM MODAL  --}}
+
     <div class="contacts__contentContainer">
         <div class="contacts__contentContainer__header">
             <h1 class="contacts__contentContainer__header__title">{{__("Contacts")}}</h1>
@@ -8,7 +48,7 @@
                         <div class="iconsBox__contentContainer">
                             <div class="iconsBox__contentContainer__list">
                                 <div class="iconsBox__contentContainer__list__item">
-                                    <button wire:click.prevent="deleteSelected"  wire:confirm="suprimer ces contacts ?"
+                                    <button wire:click.prevent="deleteSelected"
                                             class="iconsBox__contentContainer__list__item__button" title="{{__('Supprimer les contacts sélectionnés')}}">
                                         <svg class="iconsBox__contentContainer__list__item__button__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
@@ -101,7 +141,7 @@
                                             <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
                                         </svg>
                                     </a>
-                                    <button wire:click="deleteContact({{$contact->id}})" wire:click.prevent="deleteSelected" onclick="confirm('Suprimer ce contact ?')|| event.stopImmediatePropagation()" class="table__body__line__cell__actions__delete">
+                                    <button wire:click="deleteContact({{$contact->id}})" class="table__body__line__cell__actions__delete">
                                         <svg class="table__body__line__cell__actions__delete__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
                                         </svg>

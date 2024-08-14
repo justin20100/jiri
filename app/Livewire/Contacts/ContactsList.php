@@ -4,21 +4,25 @@ namespace App\Livewire\Contacts;
 
 use App\Models\Contact;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class ContactsList extends Component
 {
     use WithPagination;
-    public $contacts;
-    protected $listeners = ['refreshContactList' => 'refreshContactList'];
-    public array $selectedContacts = [];
+    protected $listeners = ['refreshContactList' => 'refreshContactList', 'confirmed' => 'onConfirmed', 'cancelled' => 'cancelSelected'];
     public bool $actionsDisabled = true;
+    public array $selectedContacts = [];
+    public array $contactsToDelete = [];
 
-    public function mount(): void
+    #[Computed]
+    public function contacts(): mixed
     {
-        $this->contacts = Auth::user()->contacts()->get();
+        return Auth::user()->contacts()->get();
     }
+
     public function render()
     {
         $this->actionsDisabled = count($this->selectedContacts) < 1;
@@ -30,7 +34,6 @@ class ContactsList extends Component
     {
         $this->contacts = Auth::user()->contacts()->get();
     }
-
     public function cancelSelected(): void
     {
         $this->selectedContacts = [];
@@ -39,15 +42,50 @@ class ContactsList extends Component
     // Delete all the selected Projects
     public function deleteSelected(): void
     {
-        Contact::query()->whereIn('id', $this->selectedContacts)->delete();
-        $this->selectedContacts = [];
-        $this->refreshContactList();
+        $this->contactsToDelete = $this->selectedContacts;
+        $this->dispatch('checkConfirm',
+            titleMessage: __('Are you sure you want to delete the selected contacts?'),
+            message: __('Only contacts unused in a jiri can be deleted.'));
     }
 
     // Delete a project by passing the id
     public function deleteContact($contactId): void
     {
-        Contact::destroy($contactId);
+        $this->contactsToDelete = [$contactId];
+        $this->dispatch('checkConfirm',
+            titleMessage: __('Are you sure you want to delete the selected contact?'),
+            message: __('Only contacts unused in a jiri can be deleted.'));
+    }
+
+
+    public function onConfirmed(): void
+    {
+        $contacts = Contact::whereIn('id', $this->contactsToDelete)
+            ->withCount('contactsJiris')
+            ->get();
+
+        $undeletableContacts = [];
+        $deletableContacts = [];
+
+        foreach ($contacts as $contact) {
+            if ($contact->contacts_jiris_count > 0) {
+                $undeletableContacts[] = $contact->firstname . ' ' . $contact->lastname;
+            } else {
+                $deletableContacts[] = $contact->firstname . ' ' . $contact->lastname;
+                $contact->delete();
+            }
+        }
+
+        if (!empty($undeletableContacts)) {
+            session()->flash('error', implode(', ', $undeletableContacts));
+        }
+        if (!empty($deletableContacts)) {
+            session()->flash('success', implode(', ', $deletableContacts));
+        }
+
+        $this->selectedContacts = [];
+        $this->contactsToDelete = [];
+
         $this->refreshContactList();
     }
 }

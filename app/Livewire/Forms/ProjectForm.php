@@ -38,5 +38,9 @@ class ProjectForm extends Form
             'title' => $this->title,
             'description' => $this->description,
         ]);
+
+        session()->flash('update', $this->title);
+
+        $this->reset(['title', 'description']);
     }
 }

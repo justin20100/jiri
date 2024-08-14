@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class ProjectList extends Component
 {
-    protected $listeners = ['refreshProjectList' => 'refreshProjectList', 'confirmed' => 'onConfirmed', 'cancelled' => 'onCancelled'];
+    protected $listeners = ['refreshProjectList' => 'refreshProjectList', 'confirmed' => 'onConfirmed', 'cancelled' => 'cancelSelected'];
     public bool $actionsDisabled = true;
     public array $selectedProjects = [];
     public array $projectsToDelete = [];
@@ -31,9 +31,7 @@ class ProjectList extends Component
     // Selection helpers
     public function refreshProjectList(): void
     {
-        $this->projects = Auth::user()->projects()->get();
     }
-
     public function cancelSelected(): void
     {
         $this->selectedProjects = [];
