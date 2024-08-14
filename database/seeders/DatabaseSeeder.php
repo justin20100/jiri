@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
                 'lastname' => 'Vincent',
                 'email' => 'justinvincent@gmail.com',
                 'password' => bcrypt('Admin1234'),
-            ]);
+            ]);@
         $users = collect([$user1, $user2]);
 
         foreach ($users as $user) {
@@ -98,9 +98,12 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        Project::factory()->count(4)->create([
-            'user_id' => 1,
-            'title' => 'Projet sans jiri',
-        ]);
+        // Création de projets sans jiris pour l'utilisateur 1
+        $projects = ['Projet web Jiri', 'Design Web', 'Portfolio', 'Projet de fin d\'études'];
+        Project::factory()->count(4)->create(['user_id' => 1])
+            ->each(function ($project, $index) use ($projects) {
+                $project->title = $projects[$index];
+                $project->save();
+            });
     }
 }

@@ -92,7 +92,6 @@
             </div>
         @else
             <div class="projects__contentContainer__tableContainer">
-
                 <table class="projects__contentContainer__tableContainer__table table">
                     <thead class="table__head">
                     <tr class="table__head__line table__head__line--projects">

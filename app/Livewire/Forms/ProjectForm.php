@@ -25,6 +25,8 @@ class ProjectForm extends Form
             'description' => $this->description,
         ]);
 
+        session()->flash('success', $this->title);
+
         $this->reset(['title', 'description']);
     }
 
