@@ -60,8 +60,11 @@ class JiriList extends Component
 
     public function onConfirmed(): void
     {
+        $deletableJiris = [];
+
         foreach ($this->jiriToDelete as $jiriId) {
             $jiri = Jiri::findOrFail($jiriId);
+            $deletableJiris[] = $jiri->name;
             foreach ($jiri->jiriProjects as $jiriProject) {
                 $jiriProject->contactDuties()->delete();
             }
@@ -69,6 +72,11 @@ class JiriList extends Component
             $jiri->jiriProjects()->delete();
             $jiri->delete();
         }
+
+        if (!empty($deletableJiris)) {
+            session()->flash('success', implode(', ', $deletableJiris));
+        }
+
         $this->selectedJiris = [];
         $this->refreshJiriList();
     }
