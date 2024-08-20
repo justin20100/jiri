@@ -1,5 +1,5 @@
 <?php
-namespace App\Livewire\Jiris;
+namespace App\Livewire\Jiri;
 
 use App\Models\Project;
 use Illuminate\Support\Facades\Auth;

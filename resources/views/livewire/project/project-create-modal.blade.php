@@ -22,11 +22,11 @@
     @endif
     {{--  END FLASH MESSAGES  --}}
 
-    <a wire:click="openDialog" class="button">{{__('Ajouter un projet')}}</a>
+    <a wire:click="openModal" class="button">{{__('Ajouter un projet')}}</a>
     @if($isOpen)
         <div class="dialog">
             <div class="dialog__contentContainer">
-                <a wire:click="closeDialog" class="dialog__contentContainer__closeContainer">
+                <a wire:click="closeModal" class="dialog__contentContainer__closeContainer">
                     <svg class="dialog__contentContainer__closeContainer__svg">
                         <use xlink:href="{{asset("images/sprite.svg#close")}}"></use>
                     </svg>

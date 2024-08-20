@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Projects;
+namespace App\Livewire\Project;
 
 use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +25,7 @@ class ProjectList extends Component
     public function render()
     {
         $this->actionsDisabled = count($this->selectedProjects) < 1;
-        return view('livewire.projects.project-list');
+        return view('livewire.project.project-list');
     }
 
     // Selection helpers

@@ -1,22 +1,22 @@
 <?php
 
-namespace App\Livewire\Projects;
+namespace App\Livewire\Project;
 
 use App\Livewire\Forms\ProjectForm;
 use Livewire\Component;
 
-class ProjectCreateDialog extends Component
+class ProjectCreateModal extends Component
 {
 
     // ---------- DIALOG
     public bool $isOpen = false;
 
-    public function openDialog(): void
+    public function openModal(): void
     {
         $this->isOpen = true;
     }
 
-    public function closeDialog(): void
+    public function closeModal(): void
     {
         $this->isOpen = false;
     }
@@ -33,6 +33,6 @@ class ProjectCreateDialog extends Component
 
     public function render()
     {
-        return view('livewire.projects.project-create-dialog');
+        return view('livewire.project.project-create-modal');
     }
 }

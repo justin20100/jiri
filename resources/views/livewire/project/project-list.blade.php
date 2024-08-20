@@ -77,7 +77,7 @@
                 {{--                    </div>--}}
                 {{--                </div>--}}
                 <div class="projects__contentContainer__header__buttonsContainer__buttonContainer">
-                    <livewire:projects.project-create-dialog/>
+                    <livewire:project.project-create-modal/>
                 </div>
             </div>
         </div>
@@ -88,7 +88,7 @@
                 <p class="projects__contentContainer__tableEmpty__text">
                     {{__("C'est ici que vous pouvez retrouver tous les projets que vous avez crées. Mais vous n'avez pas encore de projets alors ajoutez en un pour pouvoir anticiper la création d'un Jiri.")}}
                 </p>
-                <livewire:projects.project-create-dialog/>
+                <livewire:project.project-create-dialog/>
             </div>
         @else
             <div class="projects__contentContainer__tableContainer">

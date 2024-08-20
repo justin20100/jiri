@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Contacts;
+namespace App\Livewire\Contact;
 
 use App\Models\Contact;
 use Illuminate\Support\Facades\Auth;
@@ -9,7 +9,7 @@ use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class ContactsList extends Component
+class ContactList extends Component
 {
     use WithPagination;
     protected $listeners = ['refreshContactList' => 'refreshContactList', 'confirmed' => 'onConfirmed', 'cancelled' => 'cancelSelected'];
@@ -26,7 +26,7 @@ class ContactsList extends Component
     public function render()
     {
         $this->actionsDisabled = count($this->selectedContacts) < 1;
-        return view('livewire.contacts.contacts-list');
+        return view('livewire.contact.contact-list');
     }
 
     // Refresh the contacts list by getting all the user his contacts

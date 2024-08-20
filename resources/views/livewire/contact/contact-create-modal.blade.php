@@ -1,9 +1,32 @@
 <div>
-    <a wire:click="openDialog" class="button">{{__('Ajouter un contact')}}</a>
+
+    {{--  FLASH MESSAGES  --}}
+    @if (session('success'))
+        <div class="flash">
+            <div class="flash__container">
+                @if (session('success'))
+                    <div class="flash__container__type flash__container__type--success"
+                         x-data="{ show: true }"
+                         x-init="setTimeout(() => show = false, 8000)"
+                         x-show="show">
+                        <p class="flash__container__type__name">
+                            {{__('Successfully added :')}}
+                        </p>
+                        <p class="flash__container__type__message">
+                            {{ session('success') }}
+                        </p>
+                    </div>
+                @endif
+            </div>
+        </div>
+    @endif
+    {{--  END FLASH MESSAGES  --}}
+
+    <a wire:click="openModal" class="button">{{__('Ajouter un contact')}}</a>
     @if($isOpen)
         <div class="dialog">
             <div class="dialog__contentContainer">
-                <a wire:click="closeDialog" class="dialog__contentContainer__closeContainer">
+                <a wire:click="closeModal" class="dialog__contentContainer__closeContainer">
                     <svg class="dialog__contentContainer__closeContainer__svg">
                         <use xlink:href="{{asset("images/sprite.svg#close")}}"></use>
                     </svg>

@@ -1,3 +1,3 @@
 <x-app-simple-layout>
-    <livewire:jiris.jiri-create/>
+    <livewire:jiri.jiri-create/>
 </x-app-simple-layout>

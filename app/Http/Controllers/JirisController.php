@@ -11,11 +11,11 @@ class JirisController extends Controller
      */
     public function index()
     {
-        return view('jiris.index');
+        return view('jiri.index');
     }
 
     public function create()
     {
-        return view('jiris.create');
+        return view('jiri.create');
     }
 }

@@ -1,4 +1,4 @@
-<section class="contacts">
+<section class="jiris">
 
     {{--  FLASH MESSAGES  --}}
     @if (session('success') || session('error'))
@@ -35,21 +35,17 @@
     @endif
     {{--  END FLASH MESSAGES  --}}
 
-    {{--  CONFIRM MODAL  --}}
-    <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
-    {{--  END CONFIRM MODAL  --}}
-
-    <div class="contacts__contentContainer">
-        <div class="contacts__contentContainer__header">
-            <h1 class="contacts__contentContainer__header__title">{{__("Contacts")}}</h1>
-            <div class="contacts__contentContainer__header__buttonsContainer">
-                <div class="contacts__contentContainer__header__buttonsContainer__deleteContainer">
+    <div class="jiris__contentContainer">
+        <div class="jiris__contentContainer__header">
+            <h1 class="jiris__contentContainer__header__title">{{__("Jiris")}}</h1>
+            <div class="jiris__contentContainer__header__buttonsContainer">
+                <div class="jiris__contentContainer__header__buttonsContainer__deleteContainer">
                     <div class="iconsBox @if(!$this->actionsDisabled) iconsBox--active @else iconsBox--inactive @endif">
                         <div class="iconsBox__contentContainer">
                             <div class="iconsBox__contentContainer__list">
                                 <div class="iconsBox__contentContainer__list__item">
                                     <button wire:click.prevent="deleteSelected"
-                                            class="iconsBox__contentContainer__list__item__button" title="{{__('Supprimer les contacts sélectionnés')}}">
+                                            class="iconsBox__contentContainer__list__item__button" title="{{__('Delete selected')}}">
                                         <svg class="iconsBox__contentContainer__list__item__button__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
                                         </svg>
@@ -57,7 +53,7 @@
                                 </div>
                             </div>
                             <div class="iconsBox__contentContainer__closeButton">
-                                <button wire:click.prevent="cancelSelected" class="iconsBox__contentContainer__closeButton__button" title="{{__('Annuler la sélection')}}">
+                                <button wire:click.prevent="cancelSelected" class="iconsBox__contentContainer__closeButton__button" title="{{__('Cancel selection')}}">
                                     <svg class="iconsBox__contentContainer__closeButton__button__svg">
                                         <use xlink:href="{{asset("images/sprite.svg#close")}}"></use>
                                     </svg>
@@ -66,8 +62,9 @@
                         </div>
                     </div>
                 </div>
-                {{--                <div class="contacts__contentContainer__header__buttonsContainer__filterContainer">--}}
-                {{--                    <div class="contacts__contentContainer__header__buttonsContainer__filterContainer__filter">--}}
+                {{--                TODO: add filter--}}
+                {{--                <div class="jiris__contentContainer__header__buttonsContainer__filterContainer">--}}
+                {{--                    <div class="jiris__contentContainer__header__buttonsContainer__filterContainer__filter">--}}
                 {{--                        <x-input-label for="sort" :value="__('Trier par')"/>--}}
                 {{--                        <select id="sort" name="sort" required autocomplete="sort" class="select">--}}
                 {{--                            <option value="">{{__('Date de création')}}</option>--}}
@@ -75,73 +72,81 @@
                 {{--                        </select>--}}
                 {{--                    </div>--}}
                 {{--                </div>--}}
-                <div class="contacts__contentContainer__header__buttonsContainer__buttonContainer">
-                    <livewire:contacts.contact-create-dialog/>
+                <div class="jiris__contentContainer__header__buttonsContainer__buttonContainer">
+                    <a href="{{ route('jiris.create') }}" class="button">{{__("Add a Jiri")}}</a>
                 </div>
             </div>
         </div>
-        @if($this->contacts->isEmpty())
-            <div class="contacts__contentContainer__tableEmpty">
+        @if($this->jiris->isEmpty())
+            <div class="jiris__contentContainer__tableEmpty">
                 {{--                TODO: add image--}}
                 {{--                <img src="" alt="">--}}
-                <p class="projects__contentContainer__tableEmpty__text">
-                    {{__("C'est ici que vous pouvez retrouver tous les contacts que vous avez crées. Mais vous n'avez pas encore de contacts alors ajoutez en un pour pouvoir anticiper la création d'un Jiri.")}}
+                <p class="jiris__contentContainer__tableEmpty__text">
+                    {{__("C'est ici que vous pouvez retrouver tous les jiris que vous avez crées. Mais vous n'avez pas encore de jiris alors ajoutez en un !")}}
                 </p>
-                <livewire:contacts.contact-create-dialog/>
+                <a href="{{ route('jiris.create') }}" class="button">{{__("Add a Jiri")}}</a>
             </div>
-            @else
-            <div class="contacts__contentContainer__tableContainer">
-                <table class="contacts__contentContainer__tableContainer__table table">
+        @else
+            <div class="jiris__contentContainer__tableContainer">
+                <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
+                <table class="jiris__contentContainer__tableContainer__table table">
                     <thead class="table__head">
-                        <tr class="table__head__line table__head__line--contacts">
-                            <th class="table__head__line__cell table__head__line__cell--select">
-                                {{-- select  --}}
-                            </th>
-                            <th class="table__head__line__cell table__head__line__cell--avatar">
-                                {{__("Avatar")}}
-                            </th>
-                            <th class="table__head__line__cell table__head__line__cell--firstname">
-                                {{__("Prénom")}}
-                            </th>
-                            <th class="table__head__line__cell table__head__line__cell--lastname">
-                                {{__("Nom")}}
-                            </th>
-                            <th class="table__head__line__cell table__head__line__cell--email">
-                                {{__("Email")}}
-                            </th>
-                            <th class="table__head__line__cell table__head__line__cell--more">
-                                {{-- more--}}
-                            </th>
-                        </tr>
+                    <tr class="table__head__line table__head__line--jiris">
+                        <th class="table__head__line__cell table__head__line__cell--select">
+                            {{-- select  --}}
+                        </th>
+                        <th class="table__head__line__cell table__head__line__cell--title">
+                            {{__("Titre")}}
+                        </th>
+                        <th class="table__head__line__cell table__head__line__cell--date" >
+                            {{__("Début du Jiri")}}
+                        </th>
+                        <th class="table__head__line__cell table__head__line__cell--date">
+                            {{__("Fin du Jiri")}}
+                        </th>
+                        <th class="table__head__line__cell table__head__line__cell--statut">
+                            {{__("Statut")}}
+                        </th>
+                        <th class="table__head__line__cell table__head__line__cell--actions">
+                            {{-- actions--}}
+                        </th>
+                    </tr>
                     </thead>
                     <tbody class="table__body">
-                    @forelse($this->contacts as $contact)
-                        <tr class="table__body__line table__body__line--contacts">
+                    @foreach($this->jiris as $jiri)
+                        <tr class="table__body__line table__body__line--jiris">
                             <td class="table__body__line__cell">
-                                <input type="checkbox" wire:model.change="selectedContacts" value="{{$contact->id}}" class="table__body__line__cell__checkbox">
+                                <input type="checkbox" wire:model.change="selectedJiris" value="{{$jiri->id}}" class="table__body__line__cell__checkbox">
                             </td>
                             <td class="table__body__line__cell">
-                                <div class="table__body__line__cell__avatar">
-                                    <img src="{{URL::to('/storage/avatars')."/".$contact->avatar}}" alt="avatar" class="table__body__line__cell__avatar__img">
-                                </div>
+                                {{$jiri->name}}
                             </td>
                             <td class="table__body__line__cell">
-                                {{$contact->firstname}}
+                                {{ \Carbon\Carbon::parse($jiri->start)->format('d/m/Y H:i') }}
                             </td>
                             <td class="table__body__line__cell">
-                                {{$contact->lastname}}
+                                {{ \Carbon\Carbon::parse($jiri->end)->format('d/m/Y H:i') }}
                             </td>
                             <td class="table__body__line__cell">
-                                {{$contact->email}}
+                                <p class="table__body__line__cell__status
+                                @if($jiri->status =="verrouillé" )
+                                    table__body__line__cell__status--orange
+                                @elseif($jiri->status =="disponnible" )
+                                    table__body__line__cell__status--green
+                                @elseif($jiri->status =="cloturé" )
+                                    table__body__line__cell__status--blue
+                                @endif">
+                                    {{ $jiri->status }}
+                                </p>
                             </td>
                             <td class="table__body__line__cell table__body__line__cell--actions">
                                 <div class="table__body__line__cell__actions">
-                                    <a href="{{route('contacts.edit', $contact->id)}}" class="table__body__line__cell__actions__edit">
+                                    <a href="{{route('jiris.edit', $jiri->id)}}" class="table__body__line__cell__actions__edit">
                                         <svg class="table__body__line__cell__actions__edit__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
                                         </svg>
                                     </a>
-                                    <button wire:click="deleteContact({{$contact->id}})" class="table__body__line__cell__actions__delete">
+                                    <button wire:click="deleteJiri({{$jiri->id}})" class="table__body__line__cell__actions__delete">
                                         <svg class="table__body__line__cell__actions__delete__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
                                         </svg>
@@ -149,26 +154,10 @@
                                 </div>
                             </td>
                         </tr>
-                    @empty
-                        <tr class="table__body__line">
-                            <td class="table__body__line__cell" colspan="6">
-                                <div class="table__body__line__cell__empty">
-                                    {{__("Aucun contact")}}
-                                </div>
-                            </td>
-                        </tr>
-                    @endforelse
+                    @endforeach
                     </tbody>
                 </table>
             </div>
         @endif
     </div>
 </section>
-
-
-
-
-
-
-
-

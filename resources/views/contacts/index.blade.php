@@ -5,5 +5,5 @@
     {{--            {{ __('Projects') }}--}}
     {{--        </h2>--}}
     {{--    </x-slot>--}}
-    <livewire:contacts.contacts-list/>
+    <livewire:contact.contact-list/>
 </x-app-layout>

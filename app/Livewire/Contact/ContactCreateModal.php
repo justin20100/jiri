@@ -1,24 +1,23 @@
 <?php
 
-namespace App\Livewire\Contacts;
+namespace App\Livewire\Contact;
 
 use App\Livewire\Forms\ContactForm;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class ContactCreateDialog extends Component
+class ContactCreateModal extends Component
 {
     use WithFileUploads;
 
-    // ---------- DIALOG
+    // ---------- Modal
     public bool $isOpen = false;
 
-    public function openDialog(): void
+    public function openModal(): void
     {
         $this->isOpen = true;
     }
-
-    public function closeDialog(): void
+    public function closeModal(): void
     {
         $this->isOpen = false;
     }
@@ -35,6 +34,6 @@ class ContactCreateDialog extends Component
 
     public function render()
     {
-        return view('livewire.contacts.contact-create-dialog');
+        return view('livewire.contact.contact-create-modal');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Jiris;
+namespace App\Livewire\Jiri;
 
 use App\Models\Jiri;
 use Illuminate\Support\Facades\Auth;
@@ -18,10 +18,6 @@ class JiriList extends Component
     public bool $actionsDisabled = true;
     public array $jiriToDelete = [];
 
-//    public function mount(): void
-//    {
-//    }
-
     #[Computed]
     public function jiris(){
         return Auth::user()->jiris()->orderBy('start', 'desc')->get();
@@ -30,7 +26,7 @@ class JiriList extends Component
     public function render() : View
     {
         $this->actionsDisabled = count($this->selectedJiris) < 1;
-        return view('livewire.jiris.jiri-list');
+        return view('livewire.jiri.jiri-list');
     }
 
     public function refreshJiriList(): void

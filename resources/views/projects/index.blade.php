@@ -5,5 +5,5 @@
 {{--            {{ __('Projects') }}--}}
 {{--        </h2>--}}
 {{--    </x-slot>--}}
-    <livewire:projects.project-list/>
+    <livewire:project.project-list/>
 </x-app-layout>
