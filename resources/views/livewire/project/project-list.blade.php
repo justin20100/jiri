@@ -41,7 +41,7 @@
 
     <div class="projects__contentContainer">
         <div class="projects__contentContainer__header">
-            <h1 class="projects__contentContainer__header__title">{{__("Projets")}}</h1>
+            <h1 class="projects__contentContainer__header__title">{{__("Projects")}}</h1>
             <div class="projects__contentContainer__header__buttonsContainer">
                 <div class="projects__contentContainer__header__buttonsContainer__deleteContainer">
                     <div class="iconsBox @if(!$this->actionsDisabled) iconsBox--active @else iconsBox--inactive @endif">
@@ -86,7 +86,7 @@
                 {{--                TODO: add image--}}
                 {{--                <img src="" alt="">--}}
                 <p class="projects__contentContainer__tableEmpty__text">
-                    {{__("C'est ici que vous pouvez retrouver tous les projets que vous avez crées. Mais vous n'avez pas encore de projets alors ajoutez en un pour pouvoir anticiper la création d'un Jiri.")}}
+                    {{__("This is where you can find all the projects you have created. But you don't have any projects yet so add one to anticipate the creation of a Jiri.")}}
                 </p>
                 <livewire:project.project-create-dialog/>
             </div>
