@@ -15,7 +15,7 @@ class JiriFactory extends Factory
             'name' => $this->faker->sentence(3),
             'start' => $this->faker->dateTime(),
             'end' => $this->faker->dateTime(),
-            'status' => $this->faker->randomElement(['verrouillé', 'cloturé', 'disponnible']),
+            'status' => $this->faker->randomElement(['ongoing', 'draft', 'ended']),
         ];
     }
 }

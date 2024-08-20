@@ -73,7 +73,7 @@
                 {{--                    </div>--}}
                 {{--                </div>--}}
                 <div class="jiris__contentContainer__header__buttonsContainer__buttonContainer">
-                    <a href="{{ route('jiris.create') }}" class="button">{{__("Add a Jiri")}}</a>
+                    <livewire:jiri.jiri-create-modal/>
                 </div>
             </div>
         </div>
@@ -129,11 +129,11 @@
                             </td>
                             <td class="table__body__line__cell">
                                 <p class="table__body__line__cell__status
-                                @if($jiri->status =="verrouillé" )
+                                @if($jiri->status =="draft" )
                                     table__body__line__cell__status--orange
-                                @elseif($jiri->status =="disponnible" )
+                                @elseif($jiri->status =="ongoing" )
                                     table__body__line__cell__status--green
-                                @elseif($jiri->status =="cloturé" )
+                                @elseif($jiri->status =="ended" )
                                     table__body__line__cell__status--blue
                                 @endif">
                                     {{ $jiri->status }}

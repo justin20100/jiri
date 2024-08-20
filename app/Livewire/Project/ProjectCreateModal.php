@@ -8,7 +8,7 @@ use Livewire\Component;
 class ProjectCreateModal extends Component
 {
 
-    // ---------- DIALOG
+    // ---------- Modal
     public bool $isOpen = false;
 
     public function openModal(): void

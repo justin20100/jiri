@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\Jiri;
+use App\Models\Project;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -17,7 +18,6 @@ class JiriForm extends Form
 
     public Jiri $jiri;
 
-
     public function create(): void
     {
         $this->validate();
@@ -28,17 +28,21 @@ class JiriForm extends Form
             'end' => $this->end,
         ]);
 
-        $this->reset(['title', 'description']);
+        $this->reset(['name', 'start', 'end']);
     }
 
-    public function update(): void
+    public function update($jiri): void
     {
         $this->validate();
-
-        $this->jiri->update([
+        $jiri->update([
             'name' => $this->name,
             'start' => $this->start,
             'end' => $this->end,
         ]);
+    }
+
+    public function addProject($project): void
+    {
+        $this->jiri->projects()->attach($project);
     }
 }

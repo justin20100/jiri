@@ -16,6 +16,7 @@ class Jiri extends Model
         'name',
         'start',
         'end',
+        'status',
     ];
 
     public function user(): BelongsTo
