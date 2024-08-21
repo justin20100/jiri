@@ -62,6 +62,7 @@
 
             &__formContainer {
                 padding: 60px;
+                height: calc(100% - 120px);
 
                 &__form {
                     // Voir forms.scss

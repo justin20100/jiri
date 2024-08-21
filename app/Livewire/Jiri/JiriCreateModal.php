@@ -17,6 +17,7 @@ class JiriCreateModal extends Component
     }
 
     // ---------- Modal
+    public $step = "infos";
     public bool $isOpen = false;
     public function openModal(): void
     {
@@ -28,11 +29,27 @@ class JiriCreateModal extends Component
         $this->isOpen = false;
     }
 
+    public function showInfosStep(): void
+    {
+        $this->step = "infos";
+    }
+    public function showProjectsStep(): void
+    {
+        $this->step = "projects";
+    }
+    public function showContactsStep(): void
+    {
+        $this->step = "contacts";
+    }
+    public function showSummaryStep(): void
+    {
+        $this->step = "summary";
+    }
+
     // ----------- Jiris
     public $jiri;
     public JiriForm $form;
 
-    // initialize a new empty jiri
     public function initializeANewJiri(){
         $this->form->name = "";
         $this->form->start = now('Europe/Brussels')->add(1, 'day')->format("Y-m-d\TH:i");
@@ -49,6 +66,7 @@ class JiriCreateModal extends Component
     }
     public function update(){
         $this->form->update($this->jiri);
+        $this->showProjectsStep();
     }
 
     // ----------- Projects
@@ -59,7 +77,6 @@ class JiriCreateModal extends Component
     {
         return Auth::user()->projects->sortByDesc('title')->diff($this->selectedProjects);
     }
-
     public function addProjectToJiri($projectId)
     {
         $project = Project::find($projectId);
