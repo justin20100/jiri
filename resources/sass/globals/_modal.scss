@@ -29,15 +29,22 @@
         width: 70%;
         max-width: 800px;
         min-height: 300px;
-        height: fit-content;
+        height: inherit;
         max-height: 700px;
 
-        &--larger{
+        &--createJiriModal{
             min-width: 900px;
             width: 70%;
             max-width: 1500px;
+            height: inherit;
+        }
+
+        &--welcomeModal{
+            min-width: 900px;
+            width: 80%;
+            max-width: 1500px;
             min-height: 550px;
-            height: 60%;
+            height: 80%;
             max-height: 800px;
         }
 

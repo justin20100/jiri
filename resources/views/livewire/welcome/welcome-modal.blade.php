@@ -6,7 +6,7 @@
     {{--    Template    --}}
     @if($isOpen!="none")
         <div class="modal" wire:keydown.escape.window="closeWelcomeModal" wire:click.self="closeWelcomeModal">
-            <div class="modal__contentContainer  modal__contentContainer--larger">
+            <div class="modal__contentContainer  modal__contentContainer--welcomeModal">
                 <div class="modal__contentContainer__content">
                     {{--     Splitter    --}}
                     <div class="modal__contentContainer__content__splitter">
