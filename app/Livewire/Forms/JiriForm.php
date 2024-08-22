@@ -20,8 +20,6 @@ class JiriForm extends Form
 
     public function create(): void
     {
-        $this->validate();
-
         auth()->user()->jiris()->create([
             'name' => $this->name,
             'start' => $this->start,
@@ -33,7 +31,6 @@ class JiriForm extends Form
 
     public function update($jiri): void
     {
-        $this->validate();
         $jiri->update([
             'name' => $this->name,
             'start' => $this->start,

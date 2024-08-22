@@ -10,7 +10,7 @@
                          x-init="setTimeout(() => show = false, 8000)"
                          x-show="show">
                         <p class="flash__container__type__name">
-                            {{__('Successfully deleted :')}}
+                            {{__('Successfully deleted')}}
                         </p>
                         <p class="flash__container__type__message">
                             {{ session('success') }}
@@ -23,7 +23,7 @@
                          x-init="setTimeout(() => show = false, 8000)"
                          x-show="show">
                         <p class="flash__container__type__name">
-                            {{__('Not deleted because used in a jiri :')}}
+                            {{__('Delete failed')}}
                         </p>
                         <p class="flash__container__type__message">
                             {{ session('error') }}

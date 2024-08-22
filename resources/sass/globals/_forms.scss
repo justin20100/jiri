@@ -330,7 +330,7 @@ input[type="checkbox"] {
         align-items: start;
         justify-content: space-between;
         gap: 0 60px;
-        background-color: lighten($main6, 2.7%);
+        background-color: lighten($main6, 2.6%);
         box-shadow: 0 0 10px 0px $main1;
 
         &__name {
@@ -354,13 +354,13 @@ input[type="checkbox"] {
 
     &__projects {
         grid-area: forms;
-        overflow-y: scroll;
+
+        padding: 50px 50px;
+        border-radius: 14px;
+        background-color: lighten($main6, 2.6%);
+        box-shadow: 0 0 10px 0px $main1;
 
         position: relative;
-        background-color: $white;
-        padding: 30px;
-        border-radius: 10px;
-        margin-bottom: 30px;
         display: grid;
         grid-template-columns: 1fr 1fr;
         align-items: start;

@@ -50,34 +50,43 @@
                             <!-- title -->
                             <div class="jiriCreateForm__textContainer">
                                 <h2 class="modal__contentContainer__content__formContainer__form__title jiriCreateForm__textContainer__title">{{__("Create a Jiri")}}</h2>
+
                                 <p class="jiriCreateForm__textContainer__text">
-                                    {{__("Lets start your Jiri creation by choosing a title, a start and an end date.")}}
+                                    @if($this->step == "infos")
+                                        {{__("Lets start your Jiri creation by choosing a title, a start and an end date.")}}
+                                        @elseif($this->step == "projects")
+                                        {{__("Now, select the projects you want to include in this Jiri.")}}
+                                        @elseif($this->step == "contacts")
+                                        {{__("Finally, select the contacts you want to include in this Jiri.")}}
+                                        @elseif($this->step == "summary")
+                                        {{__("Here is a summary of your Jiri.")}}
+                                    @endif
                                 </p>
                             </div>
 
                             <!-- infos -->
                             @if($this->step == "infos")
-                                <form wire:submit="update" class="jiriCreateForm__infos">
+                                <form wire:submit="updateJiriInfos" class="jiriCreateForm__infos">
 
                                     <!-- name -->
                                     <div class="form__name jiriCreateForm__infos__name">
                                         <x-input-label for="name" :value="__('Title')" />
-                                        <x-text-input wire:model="form.name" id="name" type="text" name="name" required placeholder="{{__('ex: Ending project 2024')}}"/>
-                                        <x-input-error :messages="$errors->get('form.name')"/>
+                                        <x-text-input wire:model="jiriForm.name" id="name" type="text" name="name" required placeholder="{{__('ex: Ending project 2024')}}"/>
+                                        <x-input-error :messages="$errors->get('jiriForm.name')"/>
                                     </div>
 
                                     <!-- start -->
                                     <div class="form__date jiriCreateForm__infos__start">
                                         <x-input-label for="start" :value="__('Start')" />
-                                        <x-text-input wire:model="form.start" wire:model="form.start" type="datetime-local" name="start" required/>
+                                        <x-text-input wire:model="jiriForm.start" type="datetime-local" name="start" required/>
                                         <x-input-error :messages="$errors->get('form.start')"/>
                                     </div>
 
                                     <!-- end -->
                                     <div class="form__date jiriCreateForm__infos__end">
                                         <x-input-label for="end" :value="__('End')" />
-                                        <x-text-input wire:model="form.end" wire:model="form.end" id="end" type="datetime-local" name="end" required/>
-                                        <x-input-error :messages="$errors->get('form.end')"/>
+                                        <x-text-input wire:model="jiriForm.end" id="end" type="datetime-local" name="end" required/>
+                                        <x-input-error :messages="$errors->get('jiriForm.end')"/>
                                     </div>
 
                                     <button type="submit" class="button jiriCreateForm__infos__button">{{__('Next step')}}</button>
@@ -88,11 +97,10 @@
                             <!-- projects -->
                             @if($this->step == "projects")
                                 <div class="jiriCreateForm__projects">
-                                    <div class="jiriCreateForm__projects__point"></div>
                                     <div class="jiriCreateForm__projects__listContainer">
                                         <div class="jiriCreateForm__projects__listContainer__top">
                                             <p class="jiriCreateForm__projects__listContainer__top__label">
-                                                {{__("Liste des projets")}}
+                                                {{__("Your projects")}}
                                             </p>
                                             <livewire:project.project-create-modal/>
                                         </div>
@@ -113,14 +121,14 @@
                                     </div>
                                     <div class="jiriCreateForm__projects__selectedContainer">
                                         <p class="jiriCreateForm__projects__selectedContainer__label">
-                                            {{__("Liste des projets sélectionnés")}}
+                                            {{__("Selected project(s) for this Jiri")}}
                                         </p>
                                         <div class="jiriCreateForm__projects__selectedContainer__bottom">
                                             <ul class="jiriCreateForm__projects__selectedContainer__list">
                                                 @foreach($this->selectedProjects as $selectedproject)
                                                     <li class="jiriCreateForm__projects__selectedContainer__list__item">
                                                         <span>{{$selectedproject->title}}</span>
-                                                        <a wire:click="removeProject({{$selectedproject->id}})">
+                                                        <a wire:click="removeProjectFromJiri({{$selectedproject->id}})">
                                                             <svg>
                                                                 <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
                                                             </svg>
@@ -224,7 +232,6 @@
 
                             <!-- summary -->
                             @if($this->step == "summary")
-
 
                                 <!-- button -->
                                 <div class="jiriCreate__contentContainer__formContainer__form__button">
