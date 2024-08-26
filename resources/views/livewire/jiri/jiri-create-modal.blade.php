@@ -45,7 +45,7 @@
                                     <div wire:click="showContactsStep" class="jiriCreateForm__stepsContainer__pointsContainer__point @if($this->step == "contacts")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif"></div>
                                     <div class="jiriCreateForm__stepsContainer__pointsContainer__point @if($this->step == "summary")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif"></div>
                                 </div>
-                            </div>
+                            </div>`
 
                             <!-- title -->
                             <div class="jiriCreateForm__textContainer">
@@ -55,7 +55,7 @@
                                     @if($this->step == "infos")
                                         {{__("Lets start your Jiri creation by choosing a title, a start and an end date.")}}
                                         @elseif($this->step == "projects")
-                                        {{__("Now, select the projects you want to include in this Jiri.")}}
+                                        {{__("Now, select the projects you want to include in this Jiri. You can also create new projects ")}}
                                         @elseif($this->step == "contacts")
                                         {{__("Finally, select the contacts you want to include in this Jiri.")}}
                                         @elseif($this->step == "summary")
@@ -71,22 +71,22 @@
                                     <!-- name -->
                                     <div class="form__name jiriCreateForm__infos__name">
                                         <x-input-label for="name" :value="__('Title')" />
-                                        <x-text-input wire:model="jiriForm.name" id="name" type="text" name="name" required placeholder="{{__('ex: Ending project 2024')}}"/>
-                                        <x-input-error :messages="$errors->get('jiriForm.name')"/>
+                                        <x-text-input wire:model="jiriInfosForm.name" id="name" type="text" name="name" required placeholder="{{__('ex: Ending project 2024')}}"/>
+                                        <x-input-error :messages="$errors->get('jiriInfosForm.name')"/>
                                     </div>
 
                                     <!-- start -->
                                     <div class="form__date jiriCreateForm__infos__start">
                                         <x-input-label for="start" :value="__('Start')" />
-                                        <x-text-input wire:model="jiriForm.start" type="datetime-local" name="start" required/>
-                                        <x-input-error :messages="$errors->get('form.start')"/>
+                                        <x-text-input wire:model="jiriInfosForm.start" type="datetime-local" name="start" required/>
+                                        <x-input-error :messages="$errors->get('jiriInfosForm.start')"/>
                                     </div>
 
                                     <!-- end -->
                                     <div class="form__date jiriCreateForm__infos__end">
                                         <x-input-label for="end" :value="__('End')" />
-                                        <x-text-input wire:model="jiriForm.end" id="end" type="datetime-local" name="end" required/>
-                                        <x-input-error :messages="$errors->get('jiriForm.end')"/>
+                                        <x-text-input wire:model="jiriInfosForm.end" id="end" type="datetime-local" name="end" required/>
+                                        <x-input-error :messages="$errors->get('jiriInfosForm.end')"/>
                                     </div>
 
                                     <button type="submit" class="button jiriCreateForm__infos__button">{{__('Next step')}}</button>
@@ -96,7 +96,7 @@
 
                             <!-- projects -->
                             @if($this->step == "projects")
-                                <div class="jiriCreateForm__projects">
+                                <form wire:submit="updateLinkedProjectsToAJiri" class="jiriCreateForm__projects">
                                     <div class="jiriCreateForm__projects__listContainer">
                                         <div class="jiriCreateForm__projects__listContainer__top">
                                             <p class="jiriCreateForm__projects__listContainer__top__label">
@@ -109,9 +109,10 @@
                                                 @foreach($this->projects as $project)
                                                     <li class="jiriCreateForm__projects__listContainer__list__item">
                                                         <span>{{$project->title}}</span>
-                                                        <a wire:click="addProjectToJiri({{$project->id}})">
+                                                        <a wire:click="addProjectToSelectedProjects({{$project->id}})" title="{{__("Add to selected projects list")}}">
+                                                            <p>{{__("Add to selected")}}</p>
                                                             <svg>
-                                                                <use xlink:href="{{asset("images/sprite.svg#plus")}}"></use>
+                                                                <use xlink:href="{{asset("images/sprite.svg#arrowright")}}"></use>
                                                             </svg>
                                                         </a>
                                                     </li>
@@ -123,24 +124,28 @@
                                         <p class="jiriCreateForm__projects__selectedContainer__label">
                                             {{__("Selected project(s) for this Jiri")}}
                                         </p>
+                                        <x-input-error :messages="$errors->get('jiriProjectForm.selectedProjects')"/>
                                         <div class="jiriCreateForm__projects__selectedContainer__bottom">
                                             <ul class="jiriCreateForm__projects__selectedContainer__list">
-                                                @foreach($this->selectedProjects as $selectedproject)
+                                                @foreach($this->jiriProjectForm->selectedProjects as $selectedproject)
                                                     <li class="jiriCreateForm__projects__selectedContainer__list__item">
                                                         <span>{{$selectedproject->title}}</span>
-                                                        <a wire:click="removeProjectFromJiri({{$selectedproject->id}})">
+                                                        <a wire:click="removeProjectFromSelectedProjects({{$selectedproject->id}})" title="{{__("Delete from selected projects list")}}">
                                                             <svg>
                                                                 <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
                                                             </svg>
+                                                            <p>
+                                                                {{__("Move from selected")}}
+                                                            </p>
                                                         </a>
                                                     </li>
                                                 @endforeach
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
+                                    <button type="submit" class="button jiriCreateForm__projects__button">{{__('Next step')}}</button>
+                                </form>
                             @endif
-
                             <!-- contacts -->
                             @if($this->step == "contacts")
                                 <div class="jiriCreateForm__contacts">

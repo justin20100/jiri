@@ -2,7 +2,8 @@
 
 namespace App\Livewire\Jiri;
 
-use App\Livewire\Forms\JiriForm;
+use App\Livewire\Forms\JiriInfosForm;
+use App\Livewire\Forms\JiriProjectForm;
 use App\Models\JiriProject;
 use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +30,6 @@ class JiriCreateModal extends Component
     {
         $this->isOpen = false;
     }
-
     public function showInfosStep(): void
     {
         $this->step = "infos";
@@ -47,14 +47,16 @@ class JiriCreateModal extends Component
         $this->step = "summary";
     }
 
-    // ----------- Jiris
+
+
+    // ----------- Jiris Infos
     public $jiri;
-    public JiriForm $jiriForm;
+    public JiriInfosForm $jiriInfosForm;
     public function initializeANewJiri(){
         // Create a draft jiri for the user When the modal is opened
         $this->jiri = Auth::user()->jiris()->create(
             [
-                'name' => $this->jiriForm->name,
+                'name' => $this->jiriInfosForm->name,
                 'start' => now('Europe/Brussels')->add(1, 'day'),
                 'end' => now('Europe/Brussels')->add(2, 'day'),
                 'status' => 'draft',
@@ -63,41 +65,58 @@ class JiriCreateModal extends Component
         $this->dispatch('refreshJiriList');
 
         // Fill the form with the jiri's datas
-        $this->jiriForm->name = $this->jiri->name;
-        $this->jiriForm->start = $this->jiri->end->format("Y-m-d\TH:i");
-        $this->jiriForm->end = $this->jiri->start->format("Y-m-d\TH:i");
+        $this->jiriInfosForm->name = $this->jiri->name;
+        $this->jiriInfosForm->start = $this->jiri->start->format("Y-m-d\TH:i");
+        $this->jiriInfosForm->end = $this->jiri->end->format("Y-m-d\TH:i");
     }
     public function updateJiriInfos(){
-        $this->jiriForm->validate();
-        $this->jiriForm->update($this->jiri);
+        $this->jiriInfosForm->validate();
+        $this->jiriInfosForm->update($this->jiri);
         $this->showProjectsStep();
         $this->dispatch('refreshJiriList');
     }
 
+
+
     // ----------- Projects
-    public $selectedProjects = [];
+    public JiriProjectForm $jiriProjectForm;
     #[Computed]
     public function projects()
     {
-        return Auth::user()->projects->sortBy('title')->diff($this->selectedProjects);
+        return Auth::user()->projects->sortBy('title')->diff($this->jiriProjectForm->selectedProjects);
     }
 
     public function refreshProjectList(): void
     {
-        $this->projects = Auth::user()->projects->sortBy('title')->diff($this->selectedProjects);
+        $this->projects = Auth::user()->projects->sortBy('title')->diff($this->jiriProjectForm->selectedProjects);
     }
-    public function addProjectToJiri($projectId): void
+    public function addProjectToSelectedProjects($projectId): void
     {
         $project = Project::find($projectId);
-        $this->selectedProjects[] = $project;
-        JiriProject::create(['jiri_id' => $this->jiri->id, 'project_id' => $project->id]);
+        $this->jiriProjectForm->selectedProjects[] = $project;
     }
-    public function removeProjectFromJiri($projectId): void
+    public function removeProjectFromSelectedProjects($projectId): void
     {
         $project = Project::find($projectId);
-        $this->selectedProjects = array_diff($this->selectedProjects, [$project]);
-        JiriProject::where('jiri_id', $this->jiri->id)->where('project_id', $project->id)->delete();
+        $this->jiriProjectForm->selectedProjects = array_diff($this->jiriProjectForm->selectedProjects, [$project]);
     }
+    public function updateLinkedProjectsToAJiri(){
+        $this->jiriProjectForm->validate();
+
+        // Delete the unselected projects
+        $projectsToDelete = $this->jiri->jiriProjects->diff($this->jiriProjectForm->selectedProjects);
+        foreach ($projectsToDelete as $project){
+            $this->jiriProjectForm->delete($this->jiri->id, $project->id);
+        }
+
+        // Add the selected projects
+        foreach ($this->jiriProjectForm->selectedProjects as $project){
+            $this->jiriProjectForm->create($this->jiri->id, $project->id);
+        }
+        $this->showContactsStep();
+    }
+
+
 
     // ----------- Contacts
     public $selectedContacts = [];
