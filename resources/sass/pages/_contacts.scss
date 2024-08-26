@@ -3,19 +3,26 @@
 *********************************************/
 
 .contacts {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    flex: 1;
+    overflow: hidden;
 
     &__contentContainer {
         display: flex;
+        flex: 1;
         flex-direction: column;
         flex-wrap: nowrap;
         width: 100%;
+        overflow: hidden;
 
         &__header {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 30px;
+            flex-shrink: 0;
 
             &__title {
                 font-family: $titleFont;
@@ -72,6 +79,7 @@
 
         &__tableContainer {
             width: 100%;
+            overflow: hidden;
 
             &__table {
                 // voir table.scss
