@@ -29,28 +29,26 @@ class JiriCreateModal extends Component
     public function closeModal(): void
     {
         $this->isOpen = false;
+        session()->flash('success', empty($this->jiri->name)?__('A jiri with no title has been created.'): $this->jiri->name);
+        $this->reset();
     }
-    public function showInfosStep(): void
+    public function showStep($nextStep): void
     {
-        $this->step = "infos";
-    }
-    public function showProjectsStep(): void
-    {
-        $this->step = "projects";
-    }
-    public function showContactsStep(): void
-    {
-        $this->step = "contacts";
-    }
-    public function showSummaryStep(): void
-    {
-        $this->step = "summary";
-    }
+        // STEPS -> infos, projects, contacts, summary
+        if ($this->step == "infos") {
+            $this->updateJiriInfos();
+        } elseif ($this->step == "project") {
+            $this->updateLinkedProjectsToAJiri();
+        } elseif ($this->step == "contact") {
+            $this->updateLinkedContactsToAJiri();
+        }
 
-
+        $this->step = $nextStep;
+    }
 
     // ----------- Jiris Infos
     public $jiri;
+    public $successJiriInfos = false;
     public JiriInfosForm $jiriInfosForm;
     public function initializeANewJiri(){
         // Create a draft jiri for the user When the modal is opened
@@ -70,9 +68,10 @@ class JiriCreateModal extends Component
         $this->jiriInfosForm->end = $this->jiri->end->format("Y-m-d\TH:i");
     }
     public function updateJiriInfos(){
+        $this->successJiriInfos = false;
         $this->jiriInfosForm->validate();
         $this->jiriInfosForm->update($this->jiri);
-        $this->showProjectsStep();
+        $this->successJiriInfos = true;
         $this->dispatch('refreshJiriList');
     }
 
@@ -80,6 +79,7 @@ class JiriCreateModal extends Component
 
     // ----------- Projects
     public JiriProjectForm $jiriProjectForm;
+    public $successJiriProject = false;
     #[Computed]
     public function projects()
     {
@@ -94,6 +94,7 @@ class JiriCreateModal extends Component
     {
         $project = Project::find($projectId);
         $this->jiriProjectForm->selectedProjects[] = $project;
+        $this->jiriProjectForm->validate();
     }
     public function removeProjectFromSelectedProjects($projectId): void
     {
@@ -113,13 +114,14 @@ class JiriCreateModal extends Component
         foreach ($this->jiriProjectForm->selectedProjects as $project){
             $this->jiriProjectForm->create($this->jiri->id, $project->id);
         }
-        $this->showContactsStep();
+        $this->successJiriProject = true;
     }
 
 
 
     // ----------- Contacts
     public $selectedContacts = [];
+    public $successJiriContact = false;
     #[Computed]
     public function contacts()
     {
@@ -129,5 +131,20 @@ class JiriCreateModal extends Component
     public function refreshContactList()
     {
         $this->contacts->refresh();
+    }
+    public function addContactToSelectedContactsAs($contactId, $role)
+    {
+        $contact = Auth::user()->contacts->find($contactId);
+        $this->selectedContacts[] = $contact;
+    }
+    public function removeContactFromSelectedContacts($contactId)
+    {
+        $contact = Auth::user()->contacts->find($contactId);
+        $this->selectedContacts = array_diff($this->selectedContacts, [$contact]);
+    }
+    public function updateLinkedContactsToAJiri(){
+        $this->jiri->contacts()->sync($this->selectedContacts);
+        $this->successJiriContact = true;
+        $this->dispatch('refreshJiriList');
     }
 }

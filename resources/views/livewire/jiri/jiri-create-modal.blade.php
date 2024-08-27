@@ -40,10 +40,29 @@
                             <div class="jiriCreateForm__stepsContainer">
                                 <hr class="jiriCreateForm__stepsContainer__line">
                                 <div class="jiriCreateForm__stepsContainer__pointsContainer">
-                                    <div wire:click="showInfosStep" class="jiriCreateForm__stepsContainer__pointsContainer__point @if($this->step == "infos")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif"></div>
-                                    <div wire:click="showProjectsStep" class="jiriCreateForm__stepsContainer__pointsContainer__point @if($this->step == "projects")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif"></div>
-                                    <div wire:click="showContactsStep" class="jiriCreateForm__stepsContainer__pointsContainer__point @if($this->step == "contacts")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif"></div>
-                                    <div class="jiriCreateForm__stepsContainer__pointsContainer__point @if($this->step == "summary")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif"></div>
+                                    <div @if($this->successJiriInfos) wire:click="showStep('infos')" @endif
+                                         class="jiriCreateForm__stepsContainer__pointsContainer__point
+                                         @if($this->successJiriInfos) jiriCreateForm__stepsContainer__pointsContainer__point--validated @endif
+                                         @if($this->step == "infos")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif
+                                         ">
+                                    </div>
+                                    <div @if($this->successJiriProject || $this->successJiriInfos) wire:click="showStep('project')" @endif
+                                         class="jiriCreateForm__stepsContainer__pointsContainer__point
+                                         @if($this->successJiriProject)jiriCreateForm__stepsContainer__pointsContainer__point--validated @endif
+                                         @if($this->step == "project")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif
+                                         ">
+                                    </div>
+                                    <div @if($this->successJiriContact || $this->successJiriProject) wire:click="showStep('contact')" @endif
+                                         class="jiriCreateForm__stepsContainer__pointsContainer__point
+                                         @if($this->successJiriContact)jiriCreateForm__stepsContainer__pointsContainer__point--validated @endif
+                                         @if($this->step == "contact")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif
+                                         ">
+                                    </div>
+                                    <div @if($this->successJiriContact) wire:click="showStep('summary')" @endif
+                                        class="jiriCreateForm__stepsContainer__pointsContainer__point
+                                        @if($this->step == "summary")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif
+                                        ">
+                                    </div>
                                 </div>
                             </div>`
 
@@ -66,7 +85,7 @@
 
                             <!-- infos -->
                             @if($this->step == "infos")
-                                <form wire:submit="updateJiriInfos" class="jiriCreateForm__infos">
+                                <form wire:submit="showStep('project')" class="jiriCreateForm__infos">
 
                                     <!-- name -->
                                     <div class="form__name jiriCreateForm__infos__name">
@@ -95,8 +114,8 @@
                             @endif
 
                             <!-- projects -->
-                            @if($this->step == "projects")
-                                <form wire:submit="updateLinkedProjectsToAJiri" class="jiriCreateForm__projects">
+                            @if($this->step == "project")
+                                <form wire:submit="showStep('contact')" class="jiriCreateForm__projects">
                                     <div class="jiriCreateForm__projects__listContainer">
                                         <div class="jiriCreateForm__projects__listContainer__top">
                                             <p class="jiriCreateForm__projects__listContainer__top__label">
@@ -130,12 +149,12 @@
                                                 @foreach($this->jiriProjectForm->selectedProjects as $selectedproject)
                                                     <li class="jiriCreateForm__projects__selectedContainer__list__item">
                                                         <span>{{$selectedproject->title}}</span>
-                                                        <a wire:click="removeProjectFromSelectedProjects({{$selectedproject->id}})" title="{{__("Delete from selected projects list")}}">
+                                                        <a wire:click="removeProjectFromSelectedProjects({{$selectedproject->id}})" title="{{__("Remove from selected projects list")}}">
                                                             <svg>
-                                                                <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
+                                                                <use xlink:href="{{asset("images/sprite.svg#arrowleft")}}"></use>
                                                             </svg>
                                                             <p>
-                                                                {{__("Move from selected")}}
+                                                                {{__("Remove from selected")}}
                                                             </p>
                                                         </a>
                                                     </li>
@@ -147,7 +166,7 @@
                                 </form>
                             @endif
                             <!-- contacts -->
-                            @if($this->step == "contacts")
+                            @if($this->step == "contact")
                                 <div class="jiriCreateForm__contacts">
                                     <div class="jiriCreateForm__contacts__point"></div>
 

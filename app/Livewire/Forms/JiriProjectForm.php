@@ -23,6 +23,7 @@ class JiriProjectForm extends Form
     public function messages()
     {
         return [
+            'selectedProjects.required' => 'You need to select at least one project.',
             'selectedProjects.min' => 'You need to select at least one project.',
         ];
     }
