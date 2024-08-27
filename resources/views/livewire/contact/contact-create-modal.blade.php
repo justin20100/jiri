@@ -25,7 +25,7 @@
     <a wire:click="openModal" class="button">{{__('Create a contact')}}</a>
     @if($isOpen)
         <div class="modal" wire:keydown.escape.window="closeModal" wire:click.self="closeModal">
-            <div class="modal__contentContainer">
+            <div class="modal__contentContainer modal__contentContainer--createContactModal">
                 <div class="modal__contentContainer__content">
                     <a wire:click="closeModal" class="modal__contentContainer__content__closeContainer">
                         <svg class="modal__contentContainer__content__closeContainer__svg">

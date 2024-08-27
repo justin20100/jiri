@@ -36,6 +36,23 @@
                     <div class="modal__contentContainer__content__formContainer">
                         <div class="form jiriCreateForm">
 
+                            <!-- title -->
+                            <div class="jiriCreateForm__textContainer">
+                                <h2 class="jiriCreateForm__textContainer__title">{{__("Create a Jiri")}}</h2>
+
+                                <p class="jiriCreateForm__textContainer__text">
+                                    @if($this->step == "infos")
+                                        {{__("Lets start your Jiri creation by choosing a title, a start and an end date.")}}
+                                    @elseif($this->step == "project")
+                                        {{__("Now, select the projects you want to include in this Jiri. You can also create new projects ")}}
+                                    @elseif($this->step == "contact")
+                                        {{__("Finally, select the contacts you want to include in this Jiri.")}}
+                                    @elseif($this->step == "summary")
+                                        {{__("Here is a summary of your Jiri.")}}
+                                    @endif
+                                </p>
+                            </div>
+
                             <!-- steps -->
                             <div class="jiriCreateForm__stepsContainer">
                                 <hr class="jiriCreateForm__stepsContainer__line">
@@ -66,44 +83,27 @@
                                 </div>
                             </div>`
 
-                            <!-- title -->
-                            <div class="jiriCreateForm__textContainer">
-                                <h2 class="modal__contentContainer__content__formContainer__form__title jiriCreateForm__textContainer__title">{{__("Create a Jiri")}}</h2>
-
-                                <p class="jiriCreateForm__textContainer__text">
-                                    @if($this->step == "infos")
-                                        {{__("Lets start your Jiri creation by choosing a title, a start and an end date.")}}
-                                        @elseif($this->step == "projects")
-                                        {{__("Now, select the projects you want to include in this Jiri. You can also create new projects ")}}
-                                        @elseif($this->step == "contacts")
-                                        {{__("Finally, select the contacts you want to include in this Jiri.")}}
-                                        @elseif($this->step == "summary")
-                                        {{__("Here is a summary of your Jiri.")}}
-                                    @endif
-                                </p>
-                            </div>
-
                             <!-- infos -->
                             @if($this->step == "infos")
                                 <form wire:submit="showStep('project')" class="jiriCreateForm__infos">
 
                                     <!-- name -->
                                     <div class="form__name jiriCreateForm__infos__name">
-                                        <x-input-label for="name" :value="__('Title')" />
+                                        <x-input-label for="name" :value="__('Choose a name for your Jiri')" />
                                         <x-text-input wire:model="jiriInfosForm.name" id="name" type="text" name="name" required placeholder="{{__('ex: Ending project 2024')}}"/>
                                         <x-input-error :messages="$errors->get('jiriInfosForm.name')"/>
                                     </div>
 
                                     <!-- start -->
                                     <div class="form__date jiriCreateForm__infos__start">
-                                        <x-input-label for="start" :value="__('Start')" />
+                                        <x-input-label for="start" :value="__('Start date')" />
                                         <x-text-input wire:model="jiriInfosForm.start" type="datetime-local" name="start" required/>
                                         <x-input-error :messages="$errors->get('jiriInfosForm.start')"/>
                                     </div>
 
                                     <!-- end -->
                                     <div class="form__date jiriCreateForm__infos__end">
-                                        <x-input-label for="end" :value="__('End')" />
+                                        <x-input-label for="end" :value="__('End date')" />
                                         <x-text-input wire:model="jiriInfosForm.end" id="end" type="datetime-local" name="end" required/>
                                         <x-input-error :messages="$errors->get('jiriInfosForm.end')"/>
                                     </div>
