@@ -12,15 +12,14 @@ class JiriProjectForm extends Form
     #[Validate('required')]
     public $selectedProjects = [];
 
-
-    public function rules()
+    public function rules(): array
     {
         return [
             'selectedProjects' => ['required', 'min:1'],
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'selectedProjects.required' => 'You need to select at least one project.',

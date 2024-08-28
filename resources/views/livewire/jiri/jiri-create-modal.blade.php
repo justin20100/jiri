@@ -165,11 +165,10 @@
                                     <button type="submit" class="button jiriCreateForm__projects__button">{{__('Next step')}}</button>
                                 </form>
                             @endif
+
                             <!-- contacts -->
                             @if($this->step == "contact")
-                                <div class="jiriCreateForm__contacts">
-                                    <div class="jiriCreateForm__contacts__point"></div>
-
+                                <form wire:submit="showStep('')" class="jiriCreateForm__contacts">
                                     <div class="jiriCreateForm__contacts__listContainer">
                                         <div class="jiriCreateForm__contacts__listContainer__top">
                                             <p class="jiriCreateForm__contacts__listContainer__top__label">
@@ -184,12 +183,12 @@
                                                         <span>{{$contact->firstname}}</span>
                                                         <span>{{$contact->lastname}}</span>
                                                         <span>{{$contact->email}}</span>
-                                                        <a wire:click="selectContactAsStudent">
+                                                        <a wire:click="addContactToSelectedEvaluatorContacts({{$contact->id}})">
                                                             <svg>
                                                                 <use xlink:href="{{asset("images/sprite.svg#plus")}}"></use>
                                                             </svg>
                                                         </a>
-                                                        <a wire:click="selectContactAsJury">
+                                                        <a wire:click="addContactToSelectedStudentContacts({{$contact->id}})">
                                                             <svg>
                                                                 <use xlink:href="{{asset("images/sprite.svg#plus")}}"></use>
                                                             </svg>
@@ -199,7 +198,6 @@
                                             </ul>
                                         </div>
                                     </div>
-
                                     <div class="jiriCreateForm__contacts__selectedContainer">
                                         <div class="jiriCreateForm__contacts__selectedContainer__jury">
                                             <p class="jiriCreateForm__contacts__selectedContainer__jury__label">
@@ -207,21 +205,17 @@
                                             </p>
                                             <div class="jiriCreateForm__contacts__selectedContainer__jury__listContainer">
                                                 <ul class="jiriCreateForm__contacts__selectedContainer__jury__listContainer__list">
-                                                    <li class="jiriCreateForm__contacts__selectedContainer__jury__listContainer__list__item">
-                                                        <span>alall</span>
-                                                        <span>alalllzdad</span>
-                                                        <span>alalllzdadmle</span>
-                                                        <a wire:click="">
-                                                            <svg>
-                                                                <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
-                                                            </svg>
-                                                        </a>
-                                                        <a wire:click="">
-                                                            <svg>
-                                                                <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
+                                                    @foreach($this->jiriContactForm->selectedEvaluatorContacts as $selectedEvaluator)
+                                                        <li class="jiriCreateForm__contacts__selectedContainer__jury__listContainer__list__item">
+                                                            <span>{{$selectedEvaluator->firstname}}</span>
+                                                            <span>{{$selectedEvaluator->lastname}}</span>
+                                                            <a wire:click="removeContactFromSelectedEvaluatorContacts({{$selectedEvaluator->id}})">
+                                                                <svg>
+                                                                    <use xlink:href="{{asset("images/sprite.svg#trash")}}"></use>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
@@ -232,26 +226,23 @@
                                             </p>
                                             <div class="jiriCreateForm__contacts__selectedContainer__student__listContainer">
                                                 <ul class="jiriCreateForm__contacts__selectedContainer__student__listContainer__list">
-                                                    <li class="jiriCreateForm__contacts__selectedContainer__student__listContainer__list__item">
-                                                        <span>alall</span>
-                                                        <span>alalllzdad</span>
-                                                        <span>alalllzdadmle</span>
-                                                        <a wire:click="">
-                                                            <svg>
-                                                                <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
-                                                            </svg>
-                                                        </a>
-                                                        <a wire:click="">
-                                                            <svg>
-                                                                <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
+                                                    @foreach($this->jiriContactForm->selectedStudentContacts as $selectedStudent)
+                                                        <li class="jiriCreateForm__contacts__selectedContainer__student__listContainer__list__item">
+                                                            <span>{{$selectedStudent->firstname}}</span>
+                                                            <span>{{$selectedStudent->lastname}}</span>
+                                                            <a wire:click="removeContactFromSelectedStudentContacts({{$selectedStudent->id}})">
+                                                                <svg>
+                                                                    <use xlink:href="{{asset("images/sprite.svg#trash")}}"></use>
+                                                                </svg>
+                                                            </a>
+                                                        </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <button type="submit" class="button jiriCreateForm__projects__button">{{__('Next step')}}</button>
+                                </form>
                             @endif
 
                             <!-- summary -->
