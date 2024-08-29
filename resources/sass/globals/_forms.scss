@@ -388,7 +388,7 @@ input[type="checkbox"] {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 90fr 10fr;
-        grid-template-areas: "list selected" ". button";
+        grid-template-areas: "list selected" "previous button";
         align-items: start;
         justify-content: space-between;
         gap: 20px 50px;
@@ -435,7 +435,7 @@ input[type="checkbox"] {
 
                 &__item {
                     background-color: $main5;
-                    padding: 15px 0;
+                    padding: 10px 0;
                     border-radius: 10px;
                     display: flex;
                     flex-direction: row;
@@ -443,45 +443,45 @@ input[type="checkbox"] {
                     justify-content: space-between;
                     width: 100%;
 
-
                     > span {
                         font-family: $textFont;
                         font-size: $normalSize;
                         color: $lightBlack;
                         line-height: 1.4;
-                        padding-left: 30px;
+                        padding-left: 20px;
                     }
 
                     > a {
-                        padding-right: 30px;
+                        padding-right: 20px;
                         cursor: pointer;
                         display: flex;
                         align-items: center;
-                        gap: 8px;
+                        gap: 6px;
 
                         &:hover {
                             > p {
-                                transition: color 0.4s $ease;
+                                transition: color 0.4s $ease, font-weight 0.4s $ease;
                                 color: $main2;
+                                font-weight: 500;
                             }
 
                             > svg {
                                 fill: $main3;
                                 transition: transform 0.4s $ease, fill 0.4s $ease;
-                                transform: scale(1.03) translateX(3px);
+                                transform: scale(1.03) translateX(2px);
                             }
                         }
 
                         > p {
                             font-family: $textFont;
-                            font-size: $smallSize;
+                            font-size: $x-smallSize;
                             color: $main1;
                             line-height: 1.4;
                         }
 
                         > svg {
-                            width: 13px;
-                            height: 13px;
+                            width: 11px;
+                            height: 11px;
                             fill: $main1;
                         }
                     }
@@ -524,7 +524,7 @@ input[type="checkbox"] {
 
                 &__item {
                     background-color: $main5;
-                    padding: 15px 0;
+                    padding: 10px 0;
                     border-radius: 10px;
                     display: flex;
                     flex-direction: row;
@@ -537,44 +537,51 @@ input[type="checkbox"] {
                         font-size: $normalSize;
                         color: $lightBlack;
                         line-height: 1.4;
-                        padding-left: 30px;
+                        padding-left: 20px;
                     }
 
                     > a {
-                        padding-right: 30px;
+                        padding-right: 20px;
                         cursor: pointer;
                         display: flex;
                         align-items: center;
-                        gap: 8px;
+                        gap: 5px;
 
                         &:hover {
                             > p {
-                                transition: color 0.4s $ease;
+                                transition: color 0.4s $ease, font-weight 0.4s $ease;
                                 color: $main2;
+                                font-weight: 500;
                             }
 
                             > svg {
                                 fill: $main3;
                                 transition: transform 0.4s $ease, fill 0.4s $ease;
-                                transform: scale(1.03) translateX(-3px);
+                                transform: scale(1.03) translateX(-2px);
                             }
                         }
 
                         > p {
                             font-family: $textFont;
-                            font-size: $smallSize;
+                            font-size: $x-smallSize;
                             color: $main1;
                             line-height: 1.4;
                         }
 
                         > svg {
-                            width: 13px;
-                            height: 13px;
+                            width: 11px;
+                            height: 11px;
                             fill: $main1;
                         }
                     }
                 }
             }
+        }
+
+        &__previous {
+            grid-area: previous;
+            align-self: start;
+            justify-self: start;
         }
 
         &__button {
@@ -586,31 +593,34 @@ input[type="checkbox"] {
 
     &__contacts {
         grid-area: forms;
-        overflow-y: scroll;
         position: relative;
-        background-color: $white;
+        background-color: lighten($main6, 2.6%);
+        border-radius: 14px;
+        box-shadow: 0 0 10px 0px $main1;
         padding: 30px;
-        border-radius: 10px;
-
-        &__point {
-            position: absolute;
-            top: 50%;
-            left: -40px;
-            transform: translateY(-50%);
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background-color: $main1;
-        }
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 90fr 10fr;
+        grid-template-areas: "list selected" "previous button";
+        align-items: start;
+        justify-content: space-between;
+        gap: 20px 50px;
+        overflow-y: hidden;
 
         &__listContainer {
+            grid-area: list;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            overflow-y: hidden;
+            height: 100%;
 
             &__top {
                 display: flex;
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
-                margin-bottom: 20px;
 
                 &__label {
                     font-family: $titleFont;
@@ -623,7 +633,8 @@ input[type="checkbox"] {
             }
 
             &__bottom {
-                height: 300px;
+                flex: 1;
+                height: 100%;
                 overflow-y: scroll;
             }
 
@@ -632,17 +643,17 @@ input[type="checkbox"] {
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                width: 100%;
                 gap: 5px;
+                width: 100%;
 
                 &__item {
                     background-color: $main5;
-                    padding: 15px 0;
+                    padding: 10px 0;
                     border-radius: 10px;
-                    display: grid;
-                    grid-template-columns: 3fr 3fr 6fr 1fr 1fr;
+                    display: flex;
+                    flex-direction: row;
                     align-items: center;
-                    justify-content: start;
+                    justify-content: space-between;
                     width: 100%;
 
                     > span {
@@ -650,24 +661,41 @@ input[type="checkbox"] {
                         font-size: $normalSize;
                         color: $lightBlack;
                         line-height: 1.4;
-
-                        &:first-of-type {
-                            padding-left: 30px;
-                        }
+                        padding-left: 20px;
                     }
 
                     > a {
-                        justify-self: end;
+                        padding-right: 20px;
                         cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        gap: 6px;
 
-                        &:last-of-type {
-                            padding-right: 30px;
+                        &:hover {
+                            > p {
+                                transition: color 0.4s $ease, font-weight 0.4s $ease;
+                                color: $main2;
+                                font-weight: 500;
+                            }
+
+                            > svg {
+                                fill: $main3;
+                                transition: transform 0.4s $ease, fill 0.4s $ease;
+                                transform: scale(1.03) translateX(2px);
+                            }
+                        }
+
+                        > p {
+                            font-family: $textFont;
+                            font-size: $x-smallSize;
+                            color: $main1;
+                            line-height: 1.4;
                         }
 
                         > svg {
-                            width: 15px;
-                            height: 15px;
-                            fill: $main2;
+                            width: 11px;
+                            height: 11px;
+                            fill: $main1;
                         }
                     }
                 }
@@ -675,140 +703,104 @@ input[type="checkbox"] {
         }
 
         &__selectedContainer {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0 100px;
+            grid-area: selected;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 30px;
+            overflow-y: hidden;
+            height: 100%;
 
-            &__jury {
+            &__label {
+                margin-top: 10px;
+                font-family: $titleFont;
+                color: $label;
+                text-transform: none;
+                font-weight: 500;
+                font-size: $mediumSize;
+                opacity: 1;
+            }
 
-                &__label {
-                    margin-top: 30px;
-                    margin-bottom: 15px;
-                    font-family: $titleFont;
-                    color: $label;
-                    text-transform: none;
-                    font-weight: 500;
-                    font-size: $mediumSize;
-                    opacity: 1;
-                }
+            &__bottom {
+                flex: 1;
+                height: 100%;
+                overflow-y: scroll;
+            }
 
-                &__listContainer {
-                    height: 300px;
-                    overflow-y: scroll;
+            &__list {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                width: 100%;
 
-                    &__list {
+                &__item {
+                    background-color: $main5;
+                    padding: 10px 0;
+                    border-radius: 10px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+
+                    > span {
+                        font-family: $textFont;
+                        font-size: $normalSize;
+                        color: $lightBlack;
+                        line-height: 1.4;
+                        padding-left: 20px;
+                    }
+
+                    > a {
+                        padding-right: 20px;
+                        cursor: pointer;
                         display: flex;
-                        flex-direction: column;
                         align-items: center;
-                        justify-content: center;
-                        width: 100%;
                         gap: 5px;
 
-                        &__item {
-                            background-color: $main5;
-                            padding: 15px 0;
-                            border-radius: 10px;
-                            display: grid;
-                            grid-template-columns: 2fr 2fr 3fr 1fr 1fr;
-                            align-items: center;
-                            justify-content: start;
-                            width: 100%;
-
-
-                            > span {
-                                font-family: $textFont;
-                                font-size: $normalSize;
-                                color: $lightBlack;
-                                line-height: 1.4;
-
-                                &:first-of-type {
-                                    padding-left: 30px;
-                                }
+                        &:hover {
+                            > p {
+                                transition: color 0.4s $ease, font-weight 0.4s $ease;
+                                color: $main2;
+                                font-weight: 500;
                             }
 
-                            > a {
-                                justify-self: end;
-                                cursor: pointer;
-
-                                &:last-of-type {
-                                    padding-right: 30px;
-                                }
-
-                                > svg {
-                                    width: 20px;
-                                    height: 20px;
-                                    fill: $main2;
-                                }
+                            > svg {
+                                fill: $main3;
+                                transition: transform 0.4s $ease, fill 0.4s $ease;
+                                transform: scale(1.03) translateX(-2px);
                             }
+                        }
+
+                        > p {
+                            font-family: $textFont;
+                            font-size: $x-smallSize;
+                            color: $main1;
+                            line-height: 1.4;
+                        }
+
+                        > svg {
+                            width: 11px;
+                            height: 11px;
+                            fill: $main1;
                         }
                     }
                 }
             }
+        }
 
-            &__student {
+        &__previous {
+            grid-area: previous;
+            align-self: start;
+            justify-self: start;
+        }
 
-                &__label {
-                    margin-top: 30px;
-                    margin-bottom: 15px;
-                    font-family: $titleFont;
-                    color: $label;
-                    text-transform: none;
-                    font-weight: 500;
-                    font-size: $mediumSize;
-                    opacity: 1;
-                }
-
-                &__listContainer {
-                    height: 300px;
-                    overflow-y: scroll;
-
-                    &__list {
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        width: 100%;
-                        gap: 5px;
-
-                        &__item {
-                            background-color: $main5;
-                            padding: 15px 0;
-                            border-radius: 10px;
-                            display: grid;
-                            grid-template-columns: 2fr 2fr 3fr 1fr 1fr;
-                            align-items: center;
-                            justify-content: start;
-                            width: 100%;
-
-                            > span {
-                                font-family: $textFont;
-                                font-size: $normalSize;
-                                color: $lightBlack;
-                                line-height: 1.4;
-
-                                &:first-of-type {
-                                    padding-left: 30px;
-                                }
-                            }
-
-                            > a {
-                                justify-self: end;
-                                cursor: pointer;
-
-                                &:last-of-type {
-                                    padding-right: 30px;
-                                }
-
-                                > svg {
-                                    width: 20px;
-                                    height: 20px;
-                                    fill: $main2;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+        &__button {
+            grid-area: button;
+            align-self: end;
+            justify-self: end;
         }
     }
 

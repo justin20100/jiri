@@ -3,8 +3,10 @@
 namespace App\Livewire\Jiri;
 
 use App\Livewire\Forms\JiriContactForm;
+use App\Livewire\Forms\JiriEvaluatorForm;
 use App\Livewire\Forms\JiriInfosForm;
 use App\Livewire\Forms\JiriProjectForm;
+use App\Livewire\Forms\JiriStudentForm;
 use App\Models\JiriProject;
 use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
@@ -38,11 +40,17 @@ class JiriCreateModal extends Component
         // STEPS -> infos, projects, contacts, summary
         if ($this->step == "infos") {
             $this->updateJiriInfos();
-        } elseif ($this->step == "project") {
+        }
+        elseif ($this->step == "project") {
             $this->updateLinkedProjectsToAJiri();
-        } elseif ($this->step == "contact") {
-            $this->updateLinkedContactsToAJiri();
-        } elseif ($this->step == "summary") {
+        }
+        elseif ($this->step == "evaluator") {
+            $this->updateLinkedEvaluatorToAJiri();
+        }
+        elseif ($this->step == "student") {
+            $this->updateLinkedStudentToAJiri();
+        }
+        elseif ($this->step == "summary") {
             $this->closeModal();
         }
 
@@ -123,57 +131,78 @@ class JiriCreateModal extends Component
 
 
     // ----------- Contacts
-    public JiriContactForm $jiriContactForm;
-    public $successJiriContact = false;
     #[Computed]
     public function contacts()
     {
-        return Auth::user()->contacts->sortByDesc('lastname')->diff($this->jiriContactForm->selectedStudentContacts)->diff($this->jiriContactForm->selectedEvaluatorContacts);
+        return Auth::user()->contacts->sortByDesc('lastname')->diff($this->jiriEvaluatorForm->selectedEvaluator)->diff($this->jiriStudentForm->selectedStudent);
     }
 
     public function refreshContactList(): void
     {
-        $this->contacts =Auth::user()->contacts->sortByDesc('lastname')->diff($this->jiriContactForm->selectedStudentContacts)->diff($this->jiriContactForm->selectedEvaluatorContacts);
+        $this->contacts =Auth::user()->contacts->sortByDesc('lastname')->diff($this->jiriEvaluatorForm->selectedEvaluator)->diff($this->jiriStudentForm->selectedStudent);
     }
-    public function addContactToSelectedEvaluatorContacts($contactId): void
-    {
-        $contact = Auth::user()->contacts->find($contactId);
-        $this->jiriContactForm->selectedEvaluatorContacts[] = $contact;
-        $this->jiriContactForm->validate();
-    }
-    public function removeContactFromSelectedEvaluatorContacts($contactId): void
-    {
-        $contact = Auth::user()->contacts->find($contactId);
-        $this->jiriContactForm->selectedEvaluatorContacts = array_diff($this->jiriContactForm->selectedEvaluatorContacts, [$contact]);
-    }
-    public function addContactToSelectedStudentContacts($contactId): void
-    {
-        $contact = Auth::user()->contacts->find($contactId);
-        $this->jiriContactForm->selectedStudentContacts[] = $contact;
-        $this->jiriContactForm->validate();
-    }
-    public function removeContactFromSelectedStudentContacts($contactId): void
-    {
-        $contact = Auth::user()->contacts->find($contactId);
-        $this->jiriContactForm->selectedStudentContacts = array_diff($this->jiriContactForm->selectedStudentContacts, [$contact]);
-    }
-    public function updateLinkedContactsToAJiri(): void
-    {
-        $this->jiriContactForm->validate();
 
-        // Delete the unselected contacts
-        $contactsToDelete = $this->jiri->contactJiris->diff($this->jiriContactForm->selectedStudentContacts)->diff($this->jiriContactForm->selectedEvaluatorContacts);
-        foreach ($contactsToDelete as $contact){
-            $this->jiriContactForm->delete($this->jiri->id, $contact->id);
+    // ---- Evaluators
+    public JiriEvaluatorForm $jiriEvaluatorForm;
+    public $successJiriEvaluator = false;
+    public function addContactToSelectedEvaluator($contactId): void
+    {
+        $contact = Auth::user()->contacts->find($contactId);
+        $this->jiriEvaluatorForm->selectedEvaluator[] = $contact;
+        $this->jiriEvaluatorForm->validate();
+    }
+    public function removeContactFromSelectedEvaluator($contactId): void
+    {
+        $contact = Auth::user()->contacts->find($contactId);
+        $this->jiriEvaluatorForm->selectedEvaluator = array_diff($this->jiriEvaluatorForm->selectedEvaluator, [$contact]);
+    }
+    public function updateLinkedEvaluatorToAJiri(): void
+    {
+        $this->jiriEvaluatorForm->validate();
+
+        // Delete the unselected evaluators
+        $evaluatorsToDelete = $this->jiri->contactJiris->diff($this->jiriEvaluatorForm->selectedEvaluator);
+        foreach ($evaluatorsToDelete as $evaluator){
+            $this->jiriEvaluatorForm->delete($this->jiri->id, $evaluator->id);
         }
 
-        // Add the selected students contacts
-        foreach ($this->jiriContactForm->selectedStudentContacts as $contact){
-            $this->jiriContactForm->create($this->jiri->id, $contact->id, 'student');
-        }// Add the selected evaluators contacts
-        foreach ($this->jiriContactForm->selectedEvaluatorContacts as $contact){
-            $this->jiriContactForm->create($this->jiri->id, $contact->id, 'evaluator');
+        // Add the selected evaluators
+        foreach ($this->jiriEvaluatorForm->selectedEvaluator as $evaluator){
+            $this->jiriEvaluatorForm->create($this->jiri->id, $evaluator->id);
         }
-        $this->successJiriContact = true;
+
+        $this->successJiriEvaluator = true;
+    }
+
+    // ---- Students
+    public JiriStudentForm $jiriStudentForm;
+    public $successJiriStudent = false;
+    public function addContactToSelectedStudent($contactId): void
+    {
+        $contact = Auth::user()->contacts->find($contactId);
+        $this->jiriStudentForm->selectedStudent[] = $contact;
+        $this->jiriStudentForm->validate();
+    }
+    public function removeContactFromSelectedStudent($contactId): void
+    {
+        $contact = Auth::user()->contacts->find($contactId);
+        $this->jiriStudentForm->selectedStudent = array_diff($this->jiriStudentForm->selectedStudent, [$contact]);
+    }
+    public function updateLinkedStudentToAJiri(): void
+    {
+        $this->jiriStudentForm->validate();
+
+        // Delete the unselected students
+        $studentsToDelete = $this->jiri->contactJiris->diff($this->jiriStudentForm->selectedStudent);
+        foreach ($studentsToDelete as $student){
+            $this->jiriStudentForm->delete($this->jiri->id, $student->id);
+        }
+
+        // Add the selected students
+        foreach ($this->jiriStudentForm->selectedStudent as $student){
+            $this->jiriStudentForm->create($this->jiri->id, $student->id);
+        }
+
+        $this->successJiriStudent = true;
     }
 }

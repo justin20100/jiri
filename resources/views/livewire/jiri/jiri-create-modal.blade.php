@@ -42,11 +42,11 @@
 
                                 <p class="jiriCreateForm__textContainer__text">
                                     @if($this->step == "infos")
-                                        {{__("Lets start your Jiri creation by choosing a title, a start and an end date.")}}
+                                        {{__("Lets start your Jiri creation by choosing a name, a start and an end date.")}}
                                     @elseif($this->step == "project")
                                         {{__("Now, select the projects you want to include in this Jiri. You can also create new projects ")}}
                                     @elseif($this->step == "contact")
-                                        {{__("Finally, select the contacts you want to include in this Jiri.")}}
+                                        {{__("Finally, select contacts as evaluator or student that you want to include in this Jiri.")}}
                                     @elseif($this->step == "summary")
                                         {{__("Here is a summary of your Jiri.")}}
                                     @endif
@@ -69,19 +69,25 @@
                                          @if($this->step == "project")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif
                                          ">
                                     </div>
-                                    <div @if($this->successJiriContact || $this->successJiriProject) wire:click="showStep('contact')" @endif
+                                    <div @if($this->successJiriEvaluator || $this->successJiriProject) wire:click="showStep('evaluator')" @endif
                                          class="jiriCreateForm__stepsContainer__pointsContainer__point
-                                         @if($this->successJiriContact)jiriCreateForm__stepsContainer__pointsContainer__point--validated @endif
-                                         @if($this->step == "contact")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif
+                                         @if($this->successJiriEvaluator)jiriCreateForm__stepsContainer__pointsContainer__point--validated @endif
+                                         @if($this->step == "evaluator")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif
                                          ">
                                     </div>
-                                    <div @if($this->successJiriContact) wire:click="showStep('summary')" @endif
+                                    <div @if($this->successJiriStudent || $this->successJiriEvaluator) wire:click="showStep('student')" @endif
+                                         class="jiriCreateForm__stepsContainer__pointsContainer__point
+                                         @if($this->successJiriStudent)jiriCreateForm__stepsContainer__pointsContainer__point--validated @endif
+                                         @if($this->step == "student")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif
+                                         ">
+                                    </div>
+                                    <div @if($this->successJiriStudent) wire:click="showStep('summary')" @endif
                                         class="jiriCreateForm__stepsContainer__pointsContainer__point
                                         @if($this->step == "summary")jiriCreateForm__stepsContainer__pointsContainer__point--focus @endif
                                         ">
                                     </div>
                                 </div>
-                            </div>`
+                            </div>
 
                             <!-- infos -->
                             @if($this->step == "infos")
@@ -115,7 +121,7 @@
 
                             <!-- projects -->
                             @if($this->step == "project")
-                                <form wire:submit="showStep('contact')" class="jiriCreateForm__projects">
+                                <form wire:submit="showStep('evaluator')" class="jiriCreateForm__projects">
                                     <div class="jiriCreateForm__projects__listContainer">
                                         <div class="jiriCreateForm__projects__listContainer__top">
                                             <p class="jiriCreateForm__projects__listContainer__top__label">
@@ -162,17 +168,18 @@
                                             </ul>
                                         </div>
                                     </div>
+                                    <button wire:click.prevent="showStep('infos')" class="button jiriCreateForm__projects__previous">{{__("Previous step")}}</button>
                                     <button type="submit" class="button jiriCreateForm__projects__button">{{__('Next step')}}</button>
                                 </form>
                             @endif
 
-                            <!-- contacts -->
-                            @if($this->step == "contact")
-                                <form wire:submit="showStep('')" class="jiriCreateForm__contacts">
+                            <!-- evaluator -->
+                            @if($this->step == "evaluator")
+                                <form wire:submit="showStep('student')" class="jiriCreateForm__contacts">
                                     <div class="jiriCreateForm__contacts__listContainer">
                                         <div class="jiriCreateForm__contacts__listContainer__top">
                                             <p class="jiriCreateForm__contacts__listContainer__top__label">
-                                                {{__("Liste des contacts")}}
+                                                {{__("Your contacts")}}
                                             </p>
                                             <livewire:contact.contact-create-modal/>
                                         </div>
@@ -180,17 +187,11 @@
                                             <ul class="jiriCreateForm__contacts__listContainer__list">
                                                 @foreach($this->contacts as $contact)
                                                     <li class="jiriCreateForm__contacts__listContainer__list__item">
-                                                        <span>{{$contact->firstname}}</span>
-                                                        <span>{{$contact->lastname}}</span>
-                                                        <span>{{$contact->email}}</span>
-                                                        <a wire:click="addContactToSelectedEvaluatorContacts({{$contact->id}})">
+                                                        <span>{{$contact->firstname." ".$contact->lastname}}</span>
+                                                        <a wire:click="addContactToSelectedEvaluator({{$contact->id}})" title="{{__("Add to selected evaluators list")}}">
+                                                            <p>{{__("Add to selected")}}</p>
                                                             <svg>
-                                                                <use xlink:href="{{asset("images/sprite.svg#plus")}}"></use>
-                                                            </svg>
-                                                        </a>
-                                                        <a wire:click="addContactToSelectedStudentContacts({{$contact->id}})">
-                                                            <svg>
-                                                                <use xlink:href="{{asset("images/sprite.svg#plus")}}"></use>
+                                                                <use xlink:href="{{asset("images/sprite.svg#arrowright")}}"></use>
                                                             </svg>
                                                         </a>
                                                     </li>
@@ -199,49 +200,84 @@
                                         </div>
                                     </div>
                                     <div class="jiriCreateForm__contacts__selectedContainer">
-                                        <div class="jiriCreateForm__contacts__selectedContainer__jury">
-                                            <p class="jiriCreateForm__contacts__selectedContainer__jury__label">
-                                                {{__("Jury(s) sélectionné(s) ")}}
-                                            </p>
-                                            <div class="jiriCreateForm__contacts__selectedContainer__jury__listContainer">
-                                                <ul class="jiriCreateForm__contacts__selectedContainer__jury__listContainer__list">
-                                                    @foreach($this->jiriContactForm->selectedEvaluatorContacts as $selectedEvaluator)
-                                                        <li class="jiriCreateForm__contacts__selectedContainer__jury__listContainer__list__item">
-                                                            <span>{{$selectedEvaluator->firstname}}</span>
-                                                            <span>{{$selectedEvaluator->lastname}}</span>
-                                                            <a wire:click="removeContactFromSelectedEvaluatorContacts({{$selectedEvaluator->id}})">
-                                                                <svg>
-                                                                    <use xlink:href="{{asset("images/sprite.svg#trash")}}"></use>
-                                                                </svg>
-                                                            </a>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="jiriCreateForm__contacts__selectedContainer__student">
-                                            <p class="jiriCreateForm__contacts__selectedContainer__student__label">
-                                                {{__("Étudiant(s) sélectionné(s)")}}
-                                            </p>
-                                            <div class="jiriCreateForm__contacts__selectedContainer__student__listContainer">
-                                                <ul class="jiriCreateForm__contacts__selectedContainer__student__listContainer__list">
-                                                    @foreach($this->jiriContactForm->selectedStudentContacts as $selectedStudent)
-                                                        <li class="jiriCreateForm__contacts__selectedContainer__student__listContainer__list__item">
-                                                            <span>{{$selectedStudent->firstname}}</span>
-                                                            <span>{{$selectedStudent->lastname}}</span>
-                                                            <a wire:click="removeContactFromSelectedStudentContacts({{$selectedStudent->id}})">
-                                                                <svg>
-                                                                    <use xlink:href="{{asset("images/sprite.svg#trash")}}"></use>
-                                                                </svg>
-                                                            </a>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
+                                        <p class="jiriCreateForm__contacts__selectedContainer__label">
+                                            {{__("Selected evaluators(s) for this Jiri")}}
+                                        </p>
+                                        <x-input-error :messages="$errors->get('jiriEvaluatorForm.selectedEvaluator')"/>
+                                        <div class="jiriCreateForm__contacts__selectedContainer__bottom">
+                                            <ul class="jiriCreateForm__contacts__selectedContainer__list">
+                                                @foreach($this->jiriEvaluatorForm->selectedEvaluator as $evaluator)
+                                                    <li class="jiriCreateForm__contacts__selectedContainer__list__item">
+                                                        <span>{{$evaluator->firstname." ".$evaluator->lastname}}</span>
+                                                        <a wire:click="removeContactFromSelectedEvaluator({{$evaluator->id}})" title="{{__("Remove from selected evaluators list")}}">
+                                                            <svg>
+                                                                <use xlink:href="{{asset("images/sprite.svg#arrowleft")}}"></use>
+                                                            </svg>
+                                                            <p>
+                                                                {{__("Remove from selected")}}
+                                                            </p>
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         </div>
                                     </div>
-                                    <button type="submit" class="button jiriCreateForm__projects__button">{{__('Next step')}}</button>
+                                    <button wire:click.prevent="showStep('projects')" class="button jiriCreateForm__contacts__previous">{{__("Previous step")}}</button>
+                                    <button type="submit" class="button jiriCreateForm__contacts__button">{{__('Next step')}}</button>
+                                </form>
+                            @endif
+
+                            <!-- student -->
+                            @if($this->step == "student")
+                                <form wire:submit="showStep('summary')" class="jiriCreateForm__contacts">
+                                    <div class="jiriCreateForm__contacts__listContainer">
+                                        <div class="jiriCreateForm__contacts__listContainer__top">
+                                            <p class="jiriCreateForm__contacts__listContainer__top__label">
+                                                {{__("Your contacts without the selected evaluators")}}
+                                            </p>
+                                            <livewire:contact.contact-create-modal/>
+                                        </div>
+                                        <div class="jiriCreateForm__contacts__listContainer__bottom">
+                                            <ul class="jiriCreateForm__contacts__listContainer__list">
+                                                @foreach($this->contacts as $contact)
+                                                    <li class="jiriCreateForm__contacts__listContainer__list__item">
+                                                        <span>{{$contact->firstname." ".$contact->lastname}}</span>
+                                                        <a wire:click="addContactToSelectedStudent({{$contact->id}})" title="{{__("Add to selected student list")}}">
+                                                            <p>{{__("Add to selected")}}</p>
+                                                            <svg>
+                                                                <use xlink:href="{{asset("images/sprite.svg#arrowright")}}"></use>
+                                                            </svg>
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="jiriCreateForm__contacts__selectedContainer">
+                                        <p class="jiriCreateForm__contacts__selectedContainer__label">
+                                            {{__("Selected students(s) for this Jiri")}}
+                                        </p>
+                                        <x-input-error :messages="$errors->get('jiriStudentForm.selectedStudent')"/>
+                                        <div class="jiriCreateForm__contacts__selectedContainer__bottom">
+                                            <ul class="jiriCreateForm__contacts__selectedContainer__list">
+                                                @foreach($this->jiriStudentForm->selectedStudent as $student)
+                                                    <li class="jiriCreateForm__contacts__selectedContainer__list__item">
+                                                        <span>{{$student->firstname." ".$student->lastname}}</span>
+                                                        <a wire:click="removeContactFromSelectedStudent({{$student->id}})" title="{{__("Remove from selected students list")}}">
+                                                            <svg>
+                                                                <use xlink:href="{{asset("images/sprite.svg#arrowleft")}}"></use>
+                                                            </svg>
+                                                            <p>
+                                                                {{__("Remove from selected")}}
+                                                            </p>
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <button wire:click.prevent="showStep('evaluator')" class="button jiriCreateForm__contacts__previous">{{__("Previous step")}}</button>
+                                    <button type="submit" class="button jiriCreateForm__contacts__button">{{__('Last step')}}</button>
                                 </form>
                             @endif
 
@@ -250,8 +286,7 @@
 
                                 <!-- button -->
                                 <div class="jiriCreate__contentContainer__formContainer__form__button">
-                                    <div class="jiriCreate__contentContainer__formContainer__form__button__point"></div>
-                                    <button type="submit" class="button button--fullwidth">{{__('Save this Jiri')}}</button>
+                                    <button wire:click.prevent="closeModal()" class="button button--fullwidth">{{__('Save this Jiri')}}</button>
                                 </div>
                             @endif
                         </div>
