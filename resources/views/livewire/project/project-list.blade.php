@@ -87,7 +87,7 @@
                             {{-- select  --}}
                         </th>
                         <th class="table__head__line__cell table__head__line__cell--title">
-                            {{__("Titre")}}
+                            {{__("Title")}}
                         </th>
                         <th class="table__head__line__cell table__head__line__cell--description" >
                             {{__("Description")}}

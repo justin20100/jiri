@@ -89,10 +89,10 @@
                                 {{__("Avatar")}}
                             </th>
                             <th class="table__head__line__cell table__head__line__cell--firstname">
-                                {{__("Prénom")}}
+                                {{__("Firstname")}}
                             </th>
                             <th class="table__head__line__cell table__head__line__cell--lastname">
-                                {{__("Nom")}}
+                                {{__("Lastname")}}
                             </th>
                             <th class="table__head__line__cell table__head__line__cell--email">
                                 {{__("Email")}}

@@ -86,16 +86,16 @@
                             {{-- select  --}}
                         </th>
                         <th class="table__head__line__cell table__head__line__cell--title">
-                            {{__("Titre")}}
+                            {{__("Title")}}
                         </th>
                         <th class="table__head__line__cell table__head__line__cell--date" >
-                            {{__("Début du Jiri")}}
+                            {{__("Start sate")}}
                         </th>
                         <th class="table__head__line__cell table__head__line__cell--date">
-                            {{__("Fin du Jiri")}}
+                            {{__("End date")}}
                         </th>
                         <th class="table__head__line__cell table__head__line__cell--statut">
-                            {{__("Statut")}}
+                            {{__("Status")}}
                         </th>
                         <th class="table__head__line__cell table__head__line__cell--actions">
                             {{-- actions--}}

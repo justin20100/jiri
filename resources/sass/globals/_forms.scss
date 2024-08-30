@@ -357,7 +357,7 @@ input[type="checkbox"] {
         justify-content: space-between;
         gap: 0 60px;
         background-color: lighten($main6, 2.6%);
-        box-shadow: 0 0 10px 0px $main1;
+        box-shadow: 0 0 10px 0 $main1;
 
         &__name {
             grid-area: name;
@@ -383,7 +383,7 @@ input[type="checkbox"] {
         position: relative;
         background-color: lighten($main6, 2.6%);
         border-radius: 14px;
-        box-shadow: 0 0 10px 0px $main1;
+        box-shadow: 0 0 10px 0 $main1;
         padding: 30px;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -596,7 +596,7 @@ input[type="checkbox"] {
         position: relative;
         background-color: lighten($main6, 2.6%);
         border-radius: 14px;
-        box-shadow: 0 0 10px 0px $main1;
+        box-shadow: 0 0 10px 0 $main1;
         padding: 30px;
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -825,7 +825,7 @@ input[type="checkbox"] {
             background-color: lighten($main6, 2.6%);
             border-radius: 14px;
             padding: 20px;
-            box-shadow: 0 0 5px 0px $main1;
+            box-shadow: 0 0 5px 0 $main1;
             display: grid;
             grid-template-areas: "name name""start end";
             grid-template-columns: 1fr 1fr;
@@ -870,7 +870,7 @@ input[type="checkbox"] {
             background-color: lighten($main6, 2.6%);
             border-radius: 14px;
             padding: 20px;
-            box-shadow: 0 0 5px 0px $main1;
+            box-shadow: 0 0 5px 0 $main1;
 
             &__title {
                 font-family: $titleFont;
@@ -891,7 +891,7 @@ input[type="checkbox"] {
                 &__item {
                     background-color: $white;
                     border-radius: 14px;
-                    box-shadow: 0 0 5px 0px $main1;
+                    box-shadow: 0 0 5px 0 $main1;
                     padding: 8px 12px;
                     display: flex;
                     flex-direction: row;
@@ -914,7 +914,7 @@ input[type="checkbox"] {
             background-color: lighten($main6, 2.6%);
             border-radius: 14px;
             padding: 20px;
-            box-shadow: 0 0 5px 0px $main1;
+            box-shadow: 0 0 5px 0 $main1;
 
             &__title {
                 font-family: $titleFont;
@@ -935,7 +935,7 @@ input[type="checkbox"] {
                 &__item {
                     background-color: $white;
                     border-radius: 14px;
-                    box-shadow: 0 0 5px 0px $main1;
+                    box-shadow: 0 0 5px 0 $main1;
                     padding: 6px 10px;
                     display: flex;
                     flex-direction: row;
@@ -968,7 +968,7 @@ input[type="checkbox"] {
             background-color: lighten($main6, 2.6%);
             border-radius: 14px;
             padding: 20px;
-            box-shadow: 0 0 5px 0px $main1;
+            box-shadow: 0 0 5px 0 $main1;
 
             &__title {
                 font-family: $titleFont;
@@ -989,7 +989,7 @@ input[type="checkbox"] {
                 &__item {
                     background-color: $white;
                     border-radius: 14px;
-                    box-shadow: 0 0 5px 0px $main1;
+                    box-shadow: 0 0 5px 0 $main1;
                     padding: 6px 10px;
                     display: flex;
                     flex-direction: row;
