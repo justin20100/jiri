@@ -5,7 +5,7 @@
 .navigation {
 
     .wrapper {
-        min-width: 300px;
+        min-width: 240px;
         height: calc(100vh - 80px);
     }
 
@@ -31,13 +31,13 @@
 
                     > svg {
                         fill: $main1;
-                        width: 50px;
+                        width: 45px;
                     }
                 }
             }
 
             &__links {
-                padding-left: 20px;
+                padding-left: 15px;
                 display: flex;
                 flex-direction: column;
                 gap: 15px;
@@ -47,7 +47,7 @@
                     align-items: center;
                     justify-content: flex-start;
                     flex-direction: row;
-                    gap: 20px;
+                    gap: 12px;
                     padding: 12px 0 12px 20px;
                     background-color: $white;
                     border-radius: 10px;
@@ -75,16 +75,16 @@
                         width: 20px;
 
                         > svg {
-                            fill: $grey;
-                            width: 22px;
-                            height: 22px;
+                            fill: lighten($lightBlack, 35%);
+                            width: 18px;
+                            height: 18px;
                         }
                     }
 
                     > span {
                         font-family: $textFont;
-                        font-size: $mediumSize;
-                        color: $grey;
+                        font-size: $normalSize;
+                        color: lighten($lightBlack, 35%);
                     }
 
                     &--active {

@@ -3,7 +3,7 @@
 *********************************************/
 
 .appBar {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 
     &__contentContainer {
         display: flex;
@@ -31,7 +31,7 @@
             &__input{
                 border: none;
                 outline: none;
-                padding: 15px 20px;
+                padding: 13px 17px;
                 border-radius: 10px;
                 font-family: $textFont;
                 font-size: $normalSize;
@@ -65,7 +65,7 @@
 
                 &__img {
                     width: 100%;
-                    max-width: 50px;
+                    max-width: 40px;
                     border-radius: 50%;
                 }
             }

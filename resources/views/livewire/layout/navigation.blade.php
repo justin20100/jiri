@@ -67,7 +67,7 @@ new class extends Component
                             </svg>
                         </div>
                         <span>
-                            {{ __('Projets') }}
+                            {{ __('Projects') }}
                         </span>
                     </x-nav-link>
                 </div>
@@ -78,7 +78,7 @@ new class extends Component
                     <!-- Authentication -->
                     <button wire:click="logout" class="navigation__contentContainer__bottom__buttonContainer__button">
                         <x-dropdown-link>
-                            {{ __('Se déconnecter') }}
+                            {{ __('Logout') }}
                         </x-dropdown-link>
                     </button>
                 </div>

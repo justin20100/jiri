@@ -41,43 +41,27 @@
 
     <div class="contacts__contentContainer">
         <div class="contacts__contentContainer__header">
-            <h1 class="contacts__contentContainer__header__title">{{__("Contacts")}}</h1>
-            <div class="contacts__contentContainer__header__buttonsContainer">
-                <div class="contacts__contentContainer__header__buttonsContainer__deleteContainer">
-                    <div class="iconsBox @if(!$this->actionsDisabled) iconsBox--active @else iconsBox--inactive @endif">
-                        <div class="iconsBox__contentContainer">
-                            <div class="iconsBox__contentContainer__list">
-                                <div class="iconsBox__contentContainer__list__item">
-                                    <button wire:click.prevent="deleteSelected"
-                                            class="iconsBox__contentContainer__list__item__button" title="{{__('Supprimer les contacts sélectionnés')}}">
-                                        <svg class="iconsBox__contentContainer__list__item__button__svg">
-                                            <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="iconsBox__contentContainer__closeButton">
-                                <button wire:click.prevent="cancelSelected" class="iconsBox__contentContainer__closeButton__button" title="{{__('Annuler la sélection')}}">
-                                    <svg class="iconsBox__contentContainer__closeButton__button__svg">
-                                        <use xlink:href="{{asset("images/sprite.svg#close")}}"></use>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
+            <div class="contacts__contentContainer__header__top">
+                <h1 class="contacts__contentContainer__header__top__title">{{__("Contacts")}}</h1>
+                <x-dropdown-link class="contacts__contentContainer__header__top__profileContainer" :href="route('profile')" wire:navigate>
+                    <div class="contacts__contentContainer__header__top__profileContainer__nameContainer">
+                        <span class="contacts__contentContainer__header__top__profileContainer__nameContainer__name">{{'Hello, '.Auth()->user()['firstname']}}</span>
                     </div>
+                    <div class="contacts__contentContainer__header__top__profileContainer__imgContainer">
+                        <img src="{{URL::to('/storage/avatars')."/".Auth()->user()['avatar']}}" alt="" class="contacts__contentContainer__header__top__profileContainer__imgContainer__img">
+                    </div>
+                </x-dropdown-link>
+            </div>
+            <div class="contacts__contentContainer__header__bottom">
+                <div class="contacts__contentContainer__header__bottom__searchContainer">
+                    <div class="contacts__contentContainer__header__bottom__searchContainer__iconContainer">
+                        <svg>
+                            <use xlink:href="{{asset("images/sprite.svg#search")}}"></use>
+                        </svg>
+                    </div>
+                    <input type="text" class="contacts__contentContainer__header__bottom__searchContainer__input" placeholder="{{__('Search in this list ...')}}">
                 </div>
-                {{--                <div class="contacts__contentContainer__header__buttonsContainer__filterContainer">--}}
-                {{--                    <div class="contacts__contentContainer__header__buttonsContainer__filterContainer__filter">--}}
-                {{--                        <x-input-label for="sort" :value="__('Trier par')"/>--}}
-                {{--                        <select id="sort" name="sort" required autocomplete="sort" class="select">--}}
-                {{--                            <option value="">{{__('Date de création')}}</option>--}}
-                {{--                            <option value="">{{__('Titre')}}</option>--}}
-                {{--                        </select>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                <div class="contacts__contentContainer__header__buttonsContainer__buttonContainer">
-                    <livewire:contact.contact-create-modal/>
-                </div>
+                <livewire:contact.contact-create-modal/>
             </div>
         </div>
         @if($this->contacts->isEmpty())

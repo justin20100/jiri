@@ -26,27 +26,27 @@
             <!-- Page Content -->
             <main class="appBody__contentContainer__main">
                 @php($currentUser = Auth()->user())
-                <div class="appBar">
-                    <div class="appBar__contentContainer">
-                        <div class="appBar__contentContainer__searchContainer">
-                            <div class="appBar__contentContainer__searchContainer__iconContainer">
-                                <svg>
-                                    <use xlink:href="{{asset("images/sprite.svg#search")}}"></use>
-                                </svg>
-                            </div>
-                            <input type="text" class="appBar__contentContainer__searchContainer__input" placeholder="{{__('Votre recherche ...')}}">
-                        </div>
+{{--                <div class="appBar">--}}
+{{--                    <div class="appBar__contentContainer">--}}
+{{--                        <div class="appBar__contentContainer__searchContainer">--}}
+{{--                            <div class="appBar__contentContainer__searchContainer__iconContainer">--}}
+{{--                                <svg>--}}
+{{--                                    <use xlink:href="{{asset("images/sprite.svg#search")}}"></use>--}}
+{{--                                </svg>--}}
+{{--                            </div>--}}
+{{--                            <input type="text" class="appBar__contentContainer__searchContainer__input" placeholder="{{__('Search in this list ...')}}">--}}
+{{--                        </div>--}}
 
-                        <x-dropdown-link class="appBar__contentContainer__profileContainer" :href="route('profile')" wire:navigate>
-                            <div class="appBar__contentContainer__profileContainer__nameContainer">
-                                <span class="appBar__contentContainer__profileContainer__nameContainer__name">{{'Bonjour, '.$currentUser['firstname']}}</span>
-                            </div>
-                            <div class="appBar__contentContainer__profileContainer__imgContainer">
-                                <img src="{{URL::to('/storage/avatars')."/".$currentUser['avatar']}}" alt="" class="appBar__contentContainer__profileContainer__imgContainer__img">
-                            </div>
-                        </x-dropdown-link>
-                    </div>
-                </div>
+{{--                        <x-dropdown-link class="appBar__contentContainer__profileContainer" :href="route('profile')" wire:navigate>--}}
+{{--                            <div class="appBar__contentContainer__profileContainer__nameContainer">--}}
+{{--                                <span class="appBar__contentContainer__profileContainer__nameContainer__name">{{'Hello, '.$currentUser['firstname']}}</span>--}}
+{{--                            </div>--}}
+{{--                            <div class="appBar__contentContainer__profileContainer__imgContainer">--}}
+{{--                                <img src="{{URL::to('/storage/avatars')."/".$currentUser['avatar']}}" alt="" class="appBar__contentContainer__profileContainer__imgContainer__img">--}}
+{{--                            </div>--}}
+{{--                        </x-dropdown-link>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 {{ $slot }}
             </main>
         </div>
