@@ -2,8 +2,8 @@
     <div class="welcome-form__row">
         {{--  FIRSTNAME INPUT  --}}
         <div class="welcome-form__inputContainer">
-            <label for="firstname" class="welcome-form__inputContainer__label">Prénom</label>
-            <input wire:model="form.firstname" type="text" id="firstname" class="welcome-form__inputContainer__input" placeholder="Votre prénom">
+            <label for="firstname" class="welcome-form__inputContainer__label">{{__("Firstname")}}</label>
+            <input wire:model="form.firstname" type="text" id="firstname" class="welcome-form__inputContainer__input" placeholder="{{__("Your firstname")}}">
             @error('form.firstname')
                 <div class="errorContainer">
                     <span class="errorContainer__error">{{ $message }}</span>
@@ -12,8 +12,8 @@
         </div>
         {{--  LASTNAME INPUT  --}}
         <div class="welcome-form__inputContainer">
-            <label for="name" class="welcome-form__inputContainer__label">Nom</label>
-            <input wire:model="form.lastname" type="text" id="name" class="welcome-form__inputContainer__input" placeholder="Votre nom">
+            <label for="name" class="welcome-form__inputContainer__label">{{__("Lastname")}}</label>
+            <input wire:model="form.lastname" type="text" id="name" class="welcome-form__inputContainer__input" placeholder="{{__("Your lastname")}}">
             @error('form.lastname')
                 <div class="errorContainer">
                     <span class="errorContainer__error">{{ $message }}</span>
@@ -23,8 +23,8 @@
     </div>
     {{--  EMAIL INPUT  --}}
     <div class="welcome-form__inputContainer">
-        <label for="email" class="welcome-form__inputContainer__label">Email</label>
-        <input wire:model="form.email" type="email" id="email" class="welcome-form__inputContainer__input" placeholder="Votre email">
+        <label for="email" class="welcome-form__inputContainer__label">{{__("Email")}}</label>
+        <input wire:model="form.email" type="email" id="email" class="welcome-form__inputContainer__input" placeholder="{{__("Your email")}}">
         @error('form.email')
             <div class="errorContainer">
                 <span class="errorContainer__error">{{ $message }}</span>
@@ -33,8 +33,8 @@
     </div>
     {{--  MESSAGE INPUT  --}}
     <div class="welcome-form__inputContainer">
-        <label for="message" class="welcome-form__inputContainer__label">Message</label>
-        <textarea wire:model="form.message" name="message" id="message" class="welcome-form__inputContainer__textarea" placeholder="Votre message"></textarea>
+        <label for="message" class="welcome-form__inputContainer__label">{{__("Message")}}</label>
+        <textarea wire:model="form.message" name="message" id="message" class="welcome-form__inputContainer__textarea" placeholder="{{__("Your message")}}"></textarea>
         @error('form.message')
             <div class="errorContainer">
                 <span class="errorContainer__error">{{ $message }}</span>
@@ -47,10 +47,10 @@
             <svg class="success__icon">
                 <use xlink:href="{{asset("images/sprite.svg#check")}}"></use>
             </svg>
-            <p class="success__text">{{ __('Votre message a bien été envoyé!') }}</p>
+            <p class="success__text">{{ __('Your message has been successfully sent!') }}</p>
         </div>
         @else
         {{--  BUTTON  --}}
-        <button type="submit" class="welcome-form__button button">Envoyer</button>
+        <button type="submit" class="welcome-form__button button">{{__("Send message")}}</button>
     @endif
 </form>

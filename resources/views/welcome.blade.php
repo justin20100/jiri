@@ -30,12 +30,11 @@
                     <div class="wrapper">
                         <div class="banner__contentContainer">
                             <div class="banner__contentContainer__content">
-                                <h1 class="banner__contentContainer__content__title">Simplifiez, digitalisez et  centralisez vos données lors de jurys</h1>
-                                <p class="banner__contentContainer__content__text">Créez des contacts ainsi que des projets pour en faire un Jiri. Ce Jiri une fois crée, donne aux jurys de celui-ci accès à une interface pour noter les étudiants sur un ou plusieurs projets.</p>
+                                <h1 class="banner__contentContainer__content__title">{{__("Digitize and centralize your jury data for smoother evaluations")}}</h1>
+                                <p class="banner__contentContainer__content__text">{{__("Once your projects are set up, our platform allows jurors to easily evaluate students on multiple projects through an intuitive interface.")}}</p>
                                 <div class="banner__contentContainer__content__buttonContainer">
-                                    <a href="#features" class="banner__contentContainer__content__buttonContainer__button button button--light">En savoir plus</a>
-                                    <a href="#contact" class="banner__contentContainer__content__buttonContainer__button button">Contactez-nous</a>
-{{--                                    <a href="{{route('register')}}" class="banner__contentContainer__content__buttonContainer__button button">Créer un compte</a>--}}
+                                    <a href="#features" class="banner__contentContainer__content__buttonContainer__button button button--light">{{__("Learn more")}}</a>
+                                    <a href="#contact" class="banner__contentContainer__content__buttonContainer__button button">{{__("Contact us")}}</a>
                                 </div>
                             </div>
                             <div class="banner__contentContainer__screen">
@@ -49,9 +48,8 @@
                 <section class="features" id="features">
                     <div class="wrapper">
                         <div class="features__contentContainer">
-                            <h2 class="features__contentContainer__title">{{__('Fonctionnalités')}}</h2>
+                            <h2 class="features__contentContainer__title">{{__('Features')}}</h2>
                             <div class="features__contentContainer__list">
-
                                 <div class="features__contentContainer__list__item">
                                     <div class="features__contentContainer__list__item__top">
                                         <div class="features__contentContainer__list__item__top__iconContainer features__contentContainer__list__item__top__iconContainer--1">
@@ -59,10 +57,12 @@
                                                 <use xlink:href="{{asset("images/sprite.svg#feature1")}}"></use>
                                             </svg>
                                         </div>
-                                        <h3 class="features__contentContainer__list__item__top__title">Simplification de l’encodage des cotes par le jury</h3>
+                                        <h3 class="features__contentContainer__list__item__top__title">{{__("Streamlining the
+                                            jury's grading process")}}</h3>
                                     </div>
                                     <p class="features__contentContainer__list__item__text">
-                                        Plus besoin de feuille ou de tableau Excel ou les fautes d’encodages sont vite arrivées. Une interface web simple est a disposition du jury.
+                                        {{__("No more paper sheets or Excel spreadsheets prone to errors. A simple web
+                                        interface is available for the jury.")}}
                                     </p>
                                 </div>
 
@@ -73,10 +73,12 @@
                                                 <use xlink:href="{{asset("images/sprite.svg#feature2")}}"></use>
                                             </svg>
                                         </div>
-                                        <h3 class="features__contentContainer__list__item__top__title">Centralisation de vos jurys sur cette application</h3>
+                                        <h3 class="features__contentContainer__list__item__top__title">{{__("Centralize your
+                                            juries with this application")}}</h3>
                                     </div>
                                     <p class="features__contentContainer__list__item__text">
-                                        Gardez un historique des jurys, faite grandir votre liste de contacts, certains étudiants deviendront peut-être jury
+                                        {{__("Keep a history of your juries, grow your contact list, and watch as some
+                                        students may become jurors themselves.")}}
                                     </p>
                                 </div>
 
@@ -87,10 +89,10 @@
                                                 <use xlink:href="{{asset("images/sprite.svg#feature3")}}"></use>
                                             </svg>
                                         </div>
-                                        <h3 class="features__contentContainer__list__item__top__title">Exportation de vos tableaux de cotes une fois clôturés</h3>
+                                        <h3 class="features__contentContainer__list__item__top__title">{{__("Export your grading tables once they are finalized")}}</h3>
                                     </div>
                                     <p class="features__contentContainer__list__item__text">
-                                        Plus besoin d’encoder toutes les cotes, exportez directement vos tableaux
+                                        {{__("No need to manually enter all the grades; simply export your tables directly.")}}
                                     </p>
                                 </div>
 
@@ -101,10 +103,11 @@
                                                 <use xlink:href="{{asset("images/sprite.svg#feature4")}}"></use>
                                             </svg>
                                         </div>
-                                        <h3 class="features__contentContainer__list__item__top__title">Invitation automatique des membres du jury</h3>
+                                        <h3 class="features__contentContainer__list__item__top__title">{{__("Automatically
+                                            invite jury members")}}</h3>
                                     </div>
                                     <p class="features__contentContainer__list__item__text">
-                                        Chaque membre du jury reçoit un mail pour se connecter a l’interface automatiquement
+                                        {{("Each jury member automatically receives an email to log in to the interface")}}
                                     </p>
                                 </div>
                             </div>
@@ -119,8 +122,8 @@
                     <div class="wrapper">
                         <div class="contact__contentContainer">
                             <div class="contact__contentContainer__heading">
-                                <p class="contact__contentContainer__heading__question">Une question ?</p>
-                                <h2 class="contact__contentContainer__heading__title">Contactez-nous</h2>
+                                <p class="contact__contentContainer__heading__question">{{__("A question ?")}}</p>
+                                <h2 class="contact__contentContainer__heading__title">{{__("Contact us")}}</h2>
                             </div>
                             <did class="contact__contentContainer__formContainer">
                                 <livewire:welcome.contact-us/>

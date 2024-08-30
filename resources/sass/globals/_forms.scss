@@ -804,18 +804,222 @@ input[type="checkbox"] {
         }
     }
 
-    &__button {
-        position: relative;
+    &__summary {
+        overflow-y: scroll;
 
-        &__point {
-            position: absolute;
-            top: 50%;
-            left: -40px;
-            transform: translateY(-50%);
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background-color: $main1;
+        // make should be always visible
+
+        position: relative;
+        padding: 5px 20px 5px 5px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "infos project"
+            "student evaluator"
+            "button button";
+        gap: 20px 20px;
+        height: 100%;
+
+        &__infos {
+            grid-area: infos;
+            background-color: lighten($main6, 2.6%);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 0 5px 0px $main1;
+            display: grid;
+            grid-template-areas: "name name""start end";
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 0;
+
+            &__text {
+                display: flex;
+                flex-direction: column;
+                gap: 7px;
+
+                &--name {
+                    grid-area: name;
+                }
+                &--start {
+                    grid-area: start;
+                }
+                &--end {
+                    grid-area: end;
+                }
+
+                &__label {
+                    color: $label;
+                    font-family: $titleFont;
+                    font-size: $normalSize;
+                    font-weight: 500;
+                    text-transform: none;
+                }
+
+                &__data {
+                    color: $lightBlack;
+                    font-family: $textFont;
+                    font-size: $normalSize;
+                    font-weight: 400;
+                    text-transform: none;
+                }
+            }
+
+        }
+
+        &__project {
+            grid-area: project;
+            background-color: lighten($main6, 2.6%);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 0 5px 0px $main1;
+
+            &__title {
+                font-family: $titleFont;
+                color: $label;
+                text-transform: none;
+                font-weight: 500;
+                font-size: $normalSize;
+                margin-bottom: 15px;
+            }
+
+            &__list {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+                flex-wrap: wrap;
+
+                &__item {
+                    background-color: $white;
+                    border-radius: 14px;
+                    box-shadow: 0 0 5px 0px $main1;
+                    padding: 8px 12px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+
+                    &__title {
+                        font-family: $textFont;
+                        font-size: $smallSize;
+                        color: $lightBlack;
+                        line-height: 1.4;
+                    }
+                }
+            }
+        }
+
+        &__student {
+            grid-area: student;
+            background-color: lighten($main6, 2.6%);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 0 5px 0px $main1;
+
+            &__title {
+                font-family: $titleFont;
+                color: $label;
+                text-transform: none;
+                font-weight: 500;
+                font-size: $normalSize;
+                margin-bottom: 15px;
+            }
+
+            &__list {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+                flex-wrap: wrap;
+
+                &__item {
+                    background-color: $white;
+                    border-radius: 14px;
+                    box-shadow: 0 0 5px 0px $main1;
+                    padding: 6px 10px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+
+                    &__avatar {
+                        height: 100%;
+
+                        > img {
+                            height: 22px;
+                            width: 22px;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    &__name {
+                        font-family: $textFont;
+                        font-size: $smallSize;
+                        color: $lightBlack;
+                        line-height: 1.4;
+                    }
+                }
+            }
+        }
+
+        &__evaluator {
+            grid-area: evaluator;
+            background-color: lighten($main6, 2.6%);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 0 5px 0px $main1;
+
+            &__title {
+                font-family: $titleFont;
+                color: $label;
+                text-transform: none;
+                font-weight: 500;
+                font-size: $normalSize;
+                margin-bottom: 15px;
+            }
+
+            &__list {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+                flex-wrap: wrap;
+
+                &__item {
+                    background-color: $white;
+                    border-radius: 14px;
+                    box-shadow: 0 0 5px 0px $main1;
+                    padding: 6px 10px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+
+                    &__avatar {
+                        height: 100%;
+
+                        > img {
+                            height: 22px;
+                            width: 22px;
+                            border-radius: 50%;
+                        }
+                    }
+
+                    &__name {
+                        font-family: $textFont;
+                        font-size: $smallSize;
+                        color: $lightBlack;
+                        line-height: 1.4;
+                    }
+                }
+            }
+        }
+
+        &__button {
+            grid-area: button;
+            // voir _buttons.scss
         }
     }
 }

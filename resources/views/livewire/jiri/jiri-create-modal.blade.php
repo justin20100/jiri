@@ -283,10 +283,97 @@
 
                             <!-- summary -->
                             @if($this->step == "summary")
+                                <div class="jiriCreateForm__summary">
 
-                                <!-- button -->
-                                <div class="jiriCreate__contentContainer__formContainer__form__button">
-                                    <button wire:click.prevent="closeModal()" class="button button--fullwidth">{{__('Save this Jiri')}}</button>
+                                    <!-- infos -->
+                                    <div class="jiriCreateForm__summary__infos">
+                                        <p class="jiriCreateForm__summary__infos__text jiriCreateForm__summary__infos__text--name">
+                                            <span class="jiriCreateForm__summary__infos__text__label">
+                                                {{__("Jiri name")}}
+                                            </span>
+                                            <span class="jiriCreateForm__summary__infos__text__data">
+                                                {{$this->jiri->name}}
+                                            </span>
+                                        </p>
+                                        <p class="jiriCreateForm__summary__infos__text jiriCreateForm__summary__infos__text--start">
+                                            <span class="jiriCreateForm__summary__infos__text__label">
+                                                {{__("Start date")}}
+                                            </span>
+                                            <span class="jiriCreateForm__summary__infos__text__data">
+                                                {{\Carbon\Carbon::parse($this->jiri->start)->format('d/m/Y H:i')}}
+                                            </span>
+                                        </p>
+                                        <p class="jiriCreateForm__summary__infos__text jiriCreateForm__summary__infos__text--end">
+                                            <span class="jiriCreateForm__summary__infos__text__label">
+                                                {{__("End date")}}
+                                            </span>
+                                            <span class="jiriCreateForm__summary__infos__text__data">
+                                                {{\Carbon\Carbon::parse($this->jiri->end)->format('d/m/Y H:i')}}
+                                            </span>
+                                        </p>
+                                    </div>
+
+                                    <!-- project -->
+                                    <div class="jiriCreateForm__summary__project">
+                                        <p class="jiriCreateForm__summary__project__title">
+                                            {{count($this->jiriProjectForm->selectedProjects)}}
+                                            {{count($this->jiriProjectForm->selectedProjects) > 1 ?__(" projects selected"):__(" project selected")}}
+                                        </p>
+                                        <ul class="jiriCreateForm__summary__project__list">
+                                            @foreach($this->jiriProjectForm->selectedProjects as $project)
+                                                <li class="jiriCreateForm__summary__project__list__item">
+                                                    <p class="jiriCreateForm__summary__project__list__item__title">
+                                                        {{$project->title}}
+                                                    </p>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+
+                                    <!-- student -->
+                                    <div class="jiriCreateForm__summary__student">
+                                        <p class="jiriCreateForm__summary__student__title" >
+                                            {{count($this->jiriStudentForm->selectedStudent)}}
+                                            {{count($this->jiriStudentForm->selectedStudent) > 1 ?__(" students selected"):__(" student selected")}}
+                                        </p>
+                                        <ul class="jiriCreateForm__summary__student__list">
+                                            @foreach($this->jiriStudentForm->selectedStudent as $student)
+                                                <li class="jiriCreateForm__summary__student__list__item">
+                                                    <div class="jiriCreateForm__summary__student__list__item__avatar">
+                                                        <img src="{{URL::to('/storage/avatars')."/".$student->avatar}}" alt="avatar">
+                                                    </div>
+                                                    <p class="jiriCreateForm__summary__student__list__item__name">
+                                                        {{$student->firstname." ".$student->lastname}}
+                                                    </p>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+
+                                    <!-- evaluator -->
+                                    <div class="jiriCreateForm__summary__evaluator">
+                                        <p class="jiriCreateForm__summary__evaluator__title">
+                                            {{count($this->jiriEvaluatorForm->selectedEvaluator)}}
+                                            {{count($this->jiriEvaluatorForm->selectedEvaluator) > 1 ?__(" evaluators selected"):__(" evaluator selected")}}
+                                        </p>
+                                        <ul class="jiriCreateForm__summary__evaluator__list">
+                                            @foreach($this->jiriEvaluatorForm->selectedEvaluator as $evaluator)
+                                                <li class="jiriCreateForm__summary__evaluator__list__item">
+                                                    <div class="jiriCreateForm__summary__evaluator__list__item__avatar">
+                                                        <img src="{{URL::to('/storage/avatars')."/".$evaluator->avatar}}" alt="avatar">
+                                                    </div>
+                                                    <p class="jiriCreateForm__summary__evaluator__list__item__name">
+                                                        {{$evaluator->firstname." ".$evaluator->lastname}}
+                                                    </p>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+
+                                    <!-- button -->
+                                    <div class="jiriCreateForm__summary__button">
+                                        <button wire:click.prevent="closeModal()" class="button button--fullwidth">{{__('Save this Jiri')}}</button>
+                                    </div>
                                 </div>
                             @endif
                         </div>

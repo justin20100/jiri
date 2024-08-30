@@ -11,12 +11,12 @@ class ContactUs extends Component
 {
     public ContactUsForm $form;
 
-    public function submitForm()
+    public function submitForm(): void
     {
         // Validate form
         $this->form->validate();
         // Send email to admin with the form data
-        Mail::to('dev@justin-vincent.be')->send(new ContactUsMail($this->form->toArray()));
+        Mail::to(env("MAIL_ADMIN_ADDRESS"))->send(new ContactUsMail($this->form->toArray()));
         // Flash message
         session()->flash('success');
         // Clear form
