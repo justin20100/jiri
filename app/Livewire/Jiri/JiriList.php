@@ -17,10 +17,11 @@ class JiriList extends Component
     public array $selectedJiris = [];
     public bool $actionsDisabled = true;
     public array $jiriToDelete = [];
+    public string $search = '';
 
     #[Computed]
     public function jiris(){
-        return Auth::user()->jiris()->orderBy('start', 'desc')->get();
+        return Jiri::where('name', 'like', '%' . $this->search . '%')->orderBy('name')->get();
     }
 
     public function render() : View

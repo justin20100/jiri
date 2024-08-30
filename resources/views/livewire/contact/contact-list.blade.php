@@ -59,21 +59,25 @@
                             <use xlink:href="{{asset("images/sprite.svg#search")}}"></use>
                         </svg>
                     </div>
-                    <input type="text" class="contacts__contentContainer__header__bottom__searchContainer__input" placeholder="{{__('Search in this list ...')}}">
+                    <input type="text" wire:model.live.debounce="search" class="contacts__contentContainer__header__bottom__searchContainer__input" placeholder="{{__('Search in this list ...')}}">
                 </div>
                 <livewire:contact.contact-create-modal/>
             </div>
         </div>
-        @if($this->contacts->isEmpty())
+        @if($this->contacts->isEmpty() && $this->search == '')
             <div class="contacts__contentContainer__tableEmpty">
-                {{--                TODO: add image--}}
-                {{--                <img src="" alt="">--}}
                 <p class="projects__contentContainer__tableEmpty__text">
                     {{__("C'est ici que vous pouvez retrouver tous les contacts que vous avez crées. Mais vous n'avez pas encore de contacts alors ajoutez en un pour pouvoir anticiper la création d'un Jiri.")}}
                 </p>
                 <livewire:contact.contact-create-modal/>
             </div>
-            @else
+        @elseif($this->contacts->isEmpty() && $this->search != '')
+            <div class="contacts__contentContainer__tableEmpty">
+                <p class="projects__contentContainer__tableEmpty__text">
+                    {{__("No results for this search !")}}
+                </p>
+            </div>
+        @else
             <div class="contacts__contentContainer__tableContainer">
                 <table class="contacts__contentContainer__tableContainer__table table">
                     <thead class="table__head">

@@ -60,19 +60,23 @@
                             <use xlink:href="{{asset("images/sprite.svg#search")}}"></use>
                         </svg>
                     </div>
-                    <input type="text" class="projects__contentContainer__header__bottom__searchContainer__input" placeholder="{{__('Search in this list ...')}}">
+                    <input type="text" wire:model.live.debounce="search" class="projects__contentContainer__header__bottom__searchContainer__input" placeholder="{{__('Search in this list ...')}}">
                 </div>
                 <livewire:project.project-create-modal/>
             </div>
         </div>
-        @if($this->projects->isEmpty())
+        @if($this->projects->isEmpty() && $this->search == '')
             <div class="projects__contentContainer__tableEmpty">
-                {{--                TODO: add image--}}
-                {{--                <img src="" alt="">--}}
                 <p class="projects__contentContainer__tableEmpty__text">
                     {{__("This is where you can find all the projects you have created. But you don't have any projects yet so add one to anticipate the creation of a Jiri.")}}
                 </p>
-                <livewire:project.project-create-dialog/>
+                <livewire:project.project-create-modal/>
+            </div>
+        @elseif($this->projects->isEmpty() && $this->search != '')
+            <div class="projects__contentContainer__tableEmpty">
+                <p class="projects__contentContainer__tableEmpty__text">
+                    {{__("No results for this search !")}}
+                </p>
             </div>
         @else
             <div class="projects__contentContainer__tableContainer">

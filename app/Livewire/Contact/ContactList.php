@@ -16,11 +16,16 @@ class ContactList extends Component
     public bool $actionsDisabled = true;
     public array $selectedContacts = [];
     public array $contactsToDelete = [];
+    public string $search = '';
 
     #[Computed]
     public function contacts(): mixed
     {
-        return Auth::user()->contacts()->get();
+        return Contact::where('firstname', 'like', '%' . $this->search . '%')
+            ->orWhere('lastname', 'like', '%' . $this->search . '%')
+            ->orWhere('email', 'like', '%' . $this->search . '%')
+            ->orderBy('firstname')
+            ->get();
     }
 
     public function render()

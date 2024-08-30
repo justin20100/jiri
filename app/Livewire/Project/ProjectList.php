@@ -14,12 +14,13 @@ class ProjectList extends Component
     public bool $actionsDisabled = true;
     public array $selectedProjects = [];
     public array $projectsToDelete = [];
+    public string $search = '';
 
 
     #[Computed]
     public function projects(): mixed
     {
-        return Auth::user()->projects()->get();
+        return Project::where('title', 'like', '%' . $this->search . '%')->orderBy('title')->get();
     }
 
     public function render()
@@ -29,9 +30,6 @@ class ProjectList extends Component
     }
 
     // Selection helpers
-    public function refreshProjectList(): void
-    {
-    }
     public function cancelSelected(): void
     {
         $this->selectedProjects = [];

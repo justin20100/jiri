@@ -35,6 +35,10 @@
     @endif
     {{--  END FLASH MESSAGES  --}}
 
+    {{--  CONFIRM MODAL  --}}
+    <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
+    {{--  END CONFIRM MODAL  --}}
+
     <div class="jiris__contentContainer">
         <div class="jiris__contentContainer__header">
             <div class="jiris__contentContainer__header__top">
@@ -55,26 +59,29 @@
                             <use xlink:href="{{asset("images/sprite.svg#search")}}"></use>
                         </svg>
                     </div>
-                    <input type="text" class="jiris__contentContainer__header__bottom__searchContainer__input" placeholder="{{__('Search in this list ...')}}">
+                    <input type="text" wire:model.live.debounce="search" class="jiris__contentContainer__header__bottom__searchContainer__input" placeholder="{{__('Search in this list ...')}}">
                 </div>
                 <livewire:jiri.jiri-create-modal/>
             </div>
         </div>
-        @if($this->jiris->isEmpty())
+        @if($this->jiris->isEmpty() && $this->search == '')
             <div class="jiris__contentContainer__tableEmpty">
-                {{--                TODO: add image--}}
-                {{--                <img src="" alt="">--}}
                 <p class="jiris__contentContainer__tableEmpty__text">
                     {{__("C'est ici que vous pouvez retrouver tous les jiris que vous avez crées. Mais vous n'avez pas encore de jiris alors ajoutez en un !")}}
                 </p>
-                <a href="{{ route('jiris.create') }}" class="button">{{__("Add a Jiri")}}</a>
+                <livewire:jiri.jiri-create-modal/>
+            </div>
+        @elseif($this->jiris->isEmpty() && $this->search != '')
+            <div class="jiris__contentContainer__tableEmpty">
+                <p class="jiris__contentContainer__tableEmpty__text">
+                    {{__("Nos results for this search !")}}
+                </p>
             </div>
         @else
             <div class="jiris__contentContainer__tableContainer">
-                <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
                 <table class="jiris__contentContainer__tableContainer__table table">
                     <thead class="table__head">
-                    <tr class="table__head__line table__head__line--jiris">
+                        <tr class="table__head__line table__head__line--jiris">
                         <th class="table__head__line__cell table__head__line__cell--select">
                             {{-- select  --}}
                         </th>
