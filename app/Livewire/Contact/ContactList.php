@@ -92,10 +92,10 @@ class ContactList extends Component
         }
 
         if (!empty($undeletableContacts)) {
-            session()->flash('error', implode(', ', $undeletableContacts));
+            $this->dispatch('flashMessage', 'error', __('Contact used in a Jiri'), implode(', ', $undeletableContacts));
         }
         if (!empty($deletableContacts)) {
-            session()->flash('success', implode(', ', $deletableContacts));
+            $this->dispatch('flashMessage', 'success', __('Successfully deleted'), implode(', ', $deletableContacts));
         }
 
         $this->selectedContacts = [];

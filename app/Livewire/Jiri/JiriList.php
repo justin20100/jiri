@@ -81,7 +81,7 @@ class JiriList extends Component
         }
 
         if (!empty($deletableJiris)) {
-            session()->flash('success', implode(', ', $deletableJiris));
+            $this->dispatch('flashMessage', 'success', __('Jiri successfully deleted'), implode(', ', $deletableJiris));
         }
 
         $this->selectedJiris = [];

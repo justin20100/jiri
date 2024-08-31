@@ -32,7 +32,8 @@ class JiriCreateModal extends Component
     public function closeModal(): void
     {
         $this->isOpen = false;
-        session()->flash('success', empty($this->jiri->name)?__('A jiri with no title has been created.'): $this->jiri->name);
+        $this->dispatch('flashMessage', 'success', __("Jiri successfully created"), empty($this->jiri->name)?__('A jiri with no title has been created.'): $this->jiri->name);
+
         $this->dispatch('refreshJiriList');
         $this->reset();
     }
@@ -184,6 +185,7 @@ class JiriCreateModal extends Component
         $this->jiriStudentForm->selectedStudent[] = $contact;
         $this->jiriStudentForm->validate();
     }
+
     public function removeContactFromSelectedStudent($contactId): void
     {
         $contact = Auth::user()->contacts->find($contactId);

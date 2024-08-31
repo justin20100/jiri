@@ -15,7 +15,6 @@ class ProjectCreateModal extends Component
     {
         $this->isOpen = true;
     }
-
     public function closeModal(): void
     {
         $this->isOpen = false;
@@ -26,9 +25,11 @@ class ProjectCreateModal extends Component
 
     public function create(): void
     {
+        $title = $this->form->title;
         $this->form->create();
-        $this->reset('isOpen');
+        $this->dispatch('flashMessage', 'success', __("Project created"), $title);
         $this->dispatch('refreshProjectList');
+        $this->reset('isOpen');
     }
 
     public function render()

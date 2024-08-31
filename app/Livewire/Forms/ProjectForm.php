@@ -25,8 +25,6 @@ class ProjectForm extends Form
             'description' => $this->description,
         ]);
 
-        session()->flash('success', $this->title);
-
         $this->reset(['title', 'description']);
     }
 
@@ -38,8 +36,6 @@ class ProjectForm extends Form
             'title' => $this->title,
             'description' => $this->description,
         ]);
-
-        session()->flash('update', $this->title);
 
         $this->reset(['title', 'description']);
     }

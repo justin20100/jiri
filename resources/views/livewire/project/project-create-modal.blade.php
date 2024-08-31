@@ -1,27 +1,4 @@
 <div>
-
-    {{--  FLASH MESSAGES  --}}
-    @if (session('success'))
-        <div class="flash">
-            <div class="flash__container">
-                @if (session('success'))
-                    <div class="flash__container__type flash__container__type--success"
-                         x-data="{ show: true }"
-                         x-init="setTimeout(() => show = false, 8000)"
-                         x-show="show">
-                        <p class="flash__container__type__name">
-                            {{__('Successfully created')}}
-                        </p>
-                        <p class="flash__container__type__message">
-                            {{ session('success') }}
-                        </p>
-                    </div>
-                @endif
-            </div>
-        </div>
-    @endif
-    {{--  END FLASH MESSAGES  --}}
-
     <a wire:click="openModal" class="button">{{__('Create a project')}}</a>
     @if($isOpen)
         <div class="modal" wire:keydown.escape.window="closeModal" wire:click.self="closeModal">

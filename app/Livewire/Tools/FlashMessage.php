@@ -6,13 +6,26 @@ use Livewire\Component;
 
 class FlashMessage extends Component
 {
-    public $successName;
-    public $errorName;
+    public $messages = [];
 
-    public function mount($successName, $errorName): void
+    protected $listeners = [
+        'flashMessage' => 'addMessage'
+    ];
+
+    public function addMessage($type, $title, $message)
     {
-        $this->successName = $successName;
-        $this->errorName = $errorName;
+        $this->messages[] = [
+            'type' => $type,
+            'title' => $title,
+            'message' => $message,
+        ];
+    }
+
+    public function removeMessage($index)
+    {
+        unset($this->messages[$index]);
+        // Réindexer le tableau pour éviter des clés manquantes
+        $this->messages = array_values($this->messages);
     }
 
     public function render()

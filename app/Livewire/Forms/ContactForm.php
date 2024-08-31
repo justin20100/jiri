@@ -40,8 +40,6 @@ class ContactForm extends Form
             'avatar' => $this->storeFile($this->avatar) ?? 'defaultAvatar.jpg',
         ]);
 
-        session()->flash('success', $this->firstname.' '.$this->lastname);
-
         $this->reset(['firstname', 'lastname', 'email', 'avatar']);
     }
 

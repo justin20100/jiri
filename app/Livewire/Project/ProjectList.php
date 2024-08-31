@@ -86,10 +86,10 @@ class ProjectList extends Component
             }
 
             if (!empty($undeletableProjects)) {
-                session()->flash('error', implode(', ', $undeletableProjects));
+                $this->dispatch('flashMessage', 'error', __('Project used in a Jiri'), implode(', ', $undeletableProjects));
             }
             if (!empty($deletableProjects)) {
-                session()->flash('success', implode(', ', $deletableProjects));
+                $this->dispatch('flashMessage', 'success', __('Successfully deleted'), implode(', ', $deletableProjects));
             }
 
             $this->selectedProjects = [];

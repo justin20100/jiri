@@ -1,14 +1,5 @@
 <section class="contacts">
 
-    {{--  FLASH MESSAGES  --}}
-    @if(session('success') || session('error'))
-        <livewire:tools.flash-message
-            :successName="__('Successfully deleted')"
-            :errorName="__('Not deleted because used in a jiri')"
-        ></livewire:tools.flash-message>
-    @endif
-    {{--  END FLASH MESSAGES  --}}
-
     {{--  ICONS BOX  --}}
     <div class="iconsBox @if(!$this->actionsDisabled) iconsBox--active @else iconsBox--inactive @endif">
         <div class="iconsBox__contentContainer">

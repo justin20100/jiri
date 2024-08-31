@@ -27,8 +27,10 @@ class ContactCreateModal extends Component
 
     public function create(): void
     {
+        $fullName = $this->form->firstname . ' ' . $this->form->lastname;
         $this->form->create();
         $this->reset('isOpen');
+        $this->dispatch('flashMessage', 'success', __("Contact successfully created"), $fullName);
         $this->dispatch('refreshContactList');
     }
 
