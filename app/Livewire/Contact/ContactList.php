@@ -21,9 +21,12 @@ class ContactList extends Component
     #[Computed]
     public function contacts(): mixed
     {
-        return Contact::where('firstname', 'like', '%' . $this->search . '%')
-            ->orWhere('lastname', 'like', '%' . $this->search . '%')
-            ->orWhere('email', 'like', '%' . $this->search . '%')
+        return Auth::user()->contacts()
+            ->where(function($query) {
+                $query->where('firstname', 'like', '%' . $this->search . '%')
+                    ->orWhere('lastname', 'like', '%' . $this->search . '%')
+                    ->orWhere('email', 'like', '%' . $this->search . '%');
+            })
             ->orderBy('firstname')
             ->get();
     }
@@ -37,7 +40,14 @@ class ContactList extends Component
     // Refresh the contacts list by getting all the user his contacts
     public function refreshContactList(): void
     {
-        $this->contacts = Auth::user()->contacts()->get();
+        $this->contacts = Auth::user()->contacts()
+            ->where(function($query) {
+                $query->where('firstname', 'like', '%' . $this->search . '%')
+                    ->orWhere('lastname', 'like', '%' . $this->search . '%')
+                    ->orWhere('email', 'like', '%' . $this->search . '%');
+            })
+            ->orderBy('firstname')
+            ->get();
     }
     public function cancelSelected(): void
     {

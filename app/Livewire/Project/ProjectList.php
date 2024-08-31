@@ -20,7 +20,22 @@ class ProjectList extends Component
     #[Computed]
     public function projects(): mixed
     {
-        return Project::where('title', 'like', '%' . $this->search . '%')->orderBy('title')->get();
+        return Auth::user()->projects()
+            ->where(function($query) {
+                $query->where('title', 'like', '%' . $this->search . '%');
+            })
+            ->orderBy('title')
+            ->get();
+    }
+
+    public function refreshProjectList(): void
+    {
+        $this->projects = Auth::user()->projects()
+            ->where(function($query) {
+                $query->where('title', 'like', '%' . $this->search . '%');
+            })
+            ->orderBy('title')
+            ->get();
     }
 
     public function render()
@@ -79,8 +94,6 @@ class ProjectList extends Component
 
             $this->selectedProjects = [];
             $this->projectsToDelete = [];
-
-            $this->refreshProjectList();
         });
     }
 }

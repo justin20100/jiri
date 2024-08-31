@@ -1,39 +1,37 @@
 <section class="contacts">
 
     {{--  FLASH MESSAGES  --}}
-    @if (session('success') || session('error'))
-        <div class="flash">
-            <div class="flash__container">
-                @if (session('success'))
-                    <div class="flash__container__type flash__container__type--success"
-                         x-data="{ show: true }"
-                         x-init="setTimeout(() => show = false, 8000)"
-                         x-show="show">
-                        <p class="flash__container__type__name">
-                            {{__('Successfully deleted :')}}
-                        </p>
-                        <p class="flash__container__type__message">
-                            {{ session('success') }}
-                        </p>
-                    </div>
-                @endif
-                @if (session('error'))
-                    <div class="flash__container__type flash__container__type--error"
-                         x-data="{ show: true }"
-                         x-init="setTimeout(() => show = false, 8000)"
-                         x-show="show">
-                        <p class="flash__container__type__name">
-                            {{__('Not deleted because used in a jiri :')}}
-                        </p>
-                        <p class="flash__container__type__message">
-                            {{ session('error') }}
-                        </p>
-                    </div>
-                @endif
-            </div>
-        </div>
+    @if(session('success') || session('error'))
+        <livewire:tools.flash-message
+            :successName="__('Successfully deleted')"
+            :errorName="__('Not deleted because used in a jiri')"
+        ></livewire:tools.flash-message>
     @endif
     {{--  END FLASH MESSAGES  --}}
+
+    {{--  ICONS BOX  --}}
+    <div class="iconsBox @if(!$this->actionsDisabled) iconsBox--active @else iconsBox--inactive @endif">
+        <div class="iconsBox__contentContainer">
+            <div class="iconsBox__contentContainer__list">
+                <div class="iconsBox__contentContainer__list__item">
+                    <button wire:click.prevent="deleteSelected"
+                            class="iconsBox__contentContainer__list__item__button" title="{{__('Supprimer les éléments sélectionnés')}}">
+                        <svg class="iconsBox__contentContainer__list__item__button__svg">
+                            <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="iconsBox__contentContainer__closeButton">
+                <button wire:click.prevent="cancelSelected" class="iconsBox__contentContainer__closeButton__button" title="{{__('Annuler la sélection')}}">
+                    <svg class="iconsBox__contentContainer__closeButton__button__svg">
+                        <use xlink:href="{{asset("images/sprite.svg#close")}}"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    {{--  END ICONS BOX  --}}
 
     {{--  CONFIRM MODAL  --}}
     <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
@@ -59,7 +57,7 @@
                             <use xlink:href="{{asset("images/sprite.svg#search")}}"></use>
                         </svg>
                     </div>
-                    <input type="text" wire:model.live.debounce="search" class="contacts__contentContainer__header__bottom__searchContainer__input" placeholder="{{__('Search in this list ...')}}">
+                    <input type="text" wire:model.live="search" class="contacts__contentContainer__header__bottom__searchContainer__input" placeholder="{{__('Search in this list ...')}}">
                 </div>
                 <livewire:contact.contact-create-modal/>
             </div>
@@ -67,7 +65,7 @@
         @if($this->contacts->isEmpty() && $this->search == '')
             <div class="contacts__contentContainer__tableEmpty">
                 <p class="projects__contentContainer__tableEmpty__text">
-                    {{__("C'est ici que vous pouvez retrouver tous les contacts que vous avez crées. Mais vous n'avez pas encore de contacts alors ajoutez en un pour pouvoir anticiper la création d'un Jiri.")}}
+                    {{__("Here's where you can find all the contacts you've created. However, you don't have any contacts yet, so add one now to prepare for creating a Jiri.")}}
                 </p>
                 <livewire:contact.contact-create-modal/>
             </div>

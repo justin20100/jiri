@@ -1,39 +1,37 @@
 <section class="projects">
 
     {{--  FLASH MESSAGES  --}}
-        @if (session('success') || session('error'))
-            <div class="flash">
-                <div class="flash__container">
-                    @if (session('success'))
-                        <div class="flash__container__type flash__container__type--success"
-                             x-data="{ show: true }"
-                             x-init="setTimeout(() => show = false, 8000)"
-                             x-show="show">
-                            <p class="flash__container__type__name">
-                                {{__('Successfully deleted :')}}
-                            </p>
-                            <p class="flash__container__type__message">
-                                {{ session('success') }}
-                            </p>
-                        </div>
-                    @endif
-                    @if (session('error'))
-                        <div class="flash__container__type flash__container__type--error"
-                             x-data="{ show: true }"
-                             x-init="setTimeout(() => show = false, 8000)"
-                             x-show="show">
-                            <p class="flash__container__type__name">
-                                {{__('Not deleted because used in a jiri :')}}
-                            </p>
-                            <p class="flash__container__type__message">
-                                {{ session('error') }}
-                            </p>
-                        </div>
-                    @endif
+    @if(session('success') || session('error'))
+        <livewire:tools.flash-message
+            :successName="__('Successfully deleted')"
+            :errorName="__('Delete failed ! You can\'t delete a project that is used in a jiri')"
+        ></livewire:tools.flash-message>
+    @endif
+    {{--  END FLASH MESSAGES  --}}
+
+    {{--  ICONS BOX  --}}
+        <div class="iconsBox @if(!$this->actionsDisabled) iconsBox--active @else iconsBox--inactive @endif">
+            <div class="iconsBox__contentContainer">
+                <div class="iconsBox__contentContainer__list">
+                    <div class="iconsBox__contentContainer__list__item">
+                        <button wire:click.prevent="deleteSelected"
+                                class="iconsBox__contentContainer__list__item__button" title="{{__('Supprimer les éléments sélectionnés')}}">
+                            <svg class="iconsBox__contentContainer__list__item__button__svg">
+                                <use xlink:href="{{asset("images/sprite.svg#trash2")}}"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="iconsBox__contentContainer__closeButton">
+                    <button wire:click.prevent="cancelSelected" class="iconsBox__contentContainer__closeButton__button" title="{{__('Annuler la sélection')}}">
+                        <svg class="iconsBox__contentContainer__closeButton__button__svg">
+                            <use xlink:href="{{asset("images/sprite.svg#close")}}"></use>
+                        </svg>
+                    </button>
                 </div>
             </div>
-        @endif
-    {{--  END FLASH MESSAGES  --}}
+        </div>
+    {{--  END ICONS BOX  --}}
 
     {{--  CONFIRM MODAL  --}}
         <livewire:tools.confirm-modal></livewire:tools.confirm-modal>

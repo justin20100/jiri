@@ -33,6 +33,7 @@ class JiriCreateModal extends Component
     {
         $this->isOpen = false;
         session()->flash('success', empty($this->jiri->name)?__('A jiri with no title has been created.'): $this->jiri->name);
+        $this->dispatch('refreshJiriList');
         $this->reset();
     }
     public function showStep($nextStep): void

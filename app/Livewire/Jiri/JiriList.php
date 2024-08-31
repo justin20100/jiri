@@ -21,7 +21,12 @@ class JiriList extends Component
 
     #[Computed]
     public function jiris(){
-        return Jiri::where('name', 'like', '%' . $this->search . '%')->orderBy('name')->get();
+        return Auth::user()->jiris()
+            ->where(function($query) {
+                $query->where('name', 'like', '%' . $this->search . '%');
+            })
+            ->orderBy('name')
+            ->get();
     }
 
     public function render() : View
@@ -32,7 +37,12 @@ class JiriList extends Component
 
     public function refreshJiriList(): void
     {
-        $this->jiris = Auth::user()->jiris()->orderBy('start', 'desc')->get();
+        $this->jiris = Auth::user()->jiris()
+            ->where(function($query) {
+                $query->where('name', 'like', '%' . $this->search . '%');
+            })
+            ->orderBy('name')
+            ->get();
     }
 
     public function cancelSelected(): void
