@@ -426,15 +426,16 @@ input[type="checkbox"] {
             }
 
             &__list {
+                padding: 3px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 5px;
-                width: 100%;
+                gap: 8px;
 
                 &__item {
-                    background-color: $main5;
+                    background-color: $white;
+                    box-shadow: 0 0 5px 0 $main1;
                     padding: 10px 0;
                     border-radius: 10px;
                     display: flex;
@@ -515,15 +516,16 @@ input[type="checkbox"] {
             }
 
             &__list {
+                padding: 3px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 5px;
-                width: 100%;
+                gap: 8px;
 
                 &__item {
-                    background-color: $main5;
+                    background-color: $white;
+                    box-shadow: 0 0 5px 0 $main1;
                     padding: 10px 0;
                     border-radius: 10px;
                     display: flex;
@@ -639,15 +641,16 @@ input[type="checkbox"] {
             }
 
             &__list {
+                padding: 3px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 5px;
-                width: 100%;
+                gap: 8px;
 
                 &__item {
-                    background-color: $main5;
+                    background-color: $white;
+                    box-shadow: 0 0 5px 0 $main1;
                     padding: 10px 0;
                     border-radius: 10px;
                     display: flex;
@@ -728,15 +731,16 @@ input[type="checkbox"] {
             }
 
             &__list {
+                padding: 3px;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                gap: 5px;
-                width: 100%;
+                gap: 8px;
 
                 &__item {
-                    background-color: $main5;
+                    background-color: $white;
+                    box-shadow: 0 0 5px 0 $main1;
                     padding: 10px 0;
                     border-radius: 10px;
                     display: flex;
@@ -815,7 +819,7 @@ input[type="checkbox"] {
         grid-template-columns: 1fr 1fr;
         grid-template-areas:
             "infos project"
-            "student evaluator"
+            "evaluator student"
             "button button";
         gap: 20px 20px;
         height: 100%;
