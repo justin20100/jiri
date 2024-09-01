@@ -9,6 +9,7 @@ class ConfirmModal extends Component
     public bool $show = false;
     public string $titleMessage = '';
     public string $message = '';
+    public string $context = '';
     protected $listeners = ['checkConfirm' => 'checkConfirm',];
 
 
@@ -21,17 +22,23 @@ class ConfirmModal extends Component
         ]);
     }
 
-    public function checkConfirm($titleMessage = '', $message = ''): void
+    public function checkConfirm($titleMessage = '', $message = '', $context=''): void
     {
         $this->show = true;
         $this->titleMessage = $titleMessage;
         $this->message = $message;
+        $this->context = $context;
     }
 
     public function confirm(): void
     {
         $this->show = false;
-        $this->dispatch('confirmed');
+
+        if ($this->context == 'deleteList') {
+            $this->dispatch('confirmedDeleteList');
+        } elseif ($this->context == 'deleteShow') {
+            $this->dispatch('confirmedDeleteShow');
+        }
     }
 
     public function cancel(): void

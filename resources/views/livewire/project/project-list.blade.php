@@ -28,6 +28,10 @@
         <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
     {{--  END CONFIRM MODAL  --}}
 
+    {{--  PROJECT SHOW MODAL  --}}
+        <livewire:project.project-show-modal></livewire:project.project-show-modal>
+    {{--  END PROJECT SHOW MODAL  --}}
+
     <div class="projects__contentContainer">
         <div class="projects__contentContainer__header">
             <div class="projects__contentContainer__header__top">
@@ -100,7 +104,7 @@
                             </td>
                             <td class="table__body__line__cell table__body__line__cell--actions">
                                 <div class="table__body__line__cell__actions">
-                                    <a href="{{route('projects.edit', $project->id)}}" class="table__body__line__cell__actions__edit">
+                                    <a wire:click.prevent="$dispatch('openProjectShowModal', [{{ $project->id }}])" class="table__body__line__cell__actions__edit">
                                         <svg class="table__body__line__cell__actions__edit__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
                                         </svg>

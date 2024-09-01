@@ -1,0 +1,55 @@
+/*********************************************
+    projectShow
+*********************************************/
+
+.projectShow {
+    padding: 60px;
+
+    &__title {
+        margin-bottom: 30px;
+
+        &__label{
+            font-family: $titleFont;
+            font-size: $x-largeSize;
+            color: $main1;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        &__text {
+            font-family: $textFont;
+            font-size: $normalSize;
+            color: $lightBlack;
+        }
+    }
+
+    &__description {
+        margin-bottom: 60px;
+
+        &__label{
+            font-family: $titleFont;
+            font-size: $largeSize;
+            color: $main1;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        &__text {
+            font-family: $textFont;
+            font-size: $normalSize;
+            color: $lightBlack;
+            line-height: 1.4;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+
+        &__button {
+            // voir _buttons.scss
+        }
+    }
+}

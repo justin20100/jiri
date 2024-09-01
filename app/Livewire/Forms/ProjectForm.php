@@ -28,9 +28,11 @@ class ProjectForm extends Form
         $this->reset(['title', 'description']);
     }
 
-    public function update(): void
+    public function update($projectId): void
     {
         $this->validate();
+
+        $this->project = Project::find($projectId);
 
         $this->project->update([
             'title' => $this->title,

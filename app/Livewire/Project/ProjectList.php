@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class ProjectList extends Component
 {
-    protected $listeners = ['refreshProjectList' => 'refreshProjectList', 'confirmed' => 'onConfirmed', 'cancelled' => 'cancelSelected'];
+    protected $listeners = ['refreshProjectList' => 'refreshProjectList', 'confirmedDeleteList' => 'confirmedDeleteList', 'cancelled' => 'cancelSelected'];
     public bool $actionsDisabled = true;
     public array $selectedProjects = [];
     public array $projectsToDelete = [];
@@ -56,7 +56,9 @@ class ProjectList extends Component
         $this->projectsToDelete = $this->selectedProjects;
         $this->dispatch('checkConfirm',
             titleMessage: __('Are you sure you want to delete the selected projects?'),
-            message: __('Only projects without jiris can be deleted.'));
+            message: __('Only projects without jiris can be deleted.'),
+            context: 'deleteList'
+        );
     }
 
     // Delete a project by passing the id
@@ -65,10 +67,12 @@ class ProjectList extends Component
         $this->projectsToDelete = [$projectId];
         $this->dispatch('checkConfirm',
             titleMessage: __('Are you sure you want to delete the selected projects?'),
-            message: __('Only projects without jiris can be deleted.'));
+            message: __('Only projects without jiris can be deleted.'),
+            context: 'deleteList'
+        );
     }
 
-    public function onConfirmed(): void
+    public function confirmedDeleteList(): void
     {
         DB::transaction(function () {
             $projects = Project::whereIn('id', $this->projectsToDelete)->withCount('jirisProjects')->get();

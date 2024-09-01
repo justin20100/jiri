@@ -1,6 +1,6 @@
 <div>
-    <a wire:click="openModal" class="button">{{__('Create a project')}}</a>
-    @if($isOpen)
+    <a wire:click="openProjectCreateModal" class="button">{{__('Create a project')}}</a>
+    @if($projectCreateIsOpen)
         <div class="modal" wire:keydown.escape.window="closeModal" wire:click.self="closeModal">
             <div class="modal__contentContainer modal__contentContainer--createProjectModal">
                 <div class="modal__contentContainer__content">
