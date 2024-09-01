@@ -143,7 +143,7 @@
                                 </div>
                             </div>
                             <div class="footer__contentContainer__legal">
-                                <a href="#" class="footer__contentContainer__legal__link">Mentions légales</a>
+                                <a href="{{ route('legal-mentions') }}" class="footer__contentContainer__legal__link">Legal Mentions</a>
                             </div>
                         </div>
                     </div>

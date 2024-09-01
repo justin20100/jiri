@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('welcome');
 
+Route::get('/legal-mentions', function () {
+    return view('legal-mentions');
+})->name('legal-mentions');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

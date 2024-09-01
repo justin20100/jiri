@@ -1,0 +1,94 @@
+// WELCOME PAGE
+
+.legalPage {
+
+    .header {
+        margin-top: 40px;
+        margin-bottom: 100px;
+
+        > .wrapper {
+            position: relative;
+            z-index: 4;
+            //max-width: 1400px;
+            //margin: 0 auto;
+            margin: 0 50px;
+        }
+
+        &__contentContainer {
+            width: 100%;
+
+            &__content {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                &__logo {
+                    width: 100%;
+
+                    &__link {
+                        display: block;
+                        max-width: 60px;
+
+                        &__img {
+                            width: 100%;
+                        }
+                    }
+                }
+
+                &__links {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 10px;
+
+                    &__button {
+                        // voir _buttons.scss
+                    }
+                }
+            }
+        }
+    }
+
+    .legal {
+        padding: 20px 0;
+
+        .wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        &__contentContainer {
+            padding: 30px;
+            border-radius: 8px;
+
+            &__title {
+                font-size: $xx-largeSize;
+                color: $main1;
+                font-family: $titleFont;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+            }
+
+            &__text {
+                font-size: $normalSize;
+                font-family: $textFont;
+                line-height: 1.6;
+                color: $lightBlack;
+                margin-bottom: 20px;
+
+                strong {
+                    font-weight: bold;
+                    color: $main1;
+                }
+            }
+
+            &__text:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+}
