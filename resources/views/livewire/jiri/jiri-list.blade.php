@@ -78,7 +78,7 @@
                             {{__("Title")}}
                         </th>
                         <th class="table__head__line__cell table__head__line__cell--date" >
-                            {{__("Start sate")}}
+                            {{__("Start date")}}
                         </th>
                         <th class="table__head__line__cell table__head__line__cell--date">
                             {{__("End date")}}

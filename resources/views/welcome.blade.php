@@ -10,6 +10,7 @@
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
     <body>
+    <livewire:tools.flash-message></livewire:tools.flash-message>
         <div class="mainContainer">
             <main class="welcomePage">
                 <header class="header">

@@ -12,11 +12,6 @@ class LoginModal extends Component
     public LoginForm $form;
     public bool $passwordVisible = false;
 
-//    public function mount(): void
-//    {
-//        $this->form = new LoginForm();
-//    }
-
     public function login(): void
     {
         $this->validate();

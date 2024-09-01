@@ -6,36 +6,41 @@ use Livewire\Component;
 
 class WelcomeModal extends Component
 {
+    public bool $isOpen = false;
+    public $modalType;
+
+    // Liste des écouteurs d'événements
+    protected $listeners = [
+        'setModal' => 'setModal',
+        'openForgotPasswordModal' => 'openForgotPasswordModal',
+        'closeWelcomeModal' => 'closeWelcomeModal',
+    ];
+
     public function render()
     {
         return view('livewire.welcome.welcome-modal');
     }
 
-    protected $listeners = [
-        'openLoginModal' => 'openLoginModal',
-        'openRegisterModal' => 'openRegisterModal',
-        'closeWelcomeModal' => 'closeWelcomeModal',
-    ];
-
-    // ---------- Modal
-    public $isOpen = "none";
-
-    public function openLoginModal(): void
+    public function setModal($modalType): void
     {
-        $this->isOpen = "login";
+        if (!$this->isOpen) {
+            $this->openWelcomeModal();
+        }
+        $this->modalType = $modalType;
     }
 
-    public function openRegisterModal(): void
+    public function openForgotPasswordModal(): void
     {
-        $this->isOpen = "register";
+        $this->modalType = "forgotPassword";
+    }
+
+    public function openWelcomeModal(): void
+    {
+        $this->isOpen = true;
     }
 
     public function closeWelcomeModal(): void
     {
-        $this->isOpen = "none";
+        $this->isOpen = false;
     }
-
-//    add an event listener to listen escape keydown event
-
-
 }

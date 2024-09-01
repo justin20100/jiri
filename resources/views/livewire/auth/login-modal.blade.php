@@ -23,9 +23,7 @@
             </button>
         </div>
         <x-input-error :messages="$errors->get('password')"/>
-        @if (Route::has('password.request'))
-            <a href="{{ route('password.request') }}" wire:navigate class="form__password__forgot">{{ __('You forgot your password ?') }}</a>
-        @endif
+        <a wire:click="$dispatch('openForgotPasswordModal')" class="form__password__forgot">{{ __('You forgot your password ?') }}</a>
     </div>
 
     <div class="form__buttonContainer">
