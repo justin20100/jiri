@@ -16,7 +16,7 @@ class ContactShowModal extends Component
     public Contact $contact;
 
     protected $listeners = ['openContactShowModal'=>'openContactShowModal', 'openContactUpdateModal'=>'openContactUpdateModal', 'closeModal'=>'closeModal', 'confirmedDeleteShow' => 'confirmedDeleteShow'];
-    private string $avatar;
+    private string $savedAvatar = '';
 
     public function openContactShowModal($contactId): void
     {
@@ -30,7 +30,8 @@ class ContactShowModal extends Component
         $this->contactForm->firstname = $this->contact->firstname;
         $this->contactForm->lastname = $this->contact->lastname;
         $this->contactForm->email = $this->contact->email;
-        $this->avatar = $this->contact->avatar;
+        $this->savedAvatar = $this->contact->avatar;
+        $this->contactForm->avatar = $this->contact->avatar;
     }
     public function closeContactShowModal(): void
     {

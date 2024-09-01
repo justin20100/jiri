@@ -53,10 +53,10 @@
                             <!-- Avatar -->
                             <div class="form__avatar">
                                 <div class="form__avatar__preview">
-                                    @if($contactForm->avatar)
-                                        <img src="{{ $contactForm->avatar->temporaryUrl() }}" class="form__avatar__preview__img" alt="avatar">
+                                    @if ($this->savedAvatar === $contactForm->avatar)
+                                        <img src="{{ URL::to('/storage/avatars/'.$contactForm->avatar) }}" class="form__avatar__preview__img" alt="avatar">
                                     @else
-                                        <img src="{{URL::to('/storage/avatars')."/".$this->avatar}}" class="form__avatar__preview__img" alt="avatar">
+                                        <img src="{{ $contactForm->avatar->temporaryUrl() }}" class="form__avatar__preview__img" alt="avatar">
                                     @endif
                                 </div>
 

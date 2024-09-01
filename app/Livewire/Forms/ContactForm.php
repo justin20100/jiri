@@ -49,6 +49,10 @@ class ContactForm extends Form
 
         $this->contact = Contact::find($contactId);
 
+        if ($this->avatar) {
+            $this->avatar->store("public/avatars/");
+        }
+
         $this->contact->update([
             'firstname' => $this->firstname,
             'lastname' => $this->lastname,
