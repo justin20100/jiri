@@ -104,14 +104,15 @@
                 &--actions {
                     justify-self: end;
                 }
+
                 &__actions {
                     display: flex;
                     justify-self: end;
                     align-items: center;
                     width: 100%;
-                    gap: 20px;
+                    gap: 25px;
 
-                    &__edit {
+                    &__show {
                         cursor: pointer;
                         transition: transform .3s $ease;
 
@@ -122,7 +123,23 @@
                         &__svg {
                             width: 18px;
                             height: 18px;
-                            fill: $main2;
+                            fill: $main1;
+                        }
+                    }
+
+                    &__edit {
+                        cursor: pointer;
+                        transition: transform .3s $ease;
+
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+
+                        &__svg {
+                            width: 16px;
+                            height: 16px;
+                            fill: $main1;
+                            stroke: $main1;
                         }
                     }
 
@@ -137,9 +154,9 @@
                         }
 
                         &__svg {
-                            width: 20px;
-                            height: 20px;
-                            fill: $main2;
+                            width: 18px;
+                            height: 18px;
+                            fill: $main1;
                         }
                     }
                 }

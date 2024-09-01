@@ -12,7 +12,7 @@ use Livewire\WithPagination;
 class ContactList extends Component
 {
     use WithPagination;
-    protected $listeners = ['refreshContactList' => 'refreshContactList', 'confirmed' => 'onConfirmed', 'cancelled' => 'cancelSelected'];
+    protected $listeners = ['refreshContactList' => 'refreshContactList', 'confirmedDeleteList' => 'confirmedDeleteList', 'cancelled' => 'cancelSelected'];
     public bool $actionsDisabled = true;
     public array $selectedContacts = [];
     public array $contactsToDelete = [];
@@ -60,7 +60,9 @@ class ContactList extends Component
         $this->contactsToDelete = $this->selectedContacts;
         $this->dispatch('checkConfirm',
             titleMessage: __('Are you sure you want to delete the selected contacts?'),
-            message: __('Only contacts unused in a jiri can be deleted.'));
+            message: __('Only contacts unused in a jiri can be deleted.'),
+            context: 'deleteList'
+        );
     }
 
     // Delete a project by passing the id
@@ -69,11 +71,13 @@ class ContactList extends Component
         $this->contactsToDelete = [$contactId];
         $this->dispatch('checkConfirm',
             titleMessage: __('Are you sure you want to delete the selected contact?'),
-            message: __('Only contacts unused in a jiri can be deleted.'));
+            message: __('Only contacts unused in a jiri can be deleted.'),
+            context: 'deleteList'
+        );
     }
 
 
-    public function onConfirmed(): void
+    public function confirmedDeleteList(): void
     {
         $contacts = Contact::whereIn('id', $this->contactsToDelete)
             ->withCount('contactsJiris')
@@ -83,7 +87,7 @@ class ContactList extends Component
         $deletableContacts = [];
 
         foreach ($contacts as $contact) {
-            if ($contact->contacts_jiris_count > 0) {
+            if ($contact->contactsJiris->count() > 0) {
                 $undeletableContacts[] = $contact->firstname . ' ' . $contact->lastname;
             } else {
                 $deletableContacts[] = $contact->firstname . ' ' . $contact->lastname;

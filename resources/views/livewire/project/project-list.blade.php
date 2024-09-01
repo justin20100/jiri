@@ -96,15 +96,20 @@
                             <td class="table__body__line__cell">
                                 <input type="checkbox" wire:model.change="selectedProjects" value="{{$project->id}}" class="table__body__line__cell__checkbox">
                             </td>
-                            <td class="table__body__line__cell">
+                            <td  wire:click.prevent="$dispatch('openProjectShowModal', [{{ $project->id }}])" class="table__body__line__cell">
                                 {{$project->title}}
                             </td>
-                            <td class="table__body__line__cell">
+                            <td wire:click.prevent="$dispatch('openProjectShowModal', [{{ $project->id }}])" class="table__body__line__cell">
                                 {{ \Illuminate\Support\Str::limit($project->description, 100, $end='...') }}
                             </td>
                             <td class="table__body__line__cell table__body__line__cell--actions">
                                 <div class="table__body__line__cell__actions">
-                                    <a wire:click.prevent="$dispatch('openProjectShowModal', [{{ $project->id }}])" class="table__body__line__cell__actions__edit">
+                                    <a wire:click.prevent="$dispatch('openProjectShowModal', [{{ $project->id }}])" class="table__body__line__cell__actions__show">
+                                        <svg class="table__body__line__cell__actions__show__svg">
+                                            <use xlink:href="{{asset("images/sprite.svg#eye")}}"></use>
+                                        </svg>
+                                    </a>
+                                    <a wire:click.prevent="$dispatch('openProjectUpdateModal', [{{ $project->id }}])" class="table__body__line__cell__actions__edit">
                                         <svg class="table__body__line__cell__actions__edit__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
                                         </svg>

@@ -1,10 +1,10 @@
 <div>
     <a wire:click="openProjectCreateModal" class="button">{{__('Create a project')}}</a>
     @if($projectCreateIsOpen)
-        <div class="modal" wire:keydown.escape.window="closeModal" wire:click.self="closeModal">
+        <div class="modal" wire:keydown.escape.window="closeProjectCreateModal" wire:click.self="closeProjectCreateModal">
             <div class="modal__contentContainer modal__contentContainer--createProjectModal">
                 <div class="modal__contentContainer__content">
-                    <a wire:click="closeModal" class="modal__contentContainer__content__closeContainer">
+                    <a wire:click="closeProjectCreateModal" class="modal__contentContainer__content__closeContainer">
                         <svg class="modal__contentContainer__content__closeContainer__svg">
                             <use xlink:href="{{asset("images/sprite.svg#close")}}"></use>
                         </svg>

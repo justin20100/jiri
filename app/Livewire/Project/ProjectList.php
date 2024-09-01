@@ -55,7 +55,7 @@ class ProjectList extends Component
     {
         $this->projectsToDelete = $this->selectedProjects;
         $this->dispatch('checkConfirm',
-            titleMessage: __('Are you sure you want to delete the selected projects?'),
+            titleMessage: __('Are you sure to delete the selected projects?'),
             message: __('Only projects without jiris can be deleted.'),
             context: 'deleteList'
         );
@@ -66,7 +66,7 @@ class ProjectList extends Component
     {
         $this->projectsToDelete = [$projectId];
         $this->dispatch('checkConfirm',
-            titleMessage: __('Are you sure you want to delete the selected projects?'),
+            titleMessage: __('Are you sure to delete this project ?'),
             message: __('Only projects without jiris can be deleted.'),
             context: 'deleteList'
         );

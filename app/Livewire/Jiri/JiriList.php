@@ -13,7 +13,7 @@ class JiriList extends Component
 {
     use WithPagination;
 
-    protected $listeners = ['refreshJiriList' => 'refreshJiriList', 'confirmed' => 'onConfirmed', 'cancelled' => 'onCancelled'];
+    protected $listeners = ['refreshJiriList' => 'refreshJiriList', 'confirmedDeleteList' => 'confirmedDeleteList', 'cancelled' => 'onCancelled'];
     public array $selectedJiris = [];
     public bool $actionsDisabled = true;
     public array $jiriToDelete = [];
@@ -54,18 +54,22 @@ class JiriList extends Component
     {
         $this->jiriToDelete = $this->selectedJiris;
         $this->dispatch('checkConfirm',
-            titleMessage: __('Are you sure you want to delete the selected jiris?'),
-            message: __('If you delete the selected jiris, all related data will be lost but not the projects and the contacts.'));
+            titleMessage: __('Are you sure to delete the selected jiris?'),
+            message: __('If you delete the selected jiris, all related data will be lost but not the projects and the contacts.'),
+            context: 'deleteList'
+        );
     }
     public function deleteJiri($jiriId): void
     {
         $this->jiriToDelete = [$jiriId];
         $this->dispatch('checkConfirm',
-            titleMessage: __('Are you sure you want to delete the selected jiris?'),
-            message: __('If you delete the selected jiris, all related data will be lost but not the projects and the contacts.'));
+            titleMessage: __('Are you sure to delete this jiris?'),
+            message: __('If you delete the selected jiris, all related data will be lost but not the projects and the contacts.'),
+            context: 'deleteList'
+        );
     }
 
-    public function onConfirmed(): void
+    public function confirmedDeleteList(): void
     {
         $deletableJiris = [];
 
