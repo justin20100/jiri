@@ -28,6 +28,10 @@
     <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
     {{--  END CONFIRM MODAL  --}}
 
+    {{--  CONTACT SHOW MODAL  --}}
+    <livewire:contact.contact-show-modal></livewire:contact.contact-show-modal>
+    {{--  END CONTACT SHOW MODAL  --}}
+
     <div class="contacts__contentContainer">
         <div class="contacts__contentContainer__header">
             <div class="contacts__contentContainer__header__top">
@@ -113,7 +117,12 @@
                             </td>
                             <td class="table__body__line__cell table__body__line__cell--actions">
                                 <div class="table__body__line__cell__actions">
-                                    <a href="{{route('contacts.edit', $contact->id)}}" class="table__body__line__cell__actions__edit">
+                                    <a wire:click.prevent="$dispatch('openContactShowModal', [{{ $contact->id }}])" class="table__body__line__cell__actions__show">
+                                        <svg class="table__body__line__cell__actions__show__svg">
+                                            <use xlink:href="{{asset("images/sprite.svg#eye")}}"></use>
+                                        </svg>
+                                    </a>
+                                    <a wire:click.prevent="$dispatch('openContactUpdateModal', [{{ $contact->id }}])" class="table__body__line__cell__actions__edit">
                                         <svg class="table__body__line__cell__actions__edit__svg">
                                             <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
                                         </svg>

@@ -43,15 +43,17 @@ class ContactForm extends Form
         $this->reset(['firstname', 'lastname', 'email', 'avatar']);
     }
 
-    public function update(): void
+    public function update($contactId): void
     {
         $this->validate();
+
+        $this->contact = Contact::find($contactId);
 
         $this->contact->update([
             'firstname' => $this->firstname,
             'lastname' => $this->lastname,
             'email' => $this->email,
-            'avatar' => $this->storeFile($this->avatar) ?? 'defaultAvatar.jpg',
+            'avatar' => $this->storeFile($this->avatar),
         ]);
     }
 
