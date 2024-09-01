@@ -10,9 +10,11 @@
                         <p class="flash__container__type__name">
                             {{ $flash['title'] }}
                         </p>
-                        <p class="flash__container__type__message">
-                            {{ $flash['message'] }}
-                        </p>
+                        @if($flash['message'])
+                            <p class="flash__container__type__message">
+                                {{ $flash['message'] }}
+                            </p>
+                        @endif
                     </div>
                 @endforeach
             </div>

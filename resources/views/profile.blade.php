@@ -3,6 +3,8 @@
 {{--        --}}
 {{--    </x-slot>--}}
 
+    <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
+
     <div class="profile">
         <div class="profile__contentContainer">
 

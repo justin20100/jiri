@@ -38,6 +38,8 @@ class ConfirmModal extends Component
             $this->dispatch('confirmedDeleteList');
         } elseif ($this->context == 'deleteShow') {
             $this->dispatch('confirmedDeleteShow');
+        } elseif ($this->context == 'deleteProfile'){
+            $this->dispatch('confirmedDeleteProfile');
         }
     }
 

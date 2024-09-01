@@ -58,7 +58,7 @@ new class extends Component
 
         $user->save();
 
-        $this->dispatch('profile-updated', name: $user->name);
+        $this->dispatch('flashMessage', 'success', __("Profile updated successfully"));
     }
 
     /**
@@ -85,11 +85,11 @@ new class extends Component
 <section class="profileInfos">
     <header class="profileInfos__header">
         <h2 class="profileInfos__header__title">
-            {{ __('Informations de profil') }}
+            {{ __('Profil information') }}
         </h2>
 
         <p class="profileInfos__header__text">
-            {{ __("Vous pouvez changer vos information ci dessous") }}
+            {{ __("You can edit your infos here") }}
         </p>
     </header>
 
@@ -120,14 +120,14 @@ new class extends Component
         <div class="form__columns">
             <!-- Firstname -->
             <div class="form__firstname">
-                <x-input-label for="firstname" :value="__('Prenom')" />
+                <x-input-label for="firstname" :value="__('Firstname')" />
                 <x-text-input wire:model="firstname" id="firstname" name="firstname" type="text" class="" required autofocus autocomplete="firstname" />
                 <x-input-error class="" :messages="$errors->get('firstname')" />
             </div>
 
             <!-- Lastname -->
             <div class="form__lastname">
-                <x-input-label for="lastname" :value="__('Nom')" />
+                <x-input-label for="lastname" :value="__('Lastname')" />
                 <x-text-input wire:model="lastname" id="lastname" name="lastname" type="text" class="" required autofocus autocomplete="lastname" />
                 <x-input-error class="" :messages="$errors->get('lastname')" />
             </div>
@@ -159,7 +159,7 @@ new class extends Component
         </div>
 
         <div class="form__buttonContainer">
-            <x-primary-button>{{ __('Enregister') }}</x-primary-button>
+            <x-primary-button>{{ __('Save changes') }}</x-primary-button>
 
             <x-action-message class="" on="profile-updated">
                 {{ __('Iformations modifiées') }}

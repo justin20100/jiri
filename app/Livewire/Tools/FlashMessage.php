@@ -12,7 +12,7 @@ class FlashMessage extends Component
         'flashMessage' => 'addMessage'
     ];
 
-    public function addMessage($type, $title, $message)
+    public function addMessage($type, $title, $message='')
     {
         $this->messages[] = [
             'type' => $type,

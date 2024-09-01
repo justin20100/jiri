@@ -3,6 +3,7 @@
 *********************************************/
 
 .profile {
+    overflow-y: scroll;
 
     &__contentContainer {
         display: grid;
@@ -29,7 +30,7 @@
 
                         &__title {
                             font-family: $titleFont;
-                            font-size: $x-largeSize;
+                            font-size: $largeSize;
                             color: $lightBlack;
                             font-weight: bold;
                             margin-bottom: 10px;
@@ -64,7 +65,7 @@
 
                         &__title {
                             font-family: $titleFont;
-                            font-size: $x-largeSize;
+                            font-size: $largeSize;
                             color: $lightBlack;
                             font-weight: bold;
                             margin-bottom: 10px;
@@ -109,6 +110,7 @@
                             font-family: $textFont;
                             font-size: $normalSize;
                             color: $lightBlack;
+                            line-height: 1.4;
                         }
                     }
 
