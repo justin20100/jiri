@@ -28,10 +28,10 @@ return new class extends Migration
         Schema::table('projects', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained();
         });
-        Schema::table('contact_duties', function (Blueprint $table) {
-            $table->foreignId('jiri_project_id')->constrained();
-            $table->foreignId('contact_id')->constrained();
-        });
+//        Schema::table('contact_duties', function (Blueprint $table) {
+//            $table->foreignId('jiri_project_id')->constrained();
+//            $table->foreignId('contact_id')->constrained();
+//        });
     }
 
     /**

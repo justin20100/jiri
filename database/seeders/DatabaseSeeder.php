@@ -35,23 +35,25 @@ class DatabaseSeeder extends Seeder
                 'lastname' => 'Vincent',
                 'email' => 'justinvincent@gmail.com',
                 'password' => bcrypt('Admin1234'),
-            ]);@
+            ]);
+
+
         $users = collect([$user1, $user2]);
 
         foreach ($users as $user) {
 
             // Création de contacts
-            Contact::factory()->count(20)->create([
+            Contact::factory()->count(30)->create([
                 'user_id' => $user->id,
             ]);
 
             // Création de projets
-            Project::factory()->count(10)->create([
+            Project::factory()->count(20)->create([
                 'user_id' => $user->id,
             ]);
 
             // Création de jiris
-            Jiri::factory()->count(5)->create([
+            Jiri::factory()->count(3)->create([
                 'user_id' => $user->id,
             ]);
 
@@ -59,10 +61,10 @@ class DatabaseSeeder extends Seeder
 
             // Ajout de contacts aux jiris
             foreach ($jiris as $jiri) {
-                $contacts = $user->contacts->random(3);
+                $contacts = $user->contacts->random(10);
 
                 foreach ($contacts as $contact) {
-                    ContactJiri::factory()->count(8)->create([
+                    ContactJiri::factory()->create([
                         'jiri_id' => $jiri->id,
                         'contact_id' => $contact->id,
                     ]);
@@ -74,7 +76,7 @@ class DatabaseSeeder extends Seeder
                 $projects = $user->projects->random(3);
 
                 foreach ($projects as $project) {
-                    JiriProject::factory()->count(2)->create([
+                    JiriProject::factory()->create([
                         'jiri_id' => $jiri->id,
                         'project_id' => $project->id,
                     ]);
@@ -82,20 +84,20 @@ class DatabaseSeeder extends Seeder
             }
 
             // Ajout de points de contact aux projets
-            foreach ($jiris as $jiri) {
-                $jiriProjects = $jiri->jiriProjects;
-
-                foreach ($jiriProjects as $jiriProject) {
-                    $contacts = $jiri->contacts->random(2);
-
-                    foreach ($contacts as $contact) {
-                        ContactDuty::factory()->count(1)->create([
-                            'contact_id' => $contact->id,
-                            'jiri_project_id' => $jiriProject->project_id,
-                        ]);
-                    }
-                }
-            }
+//            foreach ($jiris as $jiri) {
+//                $jiriProjects = $jiri->jiriProjects;
+//
+//                foreach ($jiriProjects as $jiriProject) {
+//                    $contacts = $jiri->contacts->random(2);
+//
+//                    foreach ($contacts as $contact) {
+//                        ContactDuty::factory()->count(1)->create([
+//                            'contact_id' => $contact->id,
+//                            'jiri_project_id' => $jiriProject->project_id,
+//                        ]);
+//                    }
+//                }
+//            }
         }
 
         // Création de projets sans jiris pour l'utilisateur 1

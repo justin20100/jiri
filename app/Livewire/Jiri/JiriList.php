@@ -76,9 +76,9 @@ class JiriList extends Component
         foreach ($this->jiriToDelete as $jiriId) {
             $jiri = Jiri::findOrFail($jiriId);
             $deletableJiris[] = $jiri->name;
-            foreach ($jiri->jiriProjects as $jiriProject) {
-                $jiriProject->contactDuties()->delete();
-            }
+//            foreach ($jiri->jiriProjects as $jiriProject) {
+//                $jiriProject->contactDuties()->delete();
+//            }
             $jiri->contactJiris()->delete();
             $jiri->jiriProjects()->delete();
             $jiri->delete();

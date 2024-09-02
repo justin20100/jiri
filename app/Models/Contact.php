@@ -27,8 +27,7 @@ class Contact extends Model
 
     public function jiris(): BelongsToMany
     {
-        return $this
-            ->belongsToMany(Jiri::class, 'contact_jiri', 'contact_id', 'jiri_id')
+        return $this->belongsToMany(Jiri::class, 'contact_jiris', 'contact_id', 'jiri_id')
             ->withPivot(['role', 'token']);
     }
 

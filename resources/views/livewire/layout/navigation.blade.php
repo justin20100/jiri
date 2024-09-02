@@ -23,23 +23,23 @@ new class extends Component
             <div class="navigation__contentContainer__top">
                 <!-- Logo -->
                 <div class="navigation__contentContainer__top__logoContainer">
-                    <a href="{{ route('dashboard') }}" wire:navigate class="navigation__contentContainer__top__logoContainer__link">
+                    <a href="{{ route('jiris.index') }}" wire:navigate class="navigation__contentContainer__top__logoContainer__link">
                         <x-application-logo />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="navigation__contentContainer__top__links">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                        <div class="navigation__contentContainer__top__links__item__iconContainer">
-                            <svg>
-                                <use xlink:href="{{asset("images/sprite.svg#dashboard")}}"></use>
-                            </svg>
-                        </div>
-                        <span>
-                            {{ __('Dashboard') }}
-                        </span>
-                    </x-nav-link>
+{{--                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>--}}
+{{--                        <div class="navigation__contentContainer__top__links__item__iconContainer">--}}
+{{--                            <svg>--}}
+{{--                                <use xlink:href="{{asset("images/sprite.svg#dashboard")}}"></use>--}}
+{{--                            </svg>--}}
+{{--                        </div>--}}
+{{--                        <span>--}}
+{{--                            {{ __('Dashboard') }}--}}
+{{--                        </span>--}}
+{{--                    </x-nav-link>--}}
                     <x-nav-link :href="route('jiris.index')" :active="request()->routeIs('jiris.index')" wire:navigate>
                         <div class="navigation__contentContainer__top__links__item__iconContainer">
                             <svg>

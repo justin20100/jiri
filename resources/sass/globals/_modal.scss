@@ -187,6 +187,14 @@
             }
         }
 
+        &--showJiriModal{
+            width: 80%;
+            min-width: 900px;
+            max-width: 1500px;
+            min-height: 200px;
+            max-height: 900px;
+        }
+
         &--createProjectModal{
             width: 70%;
             min-width: 500px;

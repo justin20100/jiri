@@ -6,6 +6,9 @@ use App\Models\ContactJiri;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends Factory<ContactJiri>
+ */
 class ContactJiriFactory extends Factory
 {
     protected $model = ContactJiri::class;

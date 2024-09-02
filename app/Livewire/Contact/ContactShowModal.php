@@ -14,15 +14,17 @@ class ContactShowModal extends Component
     // ---------- Modal
     public $contactShowIsOpen = "";
     public Contact $contact;
-
-    protected $listeners = ['openContactShowModal'=>'openContactShowModal', 'openContactUpdateModal'=>'openContactUpdateModal', 'closeModal'=>'closeModal', 'confirmedDeleteShow' => 'confirmedDeleteShow'];
     private string $savedAvatar = '';
+
+
+    protected $listeners = ['openContactShowModal' => 'openContactShowModal', 'openContactUpdateModal' => 'openContactUpdateModal', 'closeModal' => 'closeModal', 'confirmedDeleteShow' => 'confirmedDeleteShow'];
 
     public function openContactShowModal($contactId): void
     {
         $this->contactShowIsOpen = "show";
         $this->contact = Contact::find($contactId);
     }
+
     public function openContactUpdateModal($contactId): void
     {
         $this->contactShowIsOpen = "update";
@@ -33,6 +35,7 @@ class ContactShowModal extends Component
         $this->savedAvatar = $this->contact->avatar;
         $this->contactForm->avatar = $this->contact->avatar;
     }
+
     public function closeContactShowModal(): void
     {
         $this->reset('contact', 'contactForm', 'contactShowIsOpen');

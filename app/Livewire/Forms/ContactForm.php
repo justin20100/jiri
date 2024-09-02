@@ -16,7 +16,7 @@ class ContactForm extends Form
     public string $firstname = '';
     public string $lastname = '';
 
-    #[Validate('required|email|min:3|max:50')]
+    #[Validate('required|email|unique:contacts,email|min:3|max:50')]
     public string $email = '';
 
     #[Validate('image|max:1500|nullable')]

@@ -34,6 +34,10 @@ class JiriCreateModal extends Component
         $this->isOpen = false;
         $this->dispatch('flashMessage', 'success', __("Jiri successfully created"), empty($this->jiri->name)?__('A jiri with no title has been created.'): $this->jiri->name);
 
+        if ($this->jiriInfosForm->validate() && $this->jiriProjectForm->validate() && $this->jiriEvaluatorForm->validate() && $this->jiriStudentForm->validate()){
+            $this->jiri->update(['status' => 'ongoing']);
+        }
+
         $this->dispatch('refreshJiriList');
         $this->reset();
     }
@@ -52,9 +56,7 @@ class JiriCreateModal extends Component
         elseif ($this->step == "student") {
             $this->updateLinkedStudentToAJiri();
         }
-        elseif ($this->step == "summary") {
-            $this->closeModal();
-        }
+        elseif ($this->step == "summary") {}
 
         $this->step = $nextStep;
     }

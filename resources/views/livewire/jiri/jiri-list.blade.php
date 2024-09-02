@@ -24,6 +24,10 @@
     </div>
     {{--  END ICONS BOX  --}}
 
+    {{--  JIRI SHOW MODAL  --}}
+    <livewire:jiri.jiri-show-modal></livewire:jiri.jiri-show-modal>
+    {{--  END JIRI SHOW MODAL  --}}
+
     {{--  CONFIRM MODAL  --}}
     <livewire:tools.confirm-modal></livewire:tools.confirm-modal>
     {{--  END CONFIRM MODAL  --}}
@@ -120,9 +124,9 @@
                             </td>
                             <td class="table__body__line__cell table__body__line__cell--actions">
                                 <div class="table__body__line__cell__actions">
-                                    <a href="{{route('jiris.edit', $jiri->id)}}" class="table__body__line__cell__actions__edit">
-                                        <svg class="table__body__line__cell__actions__edit__svg">
-                                            <use xlink:href="{{asset("images/sprite.svg#pencil")}}"></use>
+                                    <a wire:click.prevent="$dispatch('openJiriShowModal', [{{ $jiri->id }}])" class="table__body__line__cell__actions__show">
+                                        <svg class="table__body__line__cell__actions__show__svg">
+                                            <use xlink:href="{{asset("images/sprite.svg#eye")}}"></use>
                                         </svg>
                                     </a>
                                     <button wire:click="deleteJiri({{$jiri->id}})" class="table__body__line__cell__actions__delete">

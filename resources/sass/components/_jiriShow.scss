@@ -1,0 +1,36 @@
+/*********************************************
+    jiriShow
+*********************************************/
+
+.jiriShow {
+    padding: 80px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
+    grid-template-areas: "infos project" "evaluator student";
+
+    > div{
+        position: relative;
+    }
+
+    &__editButton{
+        position: absolute;
+        top: -11px;
+        right: -15px;
+        border-radius: 14px;
+        padding: 10px 20px;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.6);
+
+        &:hover{
+            > svg{
+                fill: $main1;
+            }
+        }
+
+        &__svg{
+            fill: $white;
+            width: 13px;
+            height: 13px;
+        }
+    }
+}
